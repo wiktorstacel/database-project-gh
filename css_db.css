@@ -1,0 +1,182 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: #FFFFFF url(images/img01.gif) repeat-x;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 13px;
+	color: #666666;
+	text-align:center;
+}
+
+#MAINBLOCK{
+	width: 830px;
+	margin: 0 auto;
+	padding: 0px 0;
+}
+
+#page {
+	width: 730px;
+	margin: 0 auto;
+	padding: 30px 0;
+	text-align:left;
+}
+
+.boxed {
+	margin: 0 0 20px 0;
+}
+
+.boxed .title {
+	width: 250px;
+	height: 0px;
+	margin: 0;
+	padding: 10px 0 0 10px;
+	background: #A8C3CB url(images/img063.jpg) repeat;
+	font-size: 136%;
+	color: #144B6B;
+}
+
+.boxed .content {
+	padding: 20px;
+	border: 1px solid #97C984;
+	border-top: none;
+}
+
+.boxed h3 {
+	margin: 0;
+}
+
+.boxed p, .boxed ul, .boxed ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: normal;
+}
+
+.boxed ul {
+}
+
+.boxed ul li {
+	padding: 8px 0 8px 10px;
+	background: url(images/img04.gif) no-repeat 0px 13px;
+}
+
+.boxed ul li.first {
+	border: none;
+}
+
+/* Menu */
+
+#menu {
+	padding-top: 0;
+	background: #A8C3CB;
+	height:50px;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 10px 0 0 0;
+	list-style: none;
+	line-height: normal;
+	text-align: center;
+}
+
+#menu li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+#menu a {
+	padding: 0 20px;
+	text-decoration: none;
+	font-size: 136%;
+	font-weight: bold;
+	color: #144B6B;
+}
+
+#menu a:hover {
+	text-decoration: underline;
+}
+
+#menu .active a {
+	color: #FFFFFF;
+}
+
+#MENU_POZIOM{
+    width: 1000px;
+    height:200px;
+}
+
+.input1
+{
+width:200px; 
+
+}
+
+.input2
+{
+width:400px; 
+
+}
+.alert
+{
+	color: red;
+	font-size:10px;
+}
+.price{
+	font-weight: bold;
+}
+.price1{
+	font-weight: bold;
+}
+
+#searchform1{
+width: 200px;
+float:left;	
+}
+#searchsubmit {
+	float: right;
+}
+td{
+height: 40px;
+}
+textarea{
+	height:50px;
+	width:400px;
+}
+table.lista_art tr.listwa
+{
+       background-color: #A8C3CB;
+       color:#144B6B;
+       font-weight: bold;
+       /*font-size: ;*/
+	   
+}
+.linia_noactive
+{
+	border-bottom-width: thin; 
+        border-bottom-style: solid;
+        border-color: #fff;
+        height: 36px;
+        color: #c7c7c7;
+}
+#add_agent
+{
+	float:left;
+	padding: 10px;
+	border: 1px solid #97C984;
+}
+#stat_agent
+{
+	float:right;
+	padding: 10px;
+	border: 1px solid #97C984;
+}
+
+.data{
+	width:65px;
+}
+
+
+
+
