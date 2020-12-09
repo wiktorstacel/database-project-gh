@@ -71,12 +71,12 @@ class Strona1
 
     public function WyswietlStyle()
     {
-      echo "<link rel=\"Stylesheet\" type=\"text/css\" href=\"css_db.css\" />\n";
+      echo "<link rel=\"Stylesheet\" type=\"text/css\" href=\"css/css_db.css\" />\n";
     }
 
     public function WyswietlSkrypty()
     {
-      echo '<script language="JavaScript" type="text/javascript" src="scrypt_db.js"></script>';
+      echo '<script language="JavaScript" type="text/javascript" src="js/scrypt_db.js"></script>';
     }
 
     public function WyswietlNaglowek()
