@@ -82,7 +82,7 @@ print("<td class=\"town\">sprzedaż<br />(ogółem)</td>");
 print("<td class=\"count\">ilość<br />tranzakcji</td>");
 print("<td class=\"town\">średnia<br />sprzedaży</td>");
 
-echo '<td>usuń</td>';
+//echo '<td>usuń</td>';
 echo '</tr>';
 
 $result = mysqli_query($conn, $zapytanie);
@@ -93,19 +93,18 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
 		
         print("<tr>");
 
-		print("<td class=\"id\">$row[0]</td>");
-		print("<td class=\"name\">$row[1]</td>");
-		print("<td class=\"kind\">$row[2]</td>");
-		print("<td class=\"state\">$row[3]</td>");
-		print("<td class=\"sprzedaz\">$row[6]</td>");
-		print("<td class=\"count\">$row[5]</td>");
-		print("<td class=\"srednia\">$row[4]</td>");
+        print("<td class=\"id\">$row[0]</td>");
+        print("<td class=\"name\">$row[1]</td>");
+        print("<td class=\"kind\">$row[2]</td>");
+        print("<td class=\"state\">$row[3]</td>");
+        print("<td class=\"sprzedaz\">$row[6]</td>");
+        print("<td class=\"count\">$row[5]</td>");
+        $temp = round($row[4],2);
+        print("<td class=\"srednia\">$temp</td>");
 		
-
-        print("<td><a href=\"javascript:getData('usun_agent.php?m=$row[0]','field');\">+</a></td>");
-		
-		
-		echo '</tr>';
+//        print("<td><a href=\"javascript:getData('usun_agent.php?m=$row[0]','field');\">+</a></td>");
+				
+        echo '</tr>';
 	}
 	
 

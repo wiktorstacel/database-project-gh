@@ -186,6 +186,7 @@ function czysc_ekran()
 	document.getElementById("ekran2").innerHTML = "";
 	document.getElementById("ekran3").innerHTML = "";
 	document.getElementById("ekran").innerHTML = "";
+        scroll(0,0);
 }
 
 function askprice(price)

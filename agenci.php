@@ -88,7 +88,7 @@ echo'
     </tr>
 
 
-    <tr>Sortuj wg:</tr>
+    <tr> - sortuj wg:</tr>
 
     <tr>
     <td></td>
@@ -110,8 +110,8 @@ echo'
     </fieldset>
     </form>';
 
-    print("<button id=\"searchsubmit\" onclick=\"getData('pokaz_agenci.php','ekran3')\">Lista</button>");
+    print("<button id=\"searchsubmit\" onclick=\"getData('pokaz_agenci.php','ekran2')\">Lista</button>");
     print("<td></td><td><button id=\"searchsubmit\" onclick=\"ask_wyniki()\">Wyniki</button></td>");
-print("<td></td><td><button id=\"searchsubmit\" onclick=\"insert_agent()\">Dodaj</button></td>");
+    print("<td></td><td><button id=\"searchsubmit\" onclick=\"insert_agent()\">Dodaj</button></td>");
 
 ?>

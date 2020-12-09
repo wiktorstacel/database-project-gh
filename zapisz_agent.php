@@ -11,10 +11,10 @@ require 'config_db.php';
 $zapytanie1 = "SELECT stanowisko_id FROM Stanowisko WHERE nazwa='".$a[3]."'";
 $result = mysqli_query($conn, $zapytanie1);
 if($result != TRUE){echo 'Bład zapytania MySQL1, odpowiedź serwera: '.mysqli_error($conn);}
-            		$row = mysqli_fetch_array($result);
+    $row = mysqli_fetch_array($result);
 					
-					$a[3]=$row["stanowisko_id"];  //id stanowiska do wstawienia w 'oferty'
-					print("<b>MySQL1: </b><div id=\"ekran1.1\">".$zapytanie1."</div><div>Odp:".$p[1]."</div>");
+    $a[3]=$row["stanowisko_id"];  //id stanowiska do wstawienia w 'oferty'
+    print("<b>MySQL1: </b><div id=\"ekran1.1\">".$zapytanie1."</div><div>Odp:".$a[3]."</div>");
 					
 //zapis agenta do bd
 
