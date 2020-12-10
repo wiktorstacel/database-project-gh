@@ -8,7 +8,7 @@ echo'
     <table>
 
     <tr>
-    <td><b>Dodaj</b></td>
+    <td><b>Dodaj Pracownika:</b></td>
     </tr>
 
     <td>Imie:</td>
@@ -43,7 +43,7 @@ echo'
     <table>
 
     <tr>
-    <b>Wyniki</b>
+    <b>Wyniki sprzedaży</b>
     </tr>
 
     <tr>
@@ -106,7 +106,10 @@ echo'
     echo'</table>';
 
 
-    echo'</div>
+    echo'</div>'; //end of stat_agent
+    //echo '<div style="width: 200px; height: 200px; clear:both;">Tratata</div>';
+    echo '<div style="clear:both;"></div>';
+    echo '
     </fieldset>
     </form>';
 
