@@ -2,8 +2,6 @@
 $id = $_GET["m"];
 $temp = "";
 echo'
-    <form id="searchform" method="post">
-    <fieldset>
     <table onmouseover="inprice()">
 
     <tr>
@@ -60,9 +58,7 @@ echo'
         <tr>
         <td>Klient:</td><td><input id="t3" class="input1" /><span id="alert3" class="alert"></span></td>
         </tr>
-        </table>
-        </fieldset>
-        </form>';
+        </table>';
 	print("<button id=\"searchsubmit\" onclick=\"getData('pokaz_tranzakcje.php','ekran3')\">Pokaż stare</button>");
         echo'<button id="searchsubmit" type="" onclick="inprice(),insert_tranzakcja()">Potwierdź</button>
 				';

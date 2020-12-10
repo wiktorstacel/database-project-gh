@@ -1,8 +1,6 @@
 <?php
 
 echo'
-    <form id="searchform" method="post">
-    <fieldset>
     <table>
     <tr>
     <td>Nazwa: </td><td><input type="text" name="nazwa" id="p0" class="input1"/><span id="alert0" class="alert"></span></td>
@@ -80,8 +78,6 @@ echo'
 
 
     </table>
-    </fieldset>
-    </form>
     <button id="searchsubmit" type="" onclick="insert2()">Zapisz</button>
 ';
 

@@ -63,11 +63,11 @@ body {
 	color: #FFFFFF;
 }
 
-.boxed {
+#box {
 	margin: 0 0 20px 0;
 }
 
-.boxed .title {
+#box .title {
 	width: 250px;
 	height: 0px;
 	margin: 0;
@@ -77,32 +77,42 @@ body {
 	color: #144B6B;
 }
 
-.boxed .content {
+#box #content {
 	padding: 20px;
 	border: 1px solid #97C984;
 	border-top: none;
 }
 
-.boxed h3 {
+#box #field {
+        display: block;
+        padding: 10px;
+        border: 2px groove;
+}
+
+#box h3 {
 	margin: 0;
 }
 
-.boxed p, .boxed ul, .boxed ol {
+#box p, .box ul, .box ol {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 	line-height: normal;
 }
 
-.boxed ul {
+#box ul {
 }
 
-.boxed ul li {
+#box ul li {
 	padding: 8px 0 8px 10px;
 }
 
-.boxed ul li.first {
+#box ul li.first {
 	border: none;
+}
+
+#box legend{
+        padding: 5px 10px;
 }
 
 .input1
@@ -159,16 +169,18 @@ table.lista_art tr.listwa
         height: 36px;
         color: #c7c7c7;
 }
+
+/*Zakładka Agenci*/
 #add_agent
 {
-	width: 310px;
+	width: 312px;
         float:left;
 	padding: 9px;
 	border: 1px solid #97C984;
 }
 #stat_agent
 {
-        width: 310px;
+        width: 312px;
         margin-left: 10px;
 	float:left;
 	padding: 9px;
@@ -179,9 +191,7 @@ table.lista_art tr.listwa
 	width:65px;
 }
 
-.boxed legend{
-        padding: 5px 10px;
-}
+
 
 
 

@@ -1,8 +1,6 @@
 <?php
  
 echo'
-    <form id="searchform" method="post">
-    <fieldset>
     <table>
     <tr>
     <td>Rodzaj oferty:</td>
@@ -70,8 +68,6 @@ echo'
 
 
     </table>
-    </fieldset>
-    </form>
     <button id="searchsubmit" type="" onclick="insert()">Pokaż</button>
 ';
 

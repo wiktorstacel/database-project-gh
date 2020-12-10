@@ -1,8 +1,6 @@
 <?php
 
 echo'
-    <form id="searchform" method="post">
-    <fieldset>
     <div id="add_agent">
 
     <table>
@@ -109,9 +107,6 @@ echo'
     echo'</div>'; //end of stat_agent
     //echo '<div style="width: 200px; height: 200px; clear:both;">Tratata</div>';
     echo '<div style="clear:both;"></div>';
-    echo '
-    </fieldset>
-    </form>';
 
     print("<button id=\"searchsubmit\" onclick=\"getData('pokaz_agenci.php','ekran2')\">Lista</button>");
     print("<td></td><td><button id=\"searchsubmit\" onclick=\"ask_wyniki()\">Wyniki</button></td>");

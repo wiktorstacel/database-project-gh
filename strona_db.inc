@@ -97,8 +97,8 @@ class Strona1
                 echo'</ul>
             </div>
             
-            <div id="search" class="boxed">			
-                <div class="content">			     
+            <div id="box">			
+                <div id="content">			     
                     <div id="field">
                     </div>					
                 </div>	
