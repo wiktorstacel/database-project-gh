@@ -93,7 +93,7 @@ class Strona1
                 print("<li id=\"m2\" class=\"noactive\"><a href=\"javascript:getData('wprowadz_oferty.php','field'),czysc_ekran(),focus('p0');\">Wprowadź</a></li>");
                 print("<li id=\"m3\" class=\"noactive\"><a href=\"javascript:getData('tranzakcja.php?m=0','field'),czysc_ekran();\">Transakcje</a></li>");
                 print("<li id=\"m4\" class=\"noactive\"><a href=\"javascript:getData('agenci.php','field'),czysc_ekran();\">Agenci</a></li>");
-                print("<li id=\"m5\" class=\"noactive\"><a href=\"javascript:getData('about.php','field'),czysc_ekran();\">O projekcie</a></li>");
+                print("<li id=\"m5\" class=\"noactive\"><a href=\"javascript:getData('main_about.php','field'),czysc_ekran();\">O projekcie</a></li>");
                 echo'</ul>
             </div>
             
