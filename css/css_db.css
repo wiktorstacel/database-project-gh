@@ -115,9 +115,10 @@ body {
         padding: 5px 10px;
 }
 
+
 .input1
 {
-        width:200px; 
+        width:200px;
 }
 
 .input2
@@ -153,14 +154,7 @@ textarea{
     	margin-left: auto;
         margin-right: auto;
 }
-table.lista_art tr.listwa
-{
-       background-color: #A8C3CB;
-       color:#144B6B;
-       font-weight: bold;
-       /*font-size: ;*/
-	   
-}
+
 .linia_noactive
 {
 	border-bottom-width: thin; 
@@ -178,6 +172,7 @@ table.lista_art tr.listwa
 	padding: 9px;
 	border: 1px solid #97C984;
 }
+
 #stat_agent
 {
         width: 312px;
@@ -187,8 +182,21 @@ table.lista_art tr.listwa
 	border: 1px solid #97C984;
 }
 
+#add_agent input, select
+{
+        margin: 5px;
+}
+
 .data{
-	width:65px;
+	width:70px;
+}
+
+/* Tabela z wynikami wyszykiwania pod #box wstawiana do #ekran2 */
+table.lista_art tr.listwa
+{
+       background-color: #A8C3CB;
+       color:#144B6B;
+       font-weight: bold;	   
 }
 
 

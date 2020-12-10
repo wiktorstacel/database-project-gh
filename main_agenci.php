@@ -3,113 +3,89 @@
 echo'
     <div id="add_agent">
 
-    <table>
+    <h3>Dodaj pracownika: </h3></br>
+    <label for="a1">Imię: </label>
+    <input name="aname" id="a1" type="text" value="" onchange="" class="input1" />
+    <div id="alert1" class="alert"></div>
 
-    <tr>
-    <td><b>Dodaj Pracownika:</b></td>
-    </tr>
-
-    <td>Imie:</td>
-    <td> <input name="aname" id="a1" type="text" value="" onchange="" class="input1" /><div id="alert1" class="alert"></div></td>
-    </tr>
-
-    <td>Nazwisko:</td>
-    <td> <input name="asurname" id="a2" type="text" value="" onchange="" class="input1" /><div id="alert2" class="alert"></div></td>
-    </tr>
-
-    <td>Stanowisko:</td>
-    <td><select id="a3" class="input1" name="akind" onchange="">'; 
-    require 'config_db.php';	//załadowanie rodzajów oferty do listy rozwijanej formularza
+    <label for="a2">Nazwisko: </label>
+    <input name="asurname" id="a2" type="text" value="" onchange="" class="input1" />
+    <div id="alert2" class="alert"></div>
+    
+    </br><label for="a3">Stanowisko: </label>
+    <select id="a3" class="input1" name="akind" onchange="">'; 
+    require 'config_db.php';	//załadowanie rodzajów rodzajów stanowisk do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM Stanowisko ORDER BY stanowisko_id DESC");
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
         { 
             print("<option>".$row[1]."</option>");
         }
-    echo'<option selected="selected">-wybierz-</option></select><div id="alert3" class="alert"></div></td>
+    echo'<option selected="selected">-wybierz-</option></select>
+         <div id="alert3" class="alert"></div>';
+    print("<button id=\"searchsubmit\" onclick=\"insert_agent()\">Dodaj</button>");
+    
+    echo'</div>'; //end of add_agent
 
-    <tr>';
+    
 
-    echo'</tr>';
+    echo '<div id="stat_agent">
+  
+    <h3>Wyniki sprzedaży: </h3></br>
+ 
+    <span>Sortuj wg </span><br />
 
-    echo'</table>';
-
-    echo'</div>
-
-
-    <div id="stat_agent">
-    <table>
-
-    <tr>
-    <b>Wyniki sprzedaży</b>
-    </tr>
-
-    <tr>
-    <td>Pracownik:</td>
-    <td> <select name="agent" id="w1" class="input1" onchange="">'; 
+    <label for="w1">Pracownik: </label>
+    <select name="agent" id="w1" class="input1" onchange="ask_wyniki()">'; 
     require 'config_db.php';	//załadowanie agentów do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM Agenci ORDER BY agent_id ASC");
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
         { 
             print("<option>".$row[1]." ".$row[2]." - id:".$row[0]."</option>");
-        }
-    
-    echo'<option selected="selected">-wszyscy-</option></select><div id="alertw1" class="alert"></div></td>
-    </tr>
+        }  
+    echo'<option selected="selected">-wszyscy-</option></select>
+        <div id="alertw1" class="alert"></div>
 
-    <tr>
-    <td>Stanowiska:</td>
-    <td><select id="w2" class="input1" name="akind" onchange="">'; 
-    require 'config_db.php';	//załadowanie rodzajów oferty do listy rozwijanej formularza
+    <span>lub</span><br />
+
+    <label for="w2">Stanowisko: </label>
+    <select id="w2" class="input1" name="akind" onchange="ask_wyniki()">'; 
+    require 'config_db.php';	//załadowanie rodzajów stanowisk do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM Stanowisko ORDER BY stanowisko_id DESC");
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
         { 
             print("<option>".$row[1]."</option>");
-        }
-    
-    echo'<option selected="selected">-wszystkie-</option></select><div id="alertw2" class="alert"></div></td>
-    </tr>
-
-    <tr></tr>
-
-    <tr>
-    <td>Wyniki od:</td>';
-    //pobranie daty dzisiejszej Mysql
-    $result = mysqli_query($conn, "SELECT CURDATE()");
+        }   
+    echo'<option selected="selected">-wszystkie-</option></select>
+        <div id="alertw2" class="alert"></div>
+ 
+    <br /><label for="w1">Wyniki od: </label>'; 
+    $result = mysqli_query($conn, "SELECT CURDATE()"); //pobranie daty dzisiejszej Mysql
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
     $row = mysqli_fetch_array($result, MYSQLI_NUM);
     
-    echo'
-    <td><input name="date_low" id="w3" type="text" value="2010-01-01" onchange="" maxlength="10" class="data" /> do:<input name="date_high" id="w4" type="text" maxlength="10" value="'.$row[0].'" onchange="insert()" class="data" /><div id="alertw3" class="alert"></div><div id="alertw4" class="alert"></div></td>
-    </tr>
+    echo'<input name="date_low" id="w3" type="text" value="2010-01-01" onchange="ask_wyniki()" class="data"  /> do: <input name="date_high" id="w4" type="text" value="'.$row[0].'" onchange="ask_wyniki()" class="data" />
+        <div id="alertw3" class="alert"></div>
+        <div id="alertw4" class="alert"></div>
 
-
-    <tr> - sortuj wg:</tr>
-
-    <tr>
-    <td></td>
-    <td>
-    <div>Średnia sprzedaż: <input name="sortuj" id="w5" type="radio" value="1" onchange="" checked="checked" /></div>
-    <div>Sprzedaż ogółem: <input name="sortuj" id="w6" type="radio" value="1" onchange="" /></div>
-    <div>Liczba tranzakcji: <input name="sortuj" id="w7" type="radio" value="1" onchange="" /></div>
-    </td>					    
-    </tr>
-
-    <tr>';
-
-    echo'</tr>';
-
-    echo'</table>';
-
-
+    <br />
+    <label for="w5">Średnia sprzedaż: </label>
+    <input name="sortuj" id="w5" type="radio" value="1" onchange="ask_wyniki()" checked="checked" />
+    <br />
+    <label for="w6">Sprzedaż ogółem: </label>
+    <input name="sortuj" id="w6" type="radio" value="1" onchange="ask_wyniki()" />
+    <br />
+    <label for="w7">Liczba tranzakcji: </label>
+    <input name="sortuj" id="w7" type="radio" value="1" onchange="ask_wyniki()" />';
+    
+    print("<button id=\"searchsubmit\" onclick=\"ask_wyniki()\">Wyniki</button>");
+    
     echo'</div>'; //end of stat_agent
-    //echo '<div style="width: 200px; height: 200px; clear:both;">Tratata</div>';
     echo '<div style="clear:both;"></div>';
-
-    print("<button id=\"searchsubmit\" onclick=\"getData('pokaz_agenci.php','ekran2')\">Lista</button>");
-    print("<td></td><td><button id=\"searchsubmit\" onclick=\"ask_wyniki()\">Wyniki</button></td>");
-    print("<td></td><td><button id=\"searchsubmit\" onclick=\"insert_agent()\">Dodaj</button></td>");
+    
+    print("<div><button id=\"searchsubmit1\" onclick=\"getData('pokaz_agenci.php','ekran2')\">Lista Pracowników</button>");
+    echo'</div>';
 
 ?>

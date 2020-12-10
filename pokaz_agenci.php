@@ -2,7 +2,7 @@
 
 $zapytanie = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa 
 FROM Agenci a, Stanowisko s
-WHERE a.stanowisko_id = s.stanowisko_id
+WHERE a.stanowisko_id = s.stanowisko_id AND a.status = 0
 ORDER BY a.nazwisko ASC";
 
 require 'config_db.php';
@@ -37,7 +37,7 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
 //        $temp = round($row[4],2);
 //        print("<td class=\"srednia\">$temp</td>");
 		
-        print("<td><a href=\"javascript:getData('usun_agent.php?m=$row[0]','field');\">+</a></td>");
+        print("<td><a href=\"javascript:usun_agent($row[0]);\">+</a></td>");
 		
         echo '</tr>';
 	}

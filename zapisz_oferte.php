@@ -9,7 +9,6 @@ $p[5] = $_GET["p5"];//ulica
 $p[6] = $_GET["p6"];//powierzchnia
 $p[7] = $_GET["p7"];//cena
 $p[8] = $_GET["p8"];//opis
-$p[9] = $_GET["p9"];//agent
 
 
 

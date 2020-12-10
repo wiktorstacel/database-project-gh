@@ -285,8 +285,8 @@ function insert_agent()
 {
 	if(sprawdz_new_agent() == true)
 	{
-    adres = "zapisz_agent.php?";
-    for(i=1;i<=3;i++)
+                adres = "zapisz_agent.php?";
+                for(i=1;i<=3;i++)
 	{
 		if(document.getElementById("a"+i).value == "-wszystkie-" || document.getElementById("a"+i).value == "" || document.getElementById("a"+i).disabled)
 		{
@@ -301,6 +301,14 @@ function insert_agent()
 	Zapytanie(adres);
 	getData('komunikat.php','field')
 	}
+}
+
+function usun_agent(a)
+{
+        scroll(0,0);
+        adres = "usun_agent.php?m="+a;
+	Zapytanie(adres);
+	getData('komunikat.php','field')
 }
 
 function sprawdz_wyniki()

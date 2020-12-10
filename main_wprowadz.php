@@ -1,6 +1,7 @@
 <?php
 
 echo'
+    <h3>Wprowadź ofertę: </h3></br>
     <table>
     <tr>
     <td>Nazwa: </td><td><input type="text" name="nazwa" id="p0" class="input1"/><span id="alert0" class="alert"></span></td>
@@ -73,12 +74,12 @@ echo'
     </tr>
 
     <tr>
-    <td></td><td></td>
+    <td></td><td></td><td></td><td></td><td><button id="searchsubmit" type="" onclick="insert2()">Zapisz</button></td>
     </tr>
 
 
     </table>
-    <button id="searchsubmit" type="" onclick="insert2()">Zapisz</button>
+    
 ';
 
 ?>

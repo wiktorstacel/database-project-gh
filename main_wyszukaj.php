@@ -1,6 +1,7 @@
 <?php
  
 echo'
+    <h3>Wyszukaj ofertę: </h3></br>
     <table>
     <tr>
     <td>Rodzaj oferty:</td>
@@ -62,13 +63,13 @@ echo'
     <td><input name="pricemax" id="p5" type="text" value="" onchange="insert()" style="width:90px;" /></td>
     </tr>
 
-
-
-
-
+    <tr>
+    <td></td><td></td><td style="width:150px;"></td></td><td><td></td>
+    <td><button id="searchsubmit" type="" onclick="insert()">Pokaż</button></td>
+    </tr>
 
     </table>
-    <button id="searchsubmit" type="" onclick="insert()">Pokaż</button>
+    
 ';
 
 ?>

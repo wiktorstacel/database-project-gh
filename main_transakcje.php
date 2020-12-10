@@ -2,14 +2,15 @@
 $id = $_GET["m"];
 $temp = "";
 echo'
+    <h3>Zawarcie transakcji: </h3></br>
+
     <table onmouseover="inprice()">
 
     <tr>
     <td>Oferta:</td>';
 
-    require 'config_db.php';	//załadowanie ceny do funkci
+    require 'config_db.php';
     echo '<td><select id="t1" class="input2" name="t1" onchange="inprice()">';
-
     //załadowanie ofert do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM Oferty ORDER BY nazwa DESC");
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);} 
@@ -27,7 +28,6 @@ echo'
                     }
             }
         }
-        
         echo'</select>';
 //	print("<span> Id ofery:</span><span id=\"of_id\" class=\"of_id\">".$temp."</span>");
 
@@ -58,9 +58,18 @@ echo'
         <tr>
         <td>Klient:</td><td><input id="t3" class="input1" /><span id="alert3" class="alert"></span></td>
         </tr>
+        
+        <tr>
+        <td></td>
+        
+        <td>
+        <button id="searchsubmit" type="" onclick="inprice(),insert_tranzakcja()">Potwierdź</button>
+        </td>
+        <td>';
+        print("<button id=\"searchsubmit\" onclick=\"getData('pokaz_tranzakcje.php','ekran3')\">Pokaż stare</button>");
+        echo'</td>
+        </tr>
+        
         </table>';
-	print("<button id=\"searchsubmit\" onclick=\"getData('pokaz_tranzakcje.php','ekran3')\">Pokaż stare</button>");
-        echo'<button id="searchsubmit" type="" onclick="inprice(),insert_tranzakcja()">Potwierdź</button>
-				';
 
 ?>
