@@ -72,7 +72,7 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
 		print("<td class=\"descr\">$row[7]</td>");
 		if($row[9] == "1")
 		{
-            print("<td><a href=\"javascript:getData('tranzakcja.php?m=$row[8]','field'),czysc_ekran();\">+</a></td>");
+            print("<td><a href=\"javascript:getData('main_transakcje.php?m=$row[8]','field'),czysc_ekran();\">+</a></td>");
 		}
 		else
 		{
