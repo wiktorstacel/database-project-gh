@@ -27,9 +27,9 @@ function getData(dataSource, divID)
   }
 }
 
-function insert()
+function show_oferty()
 {
-    adres = "szukaj_ofert.php?";
+    adres = "show_oferty.php?";
     for(i=1;i<=7;i++)
 	{
 		if(document.getElementById("p"+i).value == "-wszystkie-" || document.getElementById("p"+i).value == "" || document.getElementById("p"+i).checked)
@@ -123,11 +123,11 @@ function sprawdz()
 	}
 }
 
-function insert2()
+function action_save_oferta()
 {
 	if(sprawdz() == true)
 	{
-    adres = "zapisz_oferte.php?";
+    adres = "action_save_oferta.php?";
     for(i=0;i<=8;i++)
 	{
 		if(document.getElementById("p"+i).value == "-wszystkie-" || document.getElementById("p"+i).value == "" || document.getElementById("p"+i).disabled)
@@ -147,18 +147,19 @@ function insert2()
 
 function podpowiedz_miasto(event)
 {  
-  if(event.keyCode!=13)
-  {
-      Zapytanie2("suggest.php?tek="+document.getElementById("p4").value);
-  }
-  else
-  {
-	  document.getElementById("p4").value = document.getElementById("p3").value;
-  }
-  document.getElementById("alert3").innerHTML = "";
-  document.getElementById("alert4").innerHTML = "";
+    if(event.keyCode!=13)
+    {
+        Zapytanie2("suggest.php?tek="+document.getElementById("p4").value);
+    }
+    else
+    {
+        document.getElementById("p4").value = document.getElementById("p3").value;
+    }
+    document.getElementById("alert3").innerHTML = "";
+    document.getElementById("alert4").innerHTML = "";
 }
 
+//dziala tylko z funkcją suggest_miast()
 function Zapytanie2(adres){
       if(xmlHttp==null){ //w zależności od przeglądarki tworzymy obiekt XMLHTTP
          if(window.ActiveXObject)xmlHttp = new ActiveXObject("Microsoft.XMLHTTP"); //dla IE
@@ -233,11 +234,11 @@ function sprawdz_tranzakcja()
 	}
 }
 
-function insert_tranzakcja()
+function action_save_trans()
 {
 	if(sprawdz_tranzakcja() == true)
 	{
-    adres = "zapisz_tranzakcje.php?";
+    adres = "action_save_trans.php?";
     for(i=1;i<=3;i++)
 	{
 		if(document.getElementById("t"+i).value == "-wszystkie-" || document.getElementById("t"+i).value == "" || document.getElementById("t"+i).disabled)
@@ -307,8 +308,8 @@ function action_status_agent(a,s)
 {
         scroll(0,0);
         adres = "action_status_agent.php?m="+a+"&status="+s;
-	Zapytanie(adres);
-	getData('komunikat.php','field')
+	Zapytanie(adres); //wstawia odpowiedź serwera na rządany 'adres' w pole 'ekran2'
+	//getData('komunikat.php','field')
 }
 
 function sprawdz_wyniki()

@@ -22,7 +22,6 @@ AND o.wojewodztwo_id=w.wojewodztwo_id
 AND o.miejscowosc_id=m.miejscowosc_id";
 
 
-
 for($i=1;$i<=7;$i++)
 {
   if($p[$i] != 'x')
@@ -32,18 +31,17 @@ for($i=1;$i<=7;$i++)
 }
 
 
-
 echo "<table class='lista_art'>";
 echo "<tr class='listwa'>";
-print("<td class=\"agent\">id</td>");
-print("<td class=\"name\">nazwa</td>");
-print("<td class=\"kind\">rodzaj</td>");
-print("<td class=\"state\">wojewodztwo</td>");
-print("<td class=\"town\">miejscowość</td>");
-print("<td class=\"address\">adres</td>");
-print("<td class=\"sq\">m<sup>2</sup></td>");
-print("<td class=\"price1\">cena</td>");
-print("<td class=\"descr\">opis</td>");
+print("<td class=\"\">id</td>");
+print("<td class=\"\">nazwa</td>");
+print("<td class=\"\">rodzaj</td>");
+print("<td class=\"\">wojewodztwo</td>");
+print("<td class=\"\">miejscowość</td>");
+print("<td class=\"\">adres</td>");
+print("<td class=\"\">m<sup>2</sup></td>");
+print("<td class=\"\">cena</td>");
+print("<td class=\"\">opis</td>");
 echo '<td>zakup</td>';
 echo '</tr>';
 
@@ -60,15 +58,15 @@ while($row = mysqli_fetch_array($result, MYSQLI_NUM))
     {
         print("<tr class=\"linia_noactive\">");
     }
-    print("<td class=\"id\">$row[8]</td>");
-    print("<td class=\"name\">$row[0]</td>");
-    print("<td class=\"kind\">$row[1]</td>");
-    print("<td class=\"state\">$row[2]</td>");
-    print("<td class=\"town\">$row[3]</td>");
-    print("<td class=\"address\">$row[4]</td>");
-    print("<td class=\"sq\">$row[5]</td>");
-    print("<td class=\"price1\">$row[6]</td>");
-    print("<td class=\"descr\">$row[7]</td>");
+    print("<td class=\"\">$row[8]</td>");
+    print("<td class=\"\">$row[0]</td>");
+    print("<td class=\"\">$row[1]</td>");
+    print("<td class=\"\">$row[2]</td>");
+    print("<td class=\"\">$row[3]</td>");
+    print("<td class=\"\">$row[4]</td>");
+    print("<td class=\"\">$row[5]</td>");
+    print("<td class=\"\">$row[6]</td>");
+    print("<td class=\"\">$row[7]</td>");
     if($row[9] == "1")
     {
         print("<td><a href=\"javascript:getData('main_transakcje.php?m=$row[8]','field'),czysc_ekran();\">+</a></td>");

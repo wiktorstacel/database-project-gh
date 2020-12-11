@@ -113,7 +113,7 @@ class Strona1
         echo'<div id="ekran"></div>';
         echo'<div id="ekran1"></div>';
         echo'<div id="ekran2"></div>';
-        echo'<div id="ekran3"></div>';
+        //echo'<div id="ekran3"></div>';
         echo "<br /><br /><br /><div id=\"STOPKA\">$this->stopka</div>";
     }
 

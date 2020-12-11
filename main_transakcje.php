@@ -63,10 +63,10 @@ echo'
         <td></td>
         
         <td>
-        <button id="searchsubmit" type="" onclick="inprice(),insert_tranzakcja()">Potwierdź</button>
+        <button id="searchsubmit" type="" onclick="inprice(),action_save_trans()">Zrealizuj</button>
         </td>
         <td>';
-        print("<button id=\"searchsubmit\" onclick=\"getData('pokaz_tranzakcje.php','ekran3')\">Pokaż stare</button>");
+        print("<button id=\"searchsubmit\" onclick=\"getData('show_transakcje.php','ekran2')\">Pokaż zrealizowane</button>");
         echo'</td>
         </tr>
         

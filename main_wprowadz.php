@@ -1,6 +1,8 @@
 <?php
 
 echo'
+    <form id="searchform" method="post">
+    <fieldset>    
     <h3>Wprowadź ofertę: </h3></br>
     <table>
     <tr>
@@ -46,9 +48,9 @@ echo'
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
         { 
             print("<option>".$row[1]."</option>");
-        }
-        
+        }       
     echo'<option selected="selected">-wszystkie-</option></select>';
+    
     print("<input type=\"checkbox\" name=\"checktown\" value=\"wartość\" onclick=\"this.form.elements['newtown'].disabled = !this.checked, this.form.elements['town'].disabled = this.checked\" />Nowa: ");
     echo'<input type="text" name="newtown" disabled="disabled" id="p4" style="width:62px;" onkeyup="podpowiedz_miasto(event)"/>
     <span id="alert3" class="alert"></span><span id="alert4" class="alert"></span></div>
@@ -74,12 +76,13 @@ echo'
     </tr>
 
     <tr>
-    <td></td><td></td><td></td><td></td><td><button id="searchsubmit" type="" onclick="insert2()">Zapisz</button></td>
+    <td></td><td></td><td></td><td></td><td><button id="searchsubmit" type="" onclick="action_save_oferta()">Zapisz</button></td>
     </tr>
 
 
     </table>
-    
+        </fieldset>
+    </form>
 ';
 
 ?>

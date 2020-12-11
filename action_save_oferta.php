@@ -83,21 +83,6 @@ if($p[4] != 'x')
       print("<b>MySQL40: </b><div id=\"ekran1.4.0\">".$zapytanie40."</div><div>Odp:".$p[3]."</div>");
     }
 }
-
-//wstawienie agent_id - tutaj nie można dodać nowego agenta - juz nie potrzebne tutaj
-$zapytanie5 = "SELECT * FROM Agenci a";
-$result = mysqli_query($conn, $zapytanie5);
-if($result != TRUE){echo 'Bład zapytania MySQL5, odpowiedź serwera: '.mysqli_error($conn);}
-
-
-            		while($row = mysqli_fetch_array($result,MYSQLI_NUM))
-					{
-					    if(preg_match(sprintf("/%s/", $row[0]), sprintf("/%s/", $p[9]))) //if id agenta jest w ciągu znaków przekazanych z pola 'agent sprzedajacy'
-					    {
-						$p[9]=$row[0]; //id agenta do wstawienia w 'ofetry'
-						}
-					}
-print("<b>MySQL5: </b><div id=\"ekran1.5\">".$zapytanie5."</div><div>Odp:".$p[9]."</div>");
 					
 //teraz $p jest tablicą gotowymi danymi do wstawienia
 //!tylko p[3] bedzie zapisywane do oferty! patrz: wstawienie id miejscowosci
