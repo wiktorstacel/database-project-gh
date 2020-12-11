@@ -1,8 +1,6 @@
 <?php
 
-echo'
-    <form id="searchform" method="post">
-    <fieldset>    
+echo'    
     <h3>Wprowadź ofertę: </h3></br>
     <table>
     <tr>
@@ -38,9 +36,12 @@ echo'
     echo'<option selected="selected">-wszystkie-</option></select><span id="alert2" class="alert"></span></div></td>
     </tr>
 
-    <tr>
-    <td>Miejscowość:</td>
-    <td> <select  name="town" id="p3" class="input1">'; 
+    <tr>';
+    echo '<td>Miejscowość:</td>
+    <td>        
+    <form id="searchform" method="post">
+    <fieldset>
+     <select  name="town" id="p3" class="input1">'; 
     
     require 'config_db.php';	//załadowanie województw do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM Miejscowosc ORDER BY nazwa ASC");
@@ -52,10 +53,13 @@ echo'
     echo'<option selected="selected">-wszystkie-</option></select>';
     
     print("<input type=\"checkbox\" name=\"checktown\" value=\"wartość\" onclick=\"this.form.elements['newtown'].disabled = !this.checked, this.form.elements['town'].disabled = this.checked\" />Nowa: ");
-    echo'<input type="text" name="newtown" disabled="disabled" id="p4" style="width:62px;" onkeyup="podpowiedz_miasto(event)"/>
+    echo'<input type="text" name="newtown" disabled="disabled" id="p4" style="width:62px;" onkeyup="suggest_miasto(event)"/>
     <span id="alert3" class="alert"></span><span id="alert4" class="alert"></span></div>
+    </fieldset>
+    </form>
     </td>
     </tr>
+
 
     <tr>
     <td>Adres: </td><td><input type="text" name="street" id="p5" class="input1"/><span id="alert5" class="alert"></span></td>
@@ -81,8 +85,6 @@ echo'
 
 
     </table>
-        </fieldset>
-    </form>
 ';
 
 ?>

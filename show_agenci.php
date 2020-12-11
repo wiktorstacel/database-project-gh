@@ -5,7 +5,7 @@ $status = $_GET['status']; // 0 - były pracownik; 1 - obecny pracownik
 $zapytanie = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa 
 FROM Agenci a, Stanowisko s
 WHERE a.stanowisko_id = s.stanowisko_id AND a.status = ".$status."
-ORDER BY a.nazwisko ASC";
+ORDER BY a.agent_id ASC";
 
 require 'config_db.php';
 

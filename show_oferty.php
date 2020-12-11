@@ -7,6 +7,7 @@ $p[4] = $_GET["p4"];
 $p[5] = $_GET["p5"];
 $p[6] = $_GET["p6"];//aktualne
 $p[7] = $_GET["p7"];//nieaktualne
+$p[8] = 'y';
 
 $add[1] = " AND r.nazwa='".$p[1]."'";
 $add[2] = " AND w.nazwa='".$p[2]."'";
@@ -15,6 +16,7 @@ $add[4] = " AND o.cena>=".$p[4]."";
 $add[5] = " AND o.cena<=".$p[5]."";
 $add[6] = " AND o.stan=".$p[6]."";
 $add[7] = " AND o.stan=".$p[7]."";
+$add[8] = " ORDER BY o.oferta_id DESC";
 
 $zapytanie = "SELECT o.nazwa, r.nazwa, w.nazwa, m.nazwa, o.ulica, o.powierzchnia, o.cena, o.opis, o.oferta_id, o.stan FROM  Oferty o, Rodzaj r, Wojewodztwo w, Miejscowosc m 
 WHERE o.rodzaj_id=r.rodzaj_id
@@ -22,7 +24,7 @@ AND o.wojewodztwo_id=w.wojewodztwo_id
 AND o.miejscowosc_id=m.miejscowosc_id";
 
 
-for($i=1;$i<=7;$i++)
+for($i=1;$i<=8;$i++)
 {
   if($p[$i] != 'x')
   {

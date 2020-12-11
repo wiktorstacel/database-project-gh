@@ -140,16 +140,17 @@ function action_save_oferta()
 		}
 	}
 //	document.getElementById("ekran").innerHTML = adres;
-	Zapytanie(adres);
-	getData('komunikat.php','field')
+//	Zapytanie(adres);
+//	getData('komunikat.php','field');
+        getData(adres,'field')
 	}
 }
 
-function podpowiedz_miasto(event)
+function suggest_miasto(event)
 {  
     if(event.keyCode!=13)
     {
-        Zapytanie2("suggest.php?tek="+document.getElementById("p4").value);
+        Zapytanie2("suggest_miasto.php?tek="+document.getElementById("p4").value);
     }
     else
     {
@@ -251,8 +252,9 @@ function action_save_trans()
 		}
 	}
 //	document.getElementById("ekran").innerHTML = adres;
-	Zapytanie(adres);
-	getData('komunikat.php','field')
+//	Zapytanie(adres);
+//	getData('komunikat.php','field')
+        getData(adres,'field');
 	}
 }
 
@@ -299,8 +301,9 @@ function action_save_agent()
 		}
             }
 //	document.getElementById("ekran").innerHTML = adres;
-	Zapytanie(adres);
-	getData('komunikat.php','field')
+//	Zapytanie(adres);
+//	getData('komunikat.php','field')
+        getData(adres,'field');
 	}
 }
 
@@ -308,8 +311,9 @@ function action_status_agent(a,s)
 {
         scroll(0,0);
         adres = "action_status_agent.php?m="+a+"&status="+s;
-	Zapytanie(adres); //wstawia odpowiedź serwera na rządany 'adres' w pole 'ekran2'
+	//Zapytanie(adres); //wstawia odpowiedź serwera na rządany 'adres' w pole 'ekran2'
 	//getData('komunikat.php','field')
+        getData(adres,'field');
 }
 
 function sprawdz_wyniki()
