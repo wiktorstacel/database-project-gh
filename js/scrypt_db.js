@@ -281,13 +281,13 @@ function sprawdz_new_agent()
 	}
 }
 
-function insert_agent()
+function action_save_agent()
 {
 	if(sprawdz_new_agent() == true)
 	{
-                adres = "zapisz_agent.php?";
-                for(i=1;i<=3;i++)
-	{
+            adres = "action_save_agent.php?";
+            for(i=1;i<=3;i++)
+            {
 		if(document.getElementById("a"+i).value == "-wszystkie-" || document.getElementById("a"+i).value == "" || document.getElementById("a"+i).disabled)
 		{
 		  adres = adres + "a" + i + "=x" +"&";	
@@ -296,17 +296,17 @@ function insert_agent()
 		{
 		  adres = adres + "a" + i + "=" + document.getElementById("a"+i).value + "&";
 		}
-	}
+            }
 //	document.getElementById("ekran").innerHTML = adres;
 	Zapytanie(adres);
 	getData('komunikat.php','field')
 	}
 }
 
-function usun_agent(a)
+function action_status_agent(a,s)
 {
         scroll(0,0);
-        adres = "usun_agent.php?m="+a;
+        adres = "action_status_agent.php?m="+a+"&status="+s;
 	Zapytanie(adres);
 	getData('komunikat.php','field')
 }
@@ -349,11 +349,11 @@ function sprawdz_wyniki()
 	}
 }
 
-function ask_wyniki()
+function show_wyniki_agenci()
 {
 	if(sprawdz_wyniki() == true)
 	{
-    adres = "podaj_wyniki.php?";
+    adres = "show_wyniki_agenci.php?";
     for(i=1;i<=7;i++)
 	{
 		if(document.getElementById("w"+i).value == "-wszyscy-" || document.getElementById("w"+i).value == "-wszystkie-" || document.getElementById("w"+i).disabled || document.getElementById("w"+i).checked)

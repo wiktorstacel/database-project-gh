@@ -13,18 +13,18 @@ $w[8] = $_GET["w7"];//sortuj liczba
 
 //filtracja agent_id z przesłanego mixu: imie nazwisko id
   require 'config_db.php';
-  $zapytanie2 = "SELECT * FROM Agenci a";
+  $zapytanie2 = "SELECT * FROM Agenci a WHERE status='1'";
   $result = mysqli_query($conn, $zapytanie2);
   if($result != TRUE){echo 'Bład zapytania MySQL5, odpowiedź serwera: '.mysqli_error($conn);}
 
 
-            		while($row = mysqli_fetch_array($result,MYSQLI_NUM))
-					{
-					    if(preg_match(sprintf("/%s/", $row[0]), sprintf("/%s/", $w[1]))) //if id agenta jest w ciągu znaków przekazanych z pola 'agent sprzedajacy'
-					    {
-						$w[1]=$row[0]; //id agenta do wstawienia w 'tranzakcje'
-						}
-					} 
+    while($row = mysqli_fetch_array($result,MYSQLI_NUM))
+    {
+        if(preg_match(sprintf("/%s/", $row[0]), sprintf("/%s/", $w[1]))) //if id agenta jest w ciągu znaków przekazanych z pola 'agent sprzedajacy'
+        {
+            $w[1]=$row[0]; //id agenta do wstawienia w 'tranzakcje'
+            }
+    } 
 
 if($w[2] != 'x')
 {					
@@ -32,16 +32,17 @@ if($w[2] != 'x')
 $zapytanie1 = "SELECT stanowisko_id FROM Stanowisko WHERE nazwa='".$w[2]."'";
 $result = mysqli_query($conn, $zapytanie1);
 if($result != TRUE){echo 'Bład zapytania MySQL1, odpowiedź serwera: '.mysqli_error($conn);}
-            		$row = mysqli_fetch_array($result);
+    $row = mysqli_fetch_array($result);
 					
-					$w[2]=$row["stanowisko_id"];  //id stanowiska do wstawienia w 'oferty'
-					print("<b>MySQL1: </b><div id=\"ekran1.1\">".$zapytanie1."</div><div>Odp:".$w[2]."</div>");					
+    $w[2]=$row["stanowisko_id"];  //id stanowiska do wstawienia w 'oferty'
+    //print("<b>MySQL1: </b><div id=\"ekran1.1\">".$zapytanie1."</div><div>Odp:".$w[2]."</div>");					
 }					
 //konstruujemy zaytanie
 
 $zapytanie = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa, AVG( o.cena ) , COUNT( * ), SUM(o.cena) 
 FROM Oferty o, Agenci a, Tranzakcje t, Stanowisko s
 WHERE a.stanowisko_id = s.stanowisko_id
+AND a.status = '1'
 AND t.agent_id = a.agent_id
 AND o.oferta_id = t.oferta_id
 ";

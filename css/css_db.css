@@ -141,6 +141,8 @@ body {
 #searchsubmit {
 	float: right;
 }
+
+
 td{
 height: 40px;
 }
@@ -184,11 +186,21 @@ textarea{
 
 #add_agent input, select
 {
-        margin: 5px;
+    margin: 5px;
+}
+
+#agenci_submit1 {
+    
+    float: left;    
+}
+
+#agenci_submit2 {
+    margin-left: 5px;
+    float: left;  
 }
 
 .data{
-	width:70px;
+    width:70px;
 }
 
 /* Tabela z wynikami wyszykiwania pod #box wstawiana do #ekran2 */

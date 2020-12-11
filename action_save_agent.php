@@ -18,7 +18,7 @@ if($result != TRUE){echo 'Bład zapytania MySQL1, odpowiedź serwera: '.mysqli_e
 					
 //zapis agenta do bd
 
-$zapytanie = "INSERT INTO `Agenci` (`agent_id`, `imie` , `nazwisko` , `stanowisko_id`) VALUES ('','$a[1]','$a[2]','$a[3]')" ;
+$zapytanie = "INSERT INTO `Agenci` (`agent_id`, `imie` , `nazwisko` , `stanowisko_id`, `status`) VALUES ('','$a[1]','$a[2]','$a[3]','1')" ;
 print("<b>MySQL1: </b><div id=\"ekran3\">".$zapytanie."</div>");
 $result = mysqli_query($conn, $zapytanie);
 if($result != TRUE){echo 'Bład zapytania MySQL1, odpowiedź serwera: '.mysqli_error($conn);}

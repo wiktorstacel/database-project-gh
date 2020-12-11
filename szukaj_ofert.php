@@ -49,38 +49,37 @@ echo '</tr>';
 
 require 'config_db.php';
 $result = mysqli_query($conn, $zapytanie);
-if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
-            		
-	while($row = mysqli_fetch_array($result, MYSQLI_NUM))
-	{
-		if($row[9] == "1")
-		{
-            print("<tr>");
-		}
-		else
-		{
-            print("<tr class=\"linia_noactive\">");
-		}
-		print("<td class=\"id\">$row[8]</td>");
-		print("<td class=\"name\">$row[0]</td>");
-		print("<td class=\"kind\">$row[1]</td>");
-		print("<td class=\"state\">$row[2]</td>");
-		print("<td class=\"town\">$row[3]</td>");
-		print("<td class=\"address\">$row[4]</td>");
-		print("<td class=\"sq\">$row[5]</td>");
-		print("<td class=\"price1\">$row[6]</td>");
-		print("<td class=\"descr\">$row[7]</td>");
-		if($row[9] == "1")
-		{
-            print("<td><a href=\"javascript:getData('main_transakcje.php?m=$row[8]','field'),czysc_ekran();\">+</a></td>");
-		}
-		else
-		{
-            print("<td>+</td>");
-		}
-		
-		echo '</tr>';
-	}
+if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}           		
+while($row = mysqli_fetch_array($result, MYSQLI_NUM))
+{
+    if($row[9] == "1")
+    {
+        print("<tr>");
+    }
+    else
+    {
+        print("<tr class=\"linia_noactive\">");
+    }
+    print("<td class=\"id\">$row[8]</td>");
+    print("<td class=\"name\">$row[0]</td>");
+    print("<td class=\"kind\">$row[1]</td>");
+    print("<td class=\"state\">$row[2]</td>");
+    print("<td class=\"town\">$row[3]</td>");
+    print("<td class=\"address\">$row[4]</td>");
+    print("<td class=\"sq\">$row[5]</td>");
+    print("<td class=\"price1\">$row[6]</td>");
+    print("<td class=\"descr\">$row[7]</td>");
+    if($row[9] == "1")
+    {
+        print("<td><a href=\"javascript:getData('main_transakcje.php?m=$row[8]','field'),czysc_ekran();\">+</a></td>");
+    }
+    else
+    {
+        print("<td>+</td>");
+    }
+
+    echo '</tr>';
+}
 	
 
 echo '</table>';

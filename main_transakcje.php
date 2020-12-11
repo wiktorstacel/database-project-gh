@@ -40,7 +40,7 @@ echo'
         <td> <select name="agent" id="t2" class="input2" onchange="inprice()">'; 
         
         require 'config_db.php';	//załadowanie agentów do listy rozwijanej formularza
-        $result = mysqli_query($conn, "SELECT * FROM Agenci ORDER BY agent_id ASC");
+        $result = mysqli_query($conn, "SELECT * FROM Agenci WHERE status='1' ORDER BY agent_id ASC");
         if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
