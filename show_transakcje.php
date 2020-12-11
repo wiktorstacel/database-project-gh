@@ -1,7 +1,7 @@
 <?php
 
-$zapytanie = "SELECT t.tranzakcja_id, o.nazwa, a.nazwisko, a.agent_id, t.klient, t.data, o.cena, m.nazwa, o.ulica, a.status FROM  Oferty o, Agenci a, Tranzakcje t, Miejscowosc m
-WHERE t.oferta_id=o.oferta_id AND t.agent_id=a.agent_id AND m.miejscowosc_id=o.miejscowosc_id ORDER BY t.data DESC";
+$zapytanie = "SELECT t.tranzakcja_id, o.nazwa, a.nazwisko, a.imie, t.klient, t.data, o.cena, m.nazwa, o.ulica, a.status FROM  Oferty o, Agenci a, Tranzakcje t, Miejscowosc m
+WHERE t.oferta_id=o.oferta_id AND t.agent_id=a.agent_id AND m.miejscowosc_id=o.miejscowosc_id ORDER BY t.tranzakcja_id DESC";
 
 require 'config_db.php';
 
@@ -28,11 +28,11 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
             print("<td class=\"\">$row[0]</td>");
             print("<td class=\"\">$row[1]</td>");
             print("<td class=\"\">$row[7], $row[8]</td>");
-            if($row[9]==1){print("<td class=\"\">$row[2] id: $row[3]</td>");}else{print("<td class=\"linia_noactive\">$row[2] id: $row[3]</td>");}
+            if($row[9]==1){print("<td class=\"\">$row[3] $row[2]</td>");}else{print("<td class=\"linia_noactive\">$row[3] $row[2]</td>");}
             print("<td class=\"\">$row[4]</td>");
             print("<td class=\"\">$row[6]</td>");
             print("<td class=\"\">$row[5]</td>");
-            print("<td><a href=\"javascript:getData('action_anuluj_trans.php?m=$row[0]','field');\">+</a></td>");
+            print("<td><a href=\"javascript:getData('action_delete_trans.php?id=$row[0]','field'),czysc_ekran();\">+</a></td>");
 		
         echo '</tr>';
 	}

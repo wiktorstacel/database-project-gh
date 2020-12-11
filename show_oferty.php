@@ -1,17 +1,17 @@
 <?php
 
-$p[1] = $_GET["p1"];
-$p[2] = $_GET["p2"];
-$p[3] = $_GET["p3"];
-$p[4] = $_GET["p4"];
-$p[5] = $_GET["p5"];
+$p[1] = $_GET["p1"];//nazwa
+$p[2] = $_GET["p2"];//wojewodztwo
+$p[3] = $_GET["p3"];//miasto
+$p[4] = $_GET["p4"];//cena min
+$p[5] = $_GET["p5"];//cena max
 $p[6] = $_GET["p6"];//aktualne
 $p[7] = $_GET["p7"];//nieaktualne
 $p[8] = 'y';
 
-$add[1] = " AND r.nazwa='".$p[1]."'";
-$add[2] = " AND w.nazwa='".$p[2]."'";
-$add[3] = " AND m.nazwa='".$p[3]."'";
+$add[1] = " AND r.rodzaj_id='".$p[1]."'";
+$add[2] = " AND w.wojewodztwo_id='".$p[2]."'";
+$add[3] = " AND m.miejscowosc_id='".$p[3]."'";
 $add[4] = " AND o.cena>=".$p[4]."";
 $add[5] = " AND o.cena<=".$p[5]."";
 $add[6] = " AND o.stan=".$p[6]."";
@@ -45,6 +45,7 @@ print("<td class=\"\">m<sup>2</sup></td>");
 print("<td class=\"\">cena</td>");
 print("<td class=\"\">opis</td>");
 echo '<td>zakup</td>';
+echo '<td>usuń</td>';
 echo '</tr>';
 
 require 'config_db.php';
@@ -71,11 +72,17 @@ while($row = mysqli_fetch_array($result, MYSQLI_NUM))
     print("<td class=\"\">$row[7]</td>");
     if($row[9] == "1")
     {
-        print("<td><a href=\"javascript:getData('main_transakcje.php?m=$row[8]','field'),czysc_ekran();\">+</a></td>");
+        print("<td><a href=\"javascript:getData('main_transakcje.php?id=$row[8]','field'),czysc_ekran();\">+</a></td>");
+        print("<td><a href=\"javascript:getData('action_delete_oferta.php?id=$row[8]','field'),czysc_ekran();\">+</a></td>");
     }
     else
     {
-        print("<td>+</td>");
+        print("<td>-></td>");
+        $zapytanie4="SELECT tranzakcja_id FROM Tranzakcje WHERE oferta_id='".$row[8]."'";
+        $result4 = mysqli_query($conn, $zapytanie4);
+        if($result4 != TRUE){echo 'Bład zapytania MySQL4, odpowiedź serwera: '.mysqli_error($conn);}
+        $row4 = mysqli_fetch_array($result4, MYSQLI_NUM);
+        print("<td>T$row4[0]</td>");
     }
 
     echo '</tr>';

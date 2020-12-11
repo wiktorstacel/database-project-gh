@@ -2,7 +2,7 @@
 
     //pole dowania agenta po lewej na stronie "Agenci"
     echo'<div id="add_agent">';
-
+    
     echo'<h3>Dodaj pracownika: </h3></br>
     <label for="a1">Imię: </label>
     <input name="aname" id="a1" type="text" value="" onchange="" class="input1" />
@@ -42,7 +42,7 @@
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
         { 
-            print("<option>".$row[1]." ".$row[2]." - id:".$row[0]."</option>");
+            print("<option value=".$row[0].">".$row[1]." ".$row[2]."</option>");
         }  
     echo'<option selected="selected">-wszyscy-</option></select>
         <div id="alertw1" class="alert"></div>
@@ -56,7 +56,7 @@
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
         { 
-            print("<option>".$row[1]."</option>");
+            print("<option value=".$row[0].">".$row[1]."</option>");
         }   
     echo'<option selected="selected">-wszystkie-</option></select>
         <div id="alertw2" class="alert"></div>

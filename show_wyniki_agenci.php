@@ -1,7 +1,7 @@
 <?php
 
-$w[1] = $_GET["w1"];//nazwisko imie id mix
-$w[2] = $_GET["w2"];//stanowiska
+$w[1] = $_GET["w1"];//id jako atrybut value elementu option
+$w[2] = $_GET["w2"];//id stanowiska
 $w[3] = $_GET["w3"];//data od 
 $w[4] = $_GET["w4"];//data do
 $w[5] = "z";//miejsce na group by
@@ -15,29 +15,8 @@ $w[8] = $_GET["w7"];//sortuj liczba
   require 'config_db.php';
   $zapytanie2 = "SELECT * FROM Agenci a WHERE status='1'";
   $result = mysqli_query($conn, $zapytanie2);
-  if($result != TRUE){echo 'Bład zapytania MySQL5, odpowiedź serwera: '.mysqli_error($conn);}
+  if($result != TRUE){echo 'Bład zapytania MySQL5, odpowiedź serwera: '.mysqli_error($conn);} 
 
-
-    while($row = mysqli_fetch_array($result,MYSQLI_NUM))
-    {
-        if(preg_match(sprintf("/%s/", $row[0]), sprintf("/%s/", $w[1]))) //if id agenta jest w ciągu znaków przekazanych z pola 'agent sprzedajacy'
-        {
-            $w[1]=$row[0]; //id agenta do wstawienia w 'tranzakcje'
-            }
-    } 
-
-if($w[2] != 'x')
-{					
-//wylowienie id stanowiska					
-$zapytanie1 = "SELECT stanowisko_id FROM Stanowisko WHERE nazwa='".$w[2]."'";
-$result = mysqli_query($conn, $zapytanie1);
-if($result != TRUE){echo 'Bład zapytania MySQL1, odpowiedź serwera: '.mysqli_error($conn);}
-    $row = mysqli_fetch_array($result);
-					
-    $w[2]=$row["stanowisko_id"];  //id stanowiska do wstawienia w 'oferty'
-    //print("<b>MySQL1: </b><div id=\"ekran1.1\">".$zapytanie1."</div><div>Odp:".$w[2]."</div>");					
-}					
-//konstruujemy zaytanie
 
 $zapytanie = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa, AVG( o.cena ) , COUNT( * ), SUM(o.cena) 
 FROM Oferty o, Agenci a, Tranzakcje t, Stanowisko s
@@ -75,13 +54,13 @@ for($i=6;$i<=8;$i++)
 
 echo "<table class='lista_art'>";
 echo "<tr class='listwa'>";
-print("<td class=\"agent\">id</td>");
-print("<td class=\"name\">imie</td>");
-print("<td class=\"kind\">nazwisko</td>");
-print("<td class=\"state\">stanowisko</td>");
-print("<td class=\"town\">sprzedaż<br />(ogółem)</td>");
-print("<td class=\"count\">ilość<br />tranzakcji</td>");
-print("<td class=\"town\">średnia<br />sprzedaży</td>");
+print("<td class=\"\">id</td>");
+print("<td class=\"\">imie</td>");
+print("<td class=\"\">nazwisko</td>");
+print("<td class=\"\">stanowisko</td>");
+print("<td class=\"\">sprzedaż<br />(ogółem)</td>");
+print("<td class=\"\">ilość<br />tranzakcji</td>");
+print("<td class=\"\">średnia<br />sprzedaży</td>");
 
 //echo '<td>usuń</td>';
 echo '</tr>';
@@ -94,14 +73,14 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
 		
         print("<tr>");
 
-        print("<td class=\"id\">$row[0]</td>");
-        print("<td class=\"name\">$row[1]</td>");
-        print("<td class=\"kind\">$row[2]</td>");
-        print("<td class=\"state\">$row[3]</td>");
-        print("<td class=\"sprzedaz\">$row[6]</td>");
-        print("<td class=\"count\">$row[5]</td>");
-        $temp = round($row[4],2);
-        print("<td class=\"srednia\">$temp</td>");
+        print("<td class=\"\">$row[0]</td>");
+        print("<td class=\"\">$row[1]</td>");
+        print("<td class=\"\">$row[2]</td>");
+        print("<td class=\"\">$row[3]</td>");
+        print("<td class=\"\">$row[6]</td>");
+        print("<td class=\"\">$row[5]</td>");
+        $temp = round($row[4],0);
+        print("<td class=\"\">$temp</td>");
 		
 //        print("<td><a href=\"javascript:getData('usun_agent.php?m=$row[0]','field');\">+</a></td>");
 				

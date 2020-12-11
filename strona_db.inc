@@ -91,7 +91,7 @@ class Strona1
                 <ul>';
                 print("<li id=\"m1\" class=\"noactive\"><a href=\"javascript:getData('main_wyszukaj.php','field'),czysc_ekran();\">Wyszukaj</a></li>");
                 print("<li id=\"m2\" class=\"noactive\"><a href=\"javascript:getData('main_wprowadz.php','field'),czysc_ekran(),focus('p0');\">Wprowadź</a></li>");
-                print("<li id=\"m3\" class=\"noactive\"><a href=\"javascript:getData('main_transakcje.php?m=0','field'),czysc_ekran();\">Transakcje</a></li>");
+                print("<li id=\"m3\" class=\"noactive\"><a href=\"javascript:getData('main_transakcje.php?id=0','field'),czysc_ekran();\">Transakcje</a></li>");
                 print("<li id=\"m4\" class=\"noactive\"><a href=\"javascript:getData('main_agenci.php','field'),czysc_ekran();\">Agenci</a></li>");
                 print("<li id=\"m5\" class=\"noactive\"><a href=\"javascript:getData('main_about.php','field'),czysc_ekran();\">O projekcie</a></li>");
                 echo'</ul>

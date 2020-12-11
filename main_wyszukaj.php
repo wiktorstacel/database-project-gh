@@ -12,7 +12,7 @@ echo'
     
     while($row = mysqli_fetch_array($result, MYSQLI_NUM))
     { 
-        print("<option>".$row[1]."</option>");
+        print("<option value=".$row[0].">".$row[1]."</option>");
     }
     
     echo'<option selected="selected">-wszystkie-</option></select></td>';
@@ -26,14 +26,14 @@ echo'
     echo'
     <tr>
     <td>Województwo:</td>';
-    print("<td> <select name=\"state\" id=\"p2\" class=\"input1\" onchange=\"show_oferty(),intown()\">"); 
+    print("<td> <select name=\"state\" id=\"p2\" class=\"input1\" onchange=\"show_oferty(),insert_miasto()\">"); 
     require 'config_db.php';	//załadowanie województw do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM Wojewodztwo ORDER BY wojewodztwo_id DESC");
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
     
     while($row = mysqli_fetch_array($result, MYSQLI_NUM))
     { 
-        print("<option>".$row[1]."</option>");
+        print("<option value=".$row[0].">".$row[1]."</option>");
     }
     echo'<option selected="selected">-wszystkie-</option></select></td>
     </tr>
@@ -47,7 +47,7 @@ echo'
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
     while($row = mysqli_fetch_array($result, MYSQLI_NUM))
     { 
-        print("<option>".$row[1]."</option>");
+        print("<option value=".$row[0].">".$row[1]."</option>");
     }
     
     echo'<option selected="selected">-wszystkie-</option></select></td>

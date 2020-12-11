@@ -15,7 +15,7 @@ echo'
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
         { 
-            print("<option>".$row[1]."</option>");
+            print("<option value=".$row[0].">".$row[1]."</option>");
         }
         
     echo'<option selected="selected">-wszystkie-</option></select><span id="alert1" class="alert"></span></div></td>
@@ -23,14 +23,14 @@ echo'
 
     <tr>
     <td>Województwo:</td>
-    <td> <select name="state" id="p2" class="input1" onchange="intown()">'; 
+    <td> <select name="state" id="p2" class="input1" onchange="insert_miasto()">'; 
     
     require 'config_db.php';	//załadowanie województw do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM Wojewodztwo ORDER BY wojewodztwo_id DESC");
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
         { 
-            print("<option>".$row[1]."</option>");
+            print("<option value=".$row[0].">".$row[1]."</option>");
         }
     
     echo'<option selected="selected">-wszystkie-</option></select><span id="alert2" class="alert"></span></div></td>
@@ -40,7 +40,7 @@ echo'
     echo '<td>Miejscowość:</td>
     <td>        
     <form id="searchform" method="post">
-    <fieldset>
+    <fieldset style="border: 1px groove;">
      <select  name="town" id="p3" class="input1">'; 
     
     require 'config_db.php';	//załadowanie województw do listy rozwijanej formularza
@@ -48,7 +48,7 @@ echo'
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
         { 
-            print("<option>".$row[1]."</option>");
+            print("<option value=".$row[0].">".$row[1]."</option>");
         }       
     echo'<option selected="selected">-wszystkie-</option></select>';
     

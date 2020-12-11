@@ -62,10 +62,10 @@ function insert_db()
 	
 }
 
-function intown()
+function insert_miasto()
 {
 	var a = document.getElementById("p2").value;
-	getData("town.php?woj="+a, "p3");
+	getData("insert_miasto.php?woj="+a, "p3");
 }
 
 var xmlHttp;
@@ -196,10 +196,10 @@ function askprice(price)
 	document.getElementById("alertprice").innerHTML = price;
 }
 
-function inprice()
+function insert_price()
 {
 	var a = document.getElementById("t1").value;
-	getData("price.php?name="+a, "alertprice");
+	getData("insert_price.php?oferta_id="+a, "alertprice");
 }
 
 function fokus(AElementID)

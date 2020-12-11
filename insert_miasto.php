@@ -8,7 +8,7 @@ if($woj == 'x' || $woj == '-wszystkie-' || $woj == '-wybierz-')
 }
 else
 {
-  $middle = " AND w.nazwa='".$woj."'";	
+  $middle = " AND w.wojewodztwo_id='".$woj."'";	
 }
 $zapy = "SELECT * FROM Miejscowosc m, Wojewodztwo w WHERE m.wojewodztwo_id=w.wojewodztwo_id";
 
@@ -21,7 +21,7 @@ if($result != TRUE){echo 'B�ad zapytania MySQL, odpowiedź serwera: '.mysqli_e
 
 while($row = mysqli_fetch_array($result, MYSQLI_NUM))
 { 
-    print("<option>".$row[1]."</option>");
+    print("<option value=".$row[0].">".$row[1]."</option>");
 }
 echo'<option selected="selected">-wszystkie-</option>';	
 			
