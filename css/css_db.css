@@ -142,6 +142,11 @@ body {
 	float: right;
 }
 
+#delete_submit {
+	float:none;
+        margin: 6px;
+}
+
 
 td{
 height: 40px;

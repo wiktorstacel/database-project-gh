@@ -2,7 +2,8 @@
 
 //echo '<fieldset>';
 //echo '<legend>O projekcie</legend>';
-echo 'Projekt agencji nieruchomości powstał w ramach przedmiotu <b>Bazy danych</b>, prowadzonego na kierunku Elektrotechnika o specjalności <b>automatyka i informatyka</b> w semetrze zimowym 2009/2010 na Politechnice Rzeszowskiej.<br/><br/><br/><br/>';
+echo 'Projekt agencji nieruchomości powstał w ramach przedmiotu <b>Bazy Danych</b>, prowadzonego na kierunku Elektrotechnika o specjalności <b>Automatyka i Informatyka</b> w semetrze zimowym 2009/2010 na Politechnice Rzeszowskiej.'
+. ' Założeniem projektu było utworzenie obsługującego agencję nieruchomości systemu działąjącego na serwerze lokalnym z zapisem danych do SQL, stąd może nie spełniać wymogów zabezpieczeń dla serwisów obecnych w sieci internet.<br/><br/><br/><br/>';
  
 echo '<u>Wykorzystane technologie</u>: <br/>PHP - generowanie stron internetowych<br/>';
 echo 'MySQL - relacyjne bazy danych<br/>AJAX - asynchroniczna komunikacja z serwerem<br/>';

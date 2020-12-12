@@ -73,7 +73,7 @@ while($row = mysqli_fetch_array($result, MYSQLI_NUM))
     if($row[9] == "1")
     {
         print("<td><a href=\"javascript:getData('main_transakcje.php?id=$row[8]','field'),czysc_ekran();\">+</a></td>");
-        print("<td><a href=\"javascript:getData('action_delete_oferta.php?id=$row[8]','field'),czysc_ekran();\">+</a></td>");
+        print("<td><a href=\"javascript:getData('confirm_delete_oferta.php?id=$row[8]','field'),czysc_ekran();\">+</a></td>");
     }
     else
     {

@@ -16,19 +16,27 @@ echo'
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);} 
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
         {
-            if($row[4] != 0)
+            if($row[4] != 0)//stan oferty musi mieć stan 1
             {	
-                    if($id != $row[0])
-                    { 
-                      print("<option value=".$row[0].">".$row[1]." - ".$row[2]." - ".$row[3]."</option>");
-                    }
-                    else
-                    {
-                      print("<option value=".$row[0]." selected=\"selected\">".$row[1]." - ".$row[2]." - ".$row[3]."</option>");
-                    }
+                if($id != $row[0])//id_oferta różne od id_oferta przesłane z GET
+                { 
+                    print("<option value=".$row[0].">".$row[1]." - ".$row[2]." - ".$row[3]."</option>");
+                }
+                else//id oferta z BD równe przesłanemu z GET
+                {
+                    print("<option value=".$row[0]." selected=\"selected\">".$row[1]." - ".$row[2]." - ".$row[3]."</option>");
+                }
             }
         }
-        echo'</select>';
+        if($id == 0)
+        {
+            echo'<option selected="selected">-wybierz-</option>';
+        }
+        else
+        {
+            echo'<option>-wybierz-</option>';
+        }  
+        echo'</select><span id="alert1" class="alert"></span>';
 //	print("<span> Id ofery:</span><span id=\"of_id\" class=\"of_id\">".$temp."</span>");
 
         echo'

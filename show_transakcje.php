@@ -32,7 +32,7 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
             print("<td class=\"\">$row[4]</td>");
             print("<td class=\"\">$row[6]</td>");
             print("<td class=\"\">$row[5]</td>");
-            print("<td><a href=\"javascript:getData('action_delete_trans.php?id=$row[0]','field'),czysc_ekran();\">+</a></td>");
+            print("<td><a href=\"javascript:getData('confirm_delete_trans.php?id=$row[0]','field'),czysc_ekran();\">+</a></td>");
 		
         echo '</tr>';
 	}

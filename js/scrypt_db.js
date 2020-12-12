@@ -212,7 +212,7 @@ function fokus(AElementID)
 function sprawdz_tranzakcja()
 {
 	a=0;
-	for(i=2;i<=3;i++)
+	for(i=1;i<=3;i++)
 	{
 	
 	    var pole = document.getElementById("t"+i);
@@ -242,7 +242,7 @@ function action_save_trans()
     adres = "action_save_trans.php?";
     for(i=1;i<=3;i++)
 	{
-		if(document.getElementById("t"+i).value == "-wszystkie-" || document.getElementById("t"+i).value == "" || document.getElementById("t"+i).disabled)
+		if(document.getElementById("t"+i).value == "-wybierz-" || document.getElementById("t"+i).value == "" || document.getElementById("t"+i).disabled)
 		{
 		  adres = adres + "t" + i + "=x" +"&";	
 		}

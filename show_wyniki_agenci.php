@@ -86,10 +86,34 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
 				
         echo '</tr>';
 	}
-	
+        
+//agenci, którzy jeszcze nic nie sprzedali i nie są w transakcjach
+$zapytanie2 = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa FROM Agenci a, Stanowisko s WHERE a.status='1' AND a.stanowisko_id=s.stanowisko_id AND a.agent_id NOT IN (SELECT t.agent_id FROM Tranzakcje t)";	
+
+$result2 = mysqli_query($conn, $zapytanie2);
+if($result2 != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
+            		
+	while($row2 = mysqli_fetch_array($result2, MYSQLI_NUM))
+	{
+		
+        print("<tr>");
+
+        print("<td class=\"\">$row2[0]</td>");
+        print("<td class=\"\">$row2[1]</td>");
+        print("<td class=\"\">$row2[2]</td>");
+        print("<td class=\"\">$row2[3]</td>");
+        print("<td class=\"\">0</td>");
+        print("<td class=\"\">0</td>");
+        print("<td class=\"\">0</td>");
+		
+//        print("<td><a href=\"javascript:getData('usun_agent.php?m=$row[0]','field');\">+</a></td>");
+				
+        echo '</tr>';
+	}
+
 
 echo '</table>';
-print("<br /><br /><br /><b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
+print("<br /><br /><br /><b>MySQL: </b><div id=\"ekran3\">".$zapytanie."<br />+<br /> ".$zapytanie2."</div>");
 
 
 

@@ -19,7 +19,7 @@ if($result != TRUE){echo 'Bład zapytania MySQL2, odpowiedź serwera: '.mysql_er
 //zapis transakci do bd
 echo'<div id="komunikat_field">';
 $zapytanie = "DELETE FROM `tranzakcje` WHERE `tranzakcje`.`tranzakcja_id` = '$id'" ;
-print("<b>MySQL1: </b><div id=\"ekran3\">".$zapytanie."</div>");
+print("<b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
 $result = mysqli_query($conn, $zapytanie);
 if($result != TRUE){echo '<br /><h3>BŁĄD ZAPISU DANYCH!</h3><br />Bład zapytania MySQL1, odpowiedź serwera: '.mysqli_error($conn);}
 else {echo'<br /><h3>DANE ZAPISANE POPRAWNIE</h3>';}
