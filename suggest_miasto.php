@@ -4,7 +4,7 @@ require 'config_db.php';
 if($_GET["tek"])
 {
     $i=0;
-    $q=mysqli_query($conn, 'select nazwa from Miejscowosc where nazwa like "'.$_GET["tek"].'%"');
+    $q=mysqli_query($conn, 'select nazwa from miejscowosc where nazwa like "'.$_GET["tek"].'%"');
     if($q != TRUE){echo 'Bład zapytania MySQL4, odpowiedź serwera: '.mysqli_error($conn);}
         while($rekord=mysqli_fetch_array($q))
         {

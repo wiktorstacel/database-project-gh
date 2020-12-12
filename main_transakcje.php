@@ -12,7 +12,7 @@ echo'
     require 'config_db.php';
     echo '<td><select id="t1" class="input2" name="t1" onchange="insert_price()">';
     //załadowanie ofert do listy rozwijanej formularza
-    $result = mysqli_query($conn, "SELECT o.oferta_id, o.nazwa, m.nazwa, o.ulica, o.stan FROM Oferty o, miejscowosc m WHERE o.miejscowosc_id=m.miejscowosc_id AND o.stan=1 ORDER BY o.oferta_id DESC");
+    $result = mysqli_query($conn, "SELECT o.oferta_id, o.nazwa, m.nazwa, o.ulica, o.stan FROM oferty o, miejscowosc m WHERE o.miejscowosc_id=m.miejscowosc_id AND o.stan=1 ORDER BY o.oferta_id DESC");
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);} 
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
         {
@@ -48,7 +48,7 @@ echo'
         <td> <select name="agent" id="t2" class="input2" onchange="insert_price()">'; 
         
         require 'config_db.php';	//załadowanie agentów do listy rozwijanej formularza
-        $result = mysqli_query($conn, "SELECT * FROM Agenci WHERE status='1' ORDER BY agent_id ASC");
+        $result = mysqli_query($conn, "SELECT * FROM agenci WHERE status='1' ORDER BY agent_id ASC");
         if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))

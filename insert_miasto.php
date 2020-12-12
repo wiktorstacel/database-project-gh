@@ -10,7 +10,7 @@ else
 {
   $middle = " AND w.wojewodztwo_id='".$woj."'";	
 }
-$zapy = "SELECT * FROM Miejscowosc m, Wojewodztwo w WHERE m.wojewodztwo_id=w.wojewodztwo_id";
+$zapy = "SELECT * FROM miejscowosc m, wojewodztwo w WHERE m.wojewodztwo_id=w.wojewodztwo_id";
 
 $tanie = " ORDER BY m.nazwa ASC";
 $zapytanie = $zapy.$middle.$tanie;

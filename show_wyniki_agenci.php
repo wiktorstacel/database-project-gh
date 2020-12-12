@@ -13,13 +13,13 @@ $w[8] = $_GET["w7"];//sortuj liczba
 
 //filtracja agent_id z przesłanego mixu: imie nazwisko id
   require 'config_db.php';
-  $zapytanie2 = "SELECT * FROM Agenci a WHERE status='1'";
+  $zapytanie2 = "SELECT * FROM agenci a WHERE status='1'";
   $result = mysqli_query($conn, $zapytanie2);
   if($result != TRUE){echo 'Bład zapytania MySQL5, odpowiedź serwera: '.mysqli_error($conn);} 
 
 
 $zapytanie = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa, AVG( o.cena ) , COUNT( * ), SUM(o.cena) 
-FROM Oferty o, Agenci a, Tranzakcje t, Stanowisko s
+FROM oferty o, agenci a, tranzakcje t, stanowisko s
 WHERE a.stanowisko_id = s.stanowisko_id
 AND a.status = '1'
 AND t.agent_id = a.agent_id
@@ -86,9 +86,9 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
 				
         echo '</tr>';
 	}
-        
+/*        
 //agenci, którzy jeszcze nic nie sprzedali i nie są w transakcjach
-$zapytanie2 = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa FROM Agenci a, Stanowisko s WHERE a.status='1' AND a.stanowisko_id=s.stanowisko_id AND a.agent_id NOT IN (SELECT t.agent_id FROM Tranzakcje t)";	
+$zapytanie2 = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa FROM agenci a, stanowisko s WHERE a.status='1' AND a.stanowisko_id=s.stanowisko_id AND a.agent_id NOT IN (SELECT t.agent_id FROM tranzakcje t)";	
 
 $result2 = mysqli_query($conn, $zapytanie2);
 if($result2 != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
@@ -111,10 +111,10 @@ if($result2 != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_e
         echo '</tr>';
 	}
 
-
+*/
 echo '</table>';
-print("<br /><br /><br /><b>MySQL: </b><div id=\"ekran3\">".$zapytanie."<br />+<br /> ".$zapytanie2."</div>");
-
+print("<br /><br /><br /><b>MySQL: </b><div id=\"ekran3\">".$zapytanie."<br /></div>");
+//+<br /> ".$zapytanie2."
 
 
 ?>

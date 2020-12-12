@@ -5,7 +5,7 @@ echo'
     <div id="komunikat_field">
     <h3>Czy jesteś pewien, że chcesz usunąć transakcję?</br>Jej przedmiot wróci do aktywnych ofert.</h3></br></br>';
 
-$zapytanie = "SELECT t.tranzakcja_id, o.nazwa, a.nazwisko, a.imie, t.klient, t.data, o.cena, m.nazwa, o.ulica, a.status FROM  Oferty o, Agenci a, Tranzakcje t, Miejscowosc m
+$zapytanie = "SELECT t.tranzakcja_id, o.nazwa, a.nazwisko, a.imie, t.klient, t.data, o.cena, m.nazwa, o.ulica, a.status FROM  oferty o, agenci a, tranzakcje t, miejscowosc m
 WHERE t.oferta_id=o.oferta_id AND t.agent_id=a.agent_id AND m.miejscowosc_id=o.miejscowosc_id AND t.tranzakcja_id='".$id."'";
 
 require 'config_db.php';

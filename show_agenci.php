@@ -3,7 +3,7 @@
 $status = $_GET['status']; // 0 - były pracownik; 1 - obecny pracownik
 
 $zapytanie = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa 
-FROM Agenci a, Stanowisko s
+FROM agenci a, stanowisko s
 WHERE a.stanowisko_id = s.stanowisko_id AND a.status = ".$status."
 ORDER BY a.agent_id ASC";
 

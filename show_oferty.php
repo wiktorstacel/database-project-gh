@@ -18,7 +18,7 @@ $add[6] = " AND o.stan=".$p[6]."";
 $add[7] = " AND o.stan=".$p[7]."";
 $add[8] = " ORDER BY o.oferta_id DESC";
 
-$zapytanie = "SELECT o.nazwa, r.nazwa, w.nazwa, m.nazwa, o.ulica, o.powierzchnia, o.cena, o.opis, o.oferta_id, o.stan FROM  Oferty o, Rodzaj r, Wojewodztwo w, Miejscowosc m 
+$zapytanie = "SELECT o.nazwa, r.nazwa, w.nazwa, m.nazwa, o.ulica, o.powierzchnia, o.cena, o.opis, o.oferta_id, o.stan FROM  oferty o, rodzaj r, wojewodztwo w, miejscowosc m 
 WHERE o.rodzaj_id=r.rodzaj_id
 AND o.wojewodztwo_id=w.wojewodztwo_id
 AND o.miejscowosc_id=m.miejscowosc_id";
@@ -78,7 +78,7 @@ while($row = mysqli_fetch_array($result, MYSQLI_NUM))
     else
     {
         print("<td>-></td>");
-        $zapytanie4="SELECT tranzakcja_id FROM Tranzakcje WHERE oferta_id='".$row[8]."'";
+        $zapytanie4="SELECT tranzakcja_id FROM tranzakcje WHERE oferta_id='".$row[8]."'";
         $result4 = mysqli_query($conn, $zapytanie4);
         if($result4 != TRUE){echo 'Bład zapytania MySQL4, odpowiedź serwera: '.mysqli_error($conn);}
         $row4 = mysqli_fetch_array($result4, MYSQLI_NUM);
