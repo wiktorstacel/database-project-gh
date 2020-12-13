@@ -1,6 +1,6 @@
 <?php
 
-$id = $_GET["id"];//oferta_id
+$id = htmlentities($_GET["id"]);//oferta_id
 
 
 require 'config_db.php';
@@ -21,7 +21,7 @@ else //usunięcie oferty, ale tylko wtedy jeśli nie była przedmiotem transakcj
 {
     echo'<div id="komunikat_field">';
     $zapytanie = "DELETE FROM oferty WHERE oferta_id = '$id'" ;
-    print("<b>MySQL1: </b><div id=\"ekran3\">".$zapytanie."</div>");
+    print("<b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
     $result = mysqli_query($conn, $zapytanie);
     if($result != TRUE){echo '<br /><h3>BŁĄD ZAPISU DANYCH!</h3><br />Bład zapytania MySQL1, odpowiedź serwera: '.mysqli_error($conn);}
     else {echo'<br /><h3>DANE ZAPISANE POPRAWNIE</h3>';}

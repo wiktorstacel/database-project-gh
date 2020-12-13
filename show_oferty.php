@@ -1,12 +1,12 @@
 <?php
 
-$p[1] = $_GET["p1"];//nazwa
-$p[2] = $_GET["p2"];//wojewodztwo
-$p[3] = $_GET["p3"];//miasto
-$p[4] = $_GET["p4"];//cena min
-$p[5] = $_GET["p5"];//cena max
-$p[6] = $_GET["p6"];//aktualne
-$p[7] = $_GET["p7"];//nieaktualne
+$p[1] = htmlentities($_GET["p1"]);//nazwa
+$p[2] = htmlentities($_GET["p2"]);//wojewodztwo
+$p[3] = htmlentities($_GET["p3"]);//miasto
+$p[4] = htmlentities($_GET["p4"]);//cena min
+$p[5] = htmlentities($_GET["p5"]);//cena max
+$p[6] = htmlentities($_GET["p6"]);//aktualne
+$p[7] = htmlentities($_GET["p7"]);//nieaktualne
 $p[8] = 'y';
 
 $add[1] = " AND r.rodzaj_id='".$p[1]."'";

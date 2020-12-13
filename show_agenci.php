@@ -1,6 +1,6 @@
 <?php
 
-$status = $_GET['status']; // 0 - były pracownik; 1 - obecny pracownik
+$status = htmlentities($_GET['status']);// 0 - były pracownik; 1 - obecny pracownik
 
 $zapytanie = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa 
 FROM agenci a, stanowisko s

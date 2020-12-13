@@ -1,5 +1,5 @@
 <?php
-$id = $_GET["id"];
+$id = htmlentities($_GET["id"]);
 $temp = "";
 echo'
     <h3>Zawarcie transakcji: </h3></br>

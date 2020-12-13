@@ -1,5 +1,5 @@
 <?php
-$id = $_GET["id"];
+$id = htmlentities($_GET["id"]);
 
 echo'
     <div id="komunikat_field">

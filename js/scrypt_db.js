@@ -58,13 +58,13 @@ function sprawdz_show_oferty()
 	    var pole = document.getElementById("p"+i);
             document.getElementById("alert"+i).innerHTML = "";//czyszczenie alertów jeśli były wcześńiej wyświetlone
 
-            litPatt = /^[0-9]{1,8}$/;
+            litPatt = /^[0-9]{1,9}$/;
             wynik = pole.value.match(litPatt);
             if(pole.value != "")
             {
                 if(wynik==null)
                 {
-                document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";
+                document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie! Tylko cyfry - max: 9";
                 a++;
                 }
             }
@@ -96,11 +96,12 @@ function sprawdz_show_oferty()
 	
 }*/
 
-/*function insert_miasto()
+//Wstawia okreslone miasta dla wybranego wczesniej wojewodztwa
+function insert_miasto()
 {
 	var a = document.getElementById("p2").value;
 	getData("insert_miasto.php?woj="+a, "p3");
-}*/
+}
 
 var xmlHttp;
 
@@ -119,31 +120,39 @@ function Zapytanie(adres){
       xmlHttp.send(null); //wysyłamy żądanie
 }
 
-function sprawdz_oferta()
+function sprawdz_save_oferta()
 {
 	a=0;
 	for(i=0;i<=8;i++)
 	{	
 	    var pole = document.getElementById("p"+i);
-		document.getElementById("alert"+i).innerHTML = "";
-		if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-"))
-		{
-			
-			document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";
-			a++;			
-/*Operator typeof() zwraca string z nazwą typu jaki ma przekazany parametr (np. zmienna). Może on zwrócić jedną z podanych wartości: "number", "string", "boolean", "object", "function" lub "undefined". Zatem aby sprawdzić czy np. zmienna ma wartość undefined, należy sprawdzić czy wartość zwrócona przez typeof() jest równa undefined*/
-			
-		}
-		if((i==6 || i== 7)) //sprawdzenie pól powierchnia i cena - czy są liczbami
-			{
-			litPatt = /^[0-9]{1,8}$/;
-			wynik = pole.value.match(litPatt);
-				if(wynik==null)
-				{
-				document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";
-				a++;
-				}	
-			}
+            document.getElementById("alert"+i).innerHTML = "";
+            litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s$/;
+            if(i==0 || i==5 || i==8){litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\+|\=|\[|\{|\]|\}|\||\'|\<|\>|\?|\""|\;|\s$/;}
+            wynik = pole.value.match(litPatt);
+            if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-" || wynik!=null))
+            {	
+                a++;
+                if(wynik!=null)
+                {
+                    document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie! Niedozwolony znak: "+wynik;
+                }
+                else
+                {
+                    document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";                           
+                }
+
+            }
+            if((i==6 || i== 7)) //sprawdzenie pól powierchnia i cena - czy są liczbami
+            {
+                litPatt = /^[0-9]{1,9}$/;
+                wynik = pole.value.match(litPatt);
+                if(wynik==null)
+                {
+                document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie! Tylko cyfry - max: 9";
+                a++;
+                }	
+            }
 	}
 	if(a>0)
 	{
@@ -158,7 +167,7 @@ function sprawdz_oferta()
 
 function action_save_oferta()
 {
-	if(sprawdz_oferta() == true) //czy pola wejściowe wprowadzania oferty są wypełnione poprawnie
+	if(sprawdz_save_oferta() == true) //czy pola wejściowe wprowadzania oferty są wypełnione poprawnie
 	{
     adres = "action_save_oferta.php?";
     for(i=0;i<=8;i++)
@@ -243,84 +252,104 @@ function fokus(AElementID)
 }
 
 //Sprawdza czy pola wprowadzania transakcji mają poprawne wartości
-function sprawdz_tranzakcja()
+function sprawdz_save_tranzakcja()
 {
-	a=0;
-	for(i=1;i<=3;i++)
-	{
-	
-	    var pole = document.getElementById("t"+i);
-		document.getElementById("alert"+i).innerHTML = "";
-		if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-"))
-		{	
-			document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";
-			a++;
-		}			
-	}
-	if(a>0)
-	{
-		alert("Popraw zaznaczone pola");
-		return false;
-	}
-	else
-	{
-		return true;
-	}
+    a=0;
+    for(i=1;i<=3;i++)
+    {
+
+        var pole = document.getElementById("t"+i);
+        document.getElementById("alert"+i).innerHTML = "";
+        litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s$/;
+        wynik = pole.value.match(litPatt);
+        if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-" || wynik!=null))
+        {	
+            a++;
+            if(wynik!=null)
+            {
+                document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie! Niedozwolony znak: "+wynik;
+            }
+            else
+            {
+                document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";                           
+            }
+
+        }			
+    }
+    if(a>0)
+    {
+            alert("Popraw zaznaczone pola");
+            return false;
+    }
+    else
+    {
+            return true;
+    }
 }
 
 function action_save_trans()
 {
-	if(sprawdz_tranzakcja() == true)//czy pola wejściowe transkacji wypełnione poprawnie
-	{
+    if(sprawdz_save_tranzakcja() == true)//czy pola wejściowe transkacji wypełnione poprawnie
+    {
     adres = "action_save_trans.php?";
     for(i=1;i<=3;i++)
-	{
-		if(document.getElementById("t"+i).value == "-wybierz-" || document.getElementById("t"+i).value == "" || document.getElementById("t"+i).disabled)
-		{
-		  adres = adres + "t" + i + "=x" +"&";	
-		}
-		else
-		{
-		  adres = adres + "t" + i + "=" + document.getElementById("t"+i).value + "&";
-		}
-	}
+    {
+            if(document.getElementById("t"+i).value == "-wybierz-" || document.getElementById("t"+i).value == "" || document.getElementById("t"+i).disabled)
+            {
+              adres = adres + "t" + i + "=x" +"&";	
+            }
+            else
+            {
+              adres = adres + "t" + i + "=" + document.getElementById("t"+i).value + "&";
+            }
+    }
 //	document.getElementById("ekran").innerHTML = adres;
 //	Zapytanie(adres);
 //	getData('komunikat.php','field')
-        getData(adres,'field');
-	}
+    getData(adres,'field');
+    }
 }
 
 //Czy pola wprowadzania nowego agenta wypełnione są poprawnie
-function sprawdz_new_agent()
+function sprawdz_save_agent()
 {
-	a=0;
-	for(i=1;i<=3;i++)
-	{
-	
-	    var pole = document.getElementById("a"+i);
-		document.getElementById("alert"+i).innerHTML = "";
-		if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-"))
-		{	
-			document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";
-			a++;
-		}			
+    a=0;
+    for(i=1;i<=3;i++)
+    {
 
-	}
-	if(a>0)
-	{
-		alert("Popraw zaznaczone pola");
-		return false;
-	}
-	else
-	{
-		return true;
-	}
+        var pole = document.getElementById("a"+i);
+        document.getElementById("alert"+i).innerHTML = "";
+        litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s$/;
+        wynik = pole.value.match(litPatt);
+        if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-" || wynik!=null))
+        {	
+            a++;
+            if(wynik!=null)
+            {
+                document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie! Niedozwolony znak: "+wynik;
+            }
+            else
+            {
+                document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";                           
+            }
+
+        }			
+
+    }
+    if(a>0)
+    {
+            alert("Popraw zaznaczone pola");
+            return false;
+    }
+    else
+    {
+            return true;
+    }
 }
 
 function action_save_agent()
 {
-	if(sprawdz_new_agent() == true)//czy pola wprowadzenia nowego agenta wypełnione poprawnie
+	if(sprawdz_save_agent() == true)//czy pola wprowadzenia nowego agenta wypełnione poprawnie
 	{
             adres = "action_save_agent.php?";
             for(i=1;i<=3;i++)

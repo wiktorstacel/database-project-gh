@@ -1,7 +1,7 @@
 <?php
 
-$a[1] = $_GET["m"];//id
-$a[2] = $_GET["status"];//status
+$a[1] = htmlentities($_GET["m"]);//id
+$a[2] = htmlentities($_GET["status"]);//status
 
 require 'config_db.php';				
 //zapis agenta do bd - zmiana statusu na przeciwny do tego, w jakim przyszedł

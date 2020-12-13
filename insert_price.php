@@ -1,6 +1,6 @@
 <?php
 
-$oferta_id = $_GET["oferta_id"];
+$oferta_id = htmlentities($_GET["oferta_id"]);
 
 if($oferta_id == 'x' || $oferta_id == '-wszystkie-' || $oferta_id == '-wybierz-' || $oferta_id == '')
 {

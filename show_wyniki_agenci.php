@@ -1,13 +1,13 @@
 <?php
 
-$w[1] = $_GET["w1"];//id jako atrybut value elementu option
-$w[2] = $_GET["w2"];//id stanowiska
-$w[3] = $_GET["w3"];//data od 
-$w[4] = $_GET["w4"];//data do
+$w[1] = htmlentities($_GET["w1"]);//id jako atrybut value elementu option
+$w[2] = htmlentities($_GET["w2"]);//id stanowiska
+$w[3] = htmlentities($_GET["w3"]);//data od 
+$w[4] = htmlentities($_GET["w4"]);//data do
 $w[5] = "z";//miejsce na group by
-$w[6] = $_GET["w5"];//sortuj sredia
-$w[7] = $_GET["w6"];//sortuj ogólem
-$w[8] = $_GET["w7"];//sortuj liczba
+$w[6] = htmlentities($_GET["w5"]);//sortuj sredia
+$w[7] = htmlentities($_GET["w6"]);//sortuj ogólem
+$w[8] = htmlentities($_GET["w7"]);//sortuj liczba
 
 
 

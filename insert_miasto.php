@@ -1,6 +1,6 @@
 <?php
 
-$woj = $_GET["woj"];
+$woj = htmlentities($_GET["woj"]);
 
 if($woj == 'x' || $woj == '-wszystkie-' || $woj == '-wybierz-')
 {

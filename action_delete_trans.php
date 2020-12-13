@@ -1,6 +1,6 @@
 <?php
 
-$id = $_GET["id"];//transakcja_id
+$id = htmlentities($_GET["id"]);//transakcja_id
 $flaga = 0;
 
 require 'config_db.php';
