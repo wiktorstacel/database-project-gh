@@ -12,7 +12,7 @@ echo'
     require 'config_db.php';
     echo '<td><select id="t1" class="input2" name="t1" onchange="insert_price()">';
     //załadowanie ofert do listy rozwijanej formularza
-    $result = mysqli_query($conn, "SELECT o.oferta_id, o.nazwa, m.nazwa, o.ulica, o.stan FROM oferty o, miejscowosc m WHERE o.miejscowosc_id=m.miejscowosc_id AND o.stan=1 ORDER BY o.oferta_id DESC");
+    $result = mysqli_query($conn, "SELECT o.oferta_id, o.nazwa, m.nazwa, o.ulica, o.stan, o.powierzchnia FROM oferty o, miejscowosc m WHERE o.miejscowosc_id=m.miejscowosc_id AND o.stan=1 ORDER BY o.oferta_id DESC");
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);} 
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
         {
@@ -20,11 +20,11 @@ echo'
             {	
                 if($id != $row[0])//id_oferta różne od id_oferta przesłane z GET
                 { 
-                    print("<option value=".$row[0].">".$row[1]." - ".$row[2]." - ".$row[3]."</option>");
+                    print("<option value=".$row[0].">".$row[1]." - ".$row[5]."m<sup>2</sup> - ".$row[2]." - ".$row[3]."</option>");
                 }
                 else//id oferta z BD równe przesłanemu z GET
                 {
-                    print("<option value=".$row[0]." selected=\"selected\">".$row[1]." - ".$row[2]." - ".$row[3]."</option>");
+                    print("<option value=".$row[0]." selected=\"selected\">".$row[1]." - ".$row[5]."m<sup>2</sup> - ".$row[2]." - ".$row[3]."</option>");
                 }
             }
         }

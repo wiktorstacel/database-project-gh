@@ -11,7 +11,7 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
 $row = mysqli_fetch_array($result, MYSQLI_NUM);
 					
                                         
-//zapis transakci do bd
+//delete transakci z bd
 echo'<div id="komunikat_field">';
 $zapytanie = "DELETE FROM `tranzakcje` WHERE `tranzakcja_id` = '$id'" ;
 print("<b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");

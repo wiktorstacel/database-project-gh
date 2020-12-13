@@ -27,8 +27,11 @@ function getData(dataSource, divID)
   }
 }
 
+//konstruuje odpowiedni adres php, który przez GET prześle dane i wygeneruje odpowiedź z MySQL
 function show_oferty()
 {
+    if(sprawdz_show_oferty() == true) //czy pola wejściowe wprowadzania oferty są wypełnione poprawnie
+    {
     adres = "show_oferty.php?";
     for(i=1;i<=7;i++)
 	{
@@ -42,11 +45,42 @@ function show_oferty()
 		}
 	}
 //	document.getElementById("ekran").innerHTML = adres;
-	Zapytanie(adres);
-	
+    Zapytanie(adres);//AJAX
+    }
 }
 
-function insert_db()
+//sprawdza czy pola wyszukiwarki ofert są uzupełnione poprawnie
+function sprawdz_show_oferty()
+{
+	a=0;
+	for(i=4;i<=5;i++)
+	{	
+	    var pole = document.getElementById("p"+i);
+            document.getElementById("alert"+i).innerHTML = "";//czyszczenie alertów jeśli były wcześńiej wyświetlone
+
+            litPatt = /^[0-9]{1,8}$/;
+            wynik = pole.value.match(litPatt);
+            if(pole.value != "")
+            {
+                if(wynik==null)
+                {
+                document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";
+                a++;
+                }
+            }
+	}
+	if(a>0)
+	{
+		alert("Popraw zaznaczone pola");
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+/*function insert_db()
 {
     adres = "zapisz_oferte.php?"; //!!! to idzie przez innerHTML
     for(i=0;i<=9;i++)
@@ -60,13 +94,13 @@ function insert_db()
 //	document.getElementById("ekran").innerHTML = adres;
 	Zapytanie(adres);
 	
-}
+}*/
 
-function insert_miasto()
+/*function insert_miasto()
 {
 	var a = document.getElementById("p2").value;
 	getData("insert_miasto.php?woj="+a, "p3");
-}
+}*/
 
 var xmlHttp;
 
@@ -85,29 +119,28 @@ function Zapytanie(adres){
       xmlHttp.send(null); //wysyłamy żądanie
 }
 
-function sprawdz()
+function sprawdz_oferta()
 {
 	a=0;
 	for(i=0;i<=8;i++)
-	{
-	
+	{	
 	    var pole = document.getElementById("p"+i);
 		document.getElementById("alert"+i).innerHTML = "";
 		if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-"))
 		{
 			
-			document.getElementById("alert"+i).innerHTML = " wprowadź poprawnie!";
+			document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";
 			a++;			
 /*Operator typeof() zwraca string z nazwą typu jaki ma przekazany parametr (np. zmienna). Może on zwrócić jedną z podanych wartości: "number", "string", "boolean", "object", "function" lub "undefined". Zatem aby sprawdzić czy np. zmienna ma wartość undefined, należy sprawdzić czy wartość zwrócona przez typeof() jest równa undefined*/
 			
 		}
-		if((i==6 || i== 7))		//sprawdzenie pól powierchnia i cena - czy są liczbami
+		if((i==6 || i== 7)) //sprawdzenie pól powierchnia i cena - czy są liczbami
 			{
 			litPatt = /^[0-9]{1,8}$/;
 			wynik = pole.value.match(litPatt);
 				if(wynik==null)
 				{
-				document.getElementById("alert"+i).innerHTML = " wprowadź poprawnie!";
+				document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";
 				a++;
 				}	
 			}
@@ -125,7 +158,7 @@ function sprawdz()
 
 function action_save_oferta()
 {
-	if(sprawdz() == true)
+	if(sprawdz_oferta() == true) //czy pola wejściowe wprowadzania oferty są wypełnione poprawnie
 	{
     adres = "action_save_oferta.php?";
     for(i=0;i<=8;i++)
@@ -209,6 +242,7 @@ function fokus(AElementID)
     el.focus();
 }
 
+//Sprawdza czy pola wprowadzania transakcji mają poprawne wartości
 function sprawdz_tranzakcja()
 {
 	a=0;
@@ -219,10 +253,9 @@ function sprawdz_tranzakcja()
 		document.getElementById("alert"+i).innerHTML = "";
 		if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-"))
 		{	
-			document.getElementById("alert"+i).innerHTML = " wprowadź poprawnie!";
+			document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";
 			a++;
 		}			
-
 	}
 	if(a>0)
 	{
@@ -237,7 +270,7 @@ function sprawdz_tranzakcja()
 
 function action_save_trans()
 {
-	if(sprawdz_tranzakcja() == true)
+	if(sprawdz_tranzakcja() == true)//czy pola wejściowe transkacji wypełnione poprawnie
 	{
     adres = "action_save_trans.php?";
     for(i=1;i<=3;i++)
@@ -258,6 +291,7 @@ function action_save_trans()
 	}
 }
 
+//Czy pola wprowadzania nowego agenta wypełnione są poprawnie
 function sprawdz_new_agent()
 {
 	a=0;
@@ -268,7 +302,7 @@ function sprawdz_new_agent()
 		document.getElementById("alert"+i).innerHTML = "";
 		if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-"))
 		{	
-			document.getElementById("alert"+i).innerHTML = " wprowadź poprawnie!";
+			document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";
 			a++;
 		}			
 
@@ -286,7 +320,7 @@ function sprawdz_new_agent()
 
 function action_save_agent()
 {
-	if(sprawdz_new_agent() == true)
+	if(sprawdz_new_agent() == true)//czy pola wprowadzenia nowego agenta wypełnione poprawnie
 	{
             adres = "action_save_agent.php?";
             for(i=1;i<=3;i++)
@@ -316,32 +350,31 @@ function action_status_agent(a,s)
         getData(adres,'field');
 }
 
-function sprawdz_wyniki()
+//Czy pola wejściowe statystyk agentów są wypelnione poprawnie
+function sprawdz_wyniki_agenci()
 {
 	a=0;
 	for(i=1;i<=4;i++)
 	{
-		var pole = document.getElementById("w"+i);
-		document.getElementById("alertw"+i).innerHTML = ""; //czyszczenie alertów
-		
-		if(i==3 || i==4)
-		{
-		  litPatt = /^[0-9]{4}-[0-1]{1}[0-9]{1}-[0-3]{1}[0-9]{1}$/;
-		  wynik = pole.value.match(litPatt);
-		  if(wynik==null)
-		  {
-		  	document.getElementById("alertw"+i).innerHTML = " wprowadź poprawnie!";
-			a++;
-		  }
-		}
-		    
-		if (!pole.disabled && (pole.value == "" || pole.value == "" || pole.value == ""))
-			{	
-				document.getElementById("alertw"+i).innerHTML = " wprowadź poprawnie!";
-				a++;
-			}
-					
+            var pole = document.getElementById("w"+i);
+            document.getElementById("alertw"+i).innerHTML = ""; //czyszczenie alertów
 
+            if(i==3 || i==4)//sprawdzenie poprawności formatu daty
+            {
+                litPatt = /^[0-9]{4}-[0-1]{1}[0-9]{1}-[0-3]{1}[0-9]{1}$/;
+                wynik = pole.value.match(litPatt);
+                if(wynik==null)
+                {
+                      document.getElementById("alertw"+i).innerHTML = " Wprowadź poprawnie!";
+                      a++;
+                }
+            }
+
+            if (!pole.disabled && (pole.value == "" || pole.value == "" || pole.value == ""))
+            {	
+                    document.getElementById("alertw"+i).innerHTML = " Wprowadź poprawnie!";
+                    a++;
+            }
 	}
 	if(a>0)
 	{
@@ -356,7 +389,7 @@ function sprawdz_wyniki()
 
 function show_wyniki_agenci()
 {
-	if(sprawdz_wyniki() == true)
+	if(sprawdz_wyniki_agenci() == true)
 	{
     adres = "show_wyniki_agenci.php?";
     for(i=1;i<=7;i++)

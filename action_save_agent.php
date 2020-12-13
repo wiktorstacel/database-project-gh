@@ -2,26 +2,20 @@
 
 $a[1] = $_GET["a1"];//imie
 $a[2] = $_GET["a2"];//nazwisko
-$a[3] = $_GET["a3"];//stanowisko
+$a[3] = $_GET["a3"];//stanowisko id
 
-
+$a[1] =  html_entity_decode($a[1]);
+$a[2] =  html_entity_decode($a[2]);
 
 require 'config_db.php';
-//wstawienie stanowisko_id
-$zapytanie1 = "SELECT stanowisko_id FROM stanowisko WHERE nazwa='".$a[3]."'";
-$result = mysqli_query($conn, $zapytanie1);
-if($result != TRUE){echo 'Bład zapytania MySQL1, odpowiedź serwera: '.mysqli_error($conn);}
-    $row = mysqli_fetch_array($result);
-					
-    $a[3]=$row["stanowisko_id"];  //id stanowiska do wstawienia w 'oferty'
-//    print("<b>MySQL1: </b><div id=\"ekran1.1\">".$zapytanie1."</div><div>Odp:".$a[3]."</div>");
 					
 //zapis agenta do bd
 echo'<div id="komunikat_field">';
 $zapytanie = "INSERT INTO `agenci` (`agent_id`, `imie` , `nazwisko` , `stanowisko_id`, `status`) VALUES (DEFAULT,'$a[1]','$a[2]','$a[3]','1')" ;
-print("<b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
+
 $result = mysqli_query($conn, $zapytanie);
-if($result != TRUE){echo '<br /><h3>BŁĄD ZAPISU DANYCH!</h3><br />Bład zapytania MySQL1, odpowiedź serwera: '.mysqli_error($conn);}
+print("<b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
+if($result != TRUE){echo '<br /><h3>BŁĄD ZAPISU DANYCH!</h3><br />Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
 else {echo'<br /><h3>DANE ZAPISANE POPRAWNIE</h3>';}
 echo'</div>'; //end of komunikat_field
 

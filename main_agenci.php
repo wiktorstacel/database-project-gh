@@ -19,7 +19,7 @@
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
         { 
-            print("<option>".$row[1]."</option>");
+            print("<option value=".$row[0].">".$row[1]."</option>");
         }
     echo'<option selected="selected">-wybierz-</option></select>
          <div id="alert3" class="alert"></div>';
@@ -61,14 +61,17 @@
     echo'<option selected="selected">-wszystkie-</option></select>
         <div id="alertw2" class="alert"></div>
  
-    <br /><label for="w1">Wyniki od: </label>'; 
+    <br /><label for="w3">Wyniki od: </label>'; 
     $result = mysqli_query($conn, "SELECT CURDATE()"); //pobranie daty dzisiejszej Mysql
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
     $row = mysqli_fetch_array($result, MYSQLI_NUM);
     
-    echo'<input name="date_low" id="w3" type="text" value="2010-01-01" onchange="show_wyniki_agenci()" class="data"  /> do: <input name="date_high" id="w4" type="text" value="'.$row[0].'" onchange="ask_wyniki()" class="data" />
-        <div id="alertw3" class="alert"></div>
-        <div id="alertw4" class="alert"></div>
+    echo'<input name="date_low" id="w3" type="text" value="2010-01-01" onchange="show_wyniki_agenci()" class="data"  />'
+    . ' <label for="w4">do: </label>'
+    . '<input name="date_high" id="w4" type="text" value="'.$row[0].'" onchange="show_wyniki_wyniki()" class="data" />
+        <div id="alertw3" class="alert" style="float: left; margin-left: 56px;"></div>
+        <div id="alertw4" class="alert" style="float: right; margin-right: 56px;"></div>
+        <div style="clear:both;"></div>
 
     <br />
     <label for="w5">Średnia sprzedaż: </label>

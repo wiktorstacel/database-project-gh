@@ -55,12 +55,14 @@ echo'
 
     echo'<tr>
     <td>Cena min:</td>
-    <td> <input name="pricemin" id="p4" type="text" value="" onchange="show_oferty()" style="width:90px;" /></td>
+    <td> <input name="pricemin" id="p4" type="text" onchange="show_oferty()" style="width:90px;" />
+    <div id="alert4" class="alert"></div></td>
     </tr>
 
     <tr>
     <td>Cena max:</td>
-    <td><input name="pricemax" id="p5" type="text" value="" onchange="show_oferty()" style="width:90px;" /></td>
+    <td><input name="pricemax" id="p5" type="text" onchange="show_oferty()" style="width:90px;" />
+    <div id="alert5" class="alert"></div></td>
     </tr>
 
     <tr>
