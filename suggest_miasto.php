@@ -1,28 +1,31 @@
 <?php
-require_once 'config_db.php';
-$tek = htmlentities($_GET["tek"]);
+$tek = $_GET["tek"];
+$tek = htmlentities($tek, ENT_QUOTES, "UTF-8");
+
 if($tek)
 {
     $i=0;
-    $q=mysqli_query($conn, "SELECT nazwa FROM miejscowosc WHERE nazwa like '$tek'");
+    require_once 'config_db.php';
+    $tek = mysqli_real_escape_string($conn, $tek);
+    $q=mysqli_query($conn, "SELECT nazwa FROM miejscowosc WHERE nazwa like '$tek%'");
     if($q != TRUE){echo 'Bład zapytania MySQL4, odpowiedź serwera: '.mysqli_error($conn);}
-        while($rekord=mysqli_fetch_array($q))
+    while($rekord=mysqli_fetch_array($q))
+    {
+        $i++;
+        echo "<span id=sug$i onclick='wstaw($i)'>".$rekord["nazwa"]. " </span>";
+    }
+    mysqli_free_result($q);
+    if($i>0)
+    {
+        if($i==1)
         {
-            $i++;
-            echo "<span id=sug$i onclick='wstaw($i)'>".$rekord["nazwa"]. " </span>";
+                echo "<span> istnieje</span>";
         }
-        
-        if($i>0)
+        else
         {
-            if($i==1)
-            {
-                    echo "<span> istnieje</span>";
-            }
-            else
-            {
-                    echo "<span> istnieją</span>";	
-            }
+                echo "<span> istnieją</span>";	
         }
-        
+    }
+    mysqli_close($conn);   
 }
 ?>

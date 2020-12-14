@@ -127,8 +127,8 @@ function sprawdz_save_oferta()
 	{	
 	    var pole = document.getElementById("p"+i);
             document.getElementById("alert"+i).innerHTML = "";
-            litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s$/;
-            if(i==0 || i==5 || i==8){litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\+|\=|\[|\{|\]|\}|\||\'|\<|\>|\?|\""|\;|\s$/;}
+            litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\"|\;|\:|\s$/;
+            if(i==0 || i==5 || i==8){litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\+|\=|\[|\{|\]|\}|\||\'|\<|\>|\?|\""|\"|\;|\s$/;}
             wynik = pole.value.match(litPatt);
             if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-" || wynik!=null))
             {	
@@ -260,7 +260,7 @@ function sprawdz_save_tranzakcja()
 
         var pole = document.getElementById("t"+i);
         document.getElementById("alert"+i).innerHTML = "";
-        litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s$/;
+        litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\"|\;|\:|\s$/;
         wynik = pole.value.match(litPatt);
         if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-" || wynik!=null))
         {	
@@ -319,14 +319,20 @@ function sprawdz_save_agent()
 
         var pole = document.getElementById("a"+i);
         document.getElementById("alert"+i).innerHTML = "";
-        litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s$/;
+        litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\"|\;|\:|\s$/;
         wynik = pole.value.match(litPatt);
-        if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-" || wynik!=null))
+        litPatt = /^(ą|ę|ź|ć|ń|ó|ś|ż|Ą|Ę|Ź|Ć|Ń|Ó|Ś|Ż|[a-z]|[A-Z]|[0-9]){3,15}$/;//akceptowane 3-15 znaków wymienione w nawiasach
+        wynik2 = pole.value.match(litPatt);
+        if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-" || wynik!=null || wynik2==null))
         {	
             a++;
             if(wynik!=null)
             {
                 document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie! Niedozwolony znak: "+wynik;
+            }
+            else if(wynik2==null & pole.value != "" & i!=3)
+            {
+                document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie! Od 3 do 15 znaków (cyfry lub duże/małe litery(w tym polskie). "+wynik2;
             }
             else
             {

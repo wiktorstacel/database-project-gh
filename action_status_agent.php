@@ -8,11 +8,11 @@ require_once 'config_db.php';
 
 if($a[2] == 0) //status
 {
-    $zapytanie =  "UPDATE `agencik` SET `status`='1' WHERE `agent_id`='$a[1]'";
+    $zapytanie =  "UPDATE `agenci` SET `status`='1' WHERE `agent_id`='$a[1]'";
 }
 else if($a[2] == 1)
 {
-    $zapytanie =  "UPDATE `agencik` SET `status`='0' WHERE `agent_id`='$a[1]'";
+    $zapytanie =  "UPDATE `agenci` SET `status`='0' WHERE `agent_id`='$a[1]'";
 }
 echo'<div id="komunikat_field">';
 print("<b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
