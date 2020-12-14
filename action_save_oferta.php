@@ -16,7 +16,7 @@ $licznik = 0;
 if($p[4] != 'x')//wstawiwanie nowej miejscowosci a potem wyciaganie jej nowego id
 {
     require_once 'config_db.php';
-    $zapytanie40="SELECT miejscowosc_id FROM miejscowosc WHERE nazwa='".$p[4]."'";
+    $zapytanie40="SELECT miejscowosc_id FROM miejscowosc WHERE nazwa='$p[4]'";
     $result = mysqli_query($conn, $zapytanie40);
     if($result != TRUE){echo 'Bład zapytania MySQL4.0, odpowiedź serwera: '.mysqli_error($conn);$licznik++;}
     $exist = mysqli_fetch_array($result);

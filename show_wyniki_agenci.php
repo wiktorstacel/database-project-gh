@@ -26,10 +26,10 @@ AND t.agent_id = a.agent_id
 AND o.oferta_id = t.oferta_id
 ";
 
-$add[1] = " AND a.agent_id='".$w[1]."'";
-$add[2] = " AND s.stanowisko_id='".$w[2]."'";
-$add[3] = " AND t.data>='".$w[3]."'";
-$add[4] = " AND t.data<='".$w[4]."'";
+$add[1] = " AND a.agent_id='$w[1]'";
+$add[2] = " AND s.stanowisko_id='$w[2]'";
+$add[3] = " AND t.data>='$w[3]'";
+$add[4] = " AND t.data<='$w[4]'";
 $add[5] = " GROUP BY a.nazwisko";
 $add[6] = " ORDER BY AVG( o.cena ) DESC";
 $add[7] = " ORDER BY SUM(o.cena) DESC";
@@ -91,9 +91,9 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
 //agenci, którzy jeszcze nic nie sprzedali i nie są w transakcjach
 $zapytanie2 = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa FROM agenci a, stanowisko s WHERE a.status='1'";
 $tanie2 = " AND a.stanowisko_id=s.stanowisko_id AND a.agent_id NOT IN (SELECT t.agent_id FROM tranzakcje t)";
-$add[1] = " AND a.agent_id='".$w[1]."'";
-$add[2] = " AND a.stanowisko_id='".$w[2]."'";
-//$middle = " AND a.stanowisko_id='".$w[2]."'";
+$add[1] = " AND a.agent_id='$w[1]'";
+$add[2] = " AND a.stanowisko_id='$w[2]'";
+//$middle = " AND a.stanowisko_id='$w[2]'";
 for($i=1;$i<=2;$i++)
 {
   if($w[$i] != 'x')

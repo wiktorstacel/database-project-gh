@@ -6,7 +6,7 @@ $id = htmlentities($_GET["id"]);//oferta_id
 require_once 'config_db.php';
 
 //sprawdzenie czy nie ma transakcji z taką ofertą - jeśli tak usunięcie nie jest możliwe
-$result = mysqli_query($conn, "SELECT tranzakcja_id FROM tranzakcje WHERE oferta_id='".$id."'");
+$result = mysqli_query($conn, "SELECT tranzakcja_id FROM tranzakcje WHERE oferta_id='$id'");
 if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
 //$row = mysqli_fetch_array($result, MYSQLI_NUM);
 					 

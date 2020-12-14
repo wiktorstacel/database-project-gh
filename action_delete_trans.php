@@ -6,7 +6,7 @@ $flaga = 0;
 require_once 'config_db.php';
 
 //select transakcji
-$result = mysqli_query($conn, "SELECT tranzakcja_id, oferta_id FROM tranzakcje WHERE tranzakcja_id='".$id."'");
+$result = mysqli_query($conn, "SELECT tranzakcja_id, oferta_id FROM tranzakcje WHERE tranzakcja_id='$id'");
 if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
 $row = mysqli_fetch_array($result, MYSQLI_NUM);
 					

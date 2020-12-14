@@ -4,7 +4,7 @@ $status = htmlentities($_GET['status']);// 0 - były pracownik; 1 - obecny praco
 
 $zapytanie = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa 
 FROM agenci a, stanowisko s
-WHERE a.stanowisko_id = s.stanowisko_id AND a.status = ".$status."
+WHERE a.stanowisko_id = s.stanowisko_id AND a.status = '$status'
 ORDER BY a.agent_id ASC";
 
 require_once 'config_db.php';

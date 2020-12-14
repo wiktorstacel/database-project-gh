@@ -8,7 +8,7 @@ if($woj == 'x' || $woj == '-wszystkie-' || $woj == '-wybierz-')
 }
 else
 {
-  $middle = " AND w.wojewodztwo_id='".$woj."'";	
+  $middle = " AND w.wojewodztwo_id='$woj'";	
 }
 $zapy = "SELECT * FROM miejscowosc m, wojewodztwo w WHERE m.wojewodztwo_id=w.wojewodztwo_id";
 
