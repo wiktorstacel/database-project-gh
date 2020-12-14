@@ -5,7 +5,7 @@ $a[2] = htmlentities($_GET["a2"]);//nazwisko
 $a[3] = htmlentities($_GET["a3"]);//stanowisko id
 
 
-require 'config_db.php';
+require_once 'config_db.php';
 					
 //zapis agenta do bd
 echo'<div id="komunikat_field">';

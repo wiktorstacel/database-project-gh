@@ -8,7 +8,7 @@ echo'
 $zapytanie = "SELECT t.tranzakcja_id, o.nazwa, a.nazwisko, a.imie, t.klient, t.data, o.cena, m.nazwa, o.ulica, a.status, o.powierzchnia FROM  oferty o, agenci a, tranzakcje t, miejscowosc m
 WHERE t.oferta_id=o.oferta_id AND t.agent_id=a.agent_id AND m.miejscowosc_id=o.miejscowosc_id AND t.tranzakcja_id='".$id."'";
 
-require 'config_db.php';
+require_once 'config_db.php';
 
 $result = mysqli_query($conn, $zapytanie);
 if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}

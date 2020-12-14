@@ -1,5 +1,5 @@
 <?php
-require 'config_db.php';
+require_once 'config_db.php';
 $tek = htmlentities($_GET["tek"]);
 if($tek)
 {

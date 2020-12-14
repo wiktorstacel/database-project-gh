@@ -15,7 +15,7 @@ $licznik = 0;
 
 if($p[4] != 'x')//wstawiwanie nowej miejscowosci a potem wyciaganie jej nowego id
 {
-    require 'config_db.php';
+    require_once 'config_db.php';
     $zapytanie40="SELECT miejscowosc_id FROM miejscowosc WHERE nazwa='".$p[4]."'";
     $result = mysqli_query($conn, $zapytanie40);
     if($result != TRUE){echo 'Bład zapytania MySQL4.0, odpowiedź serwera: '.mysqli_error($conn);$licznik++;}
@@ -52,7 +52,7 @@ if($licznik > 0) //sa bledy w zapisie miejscowosci
 }
 else //jak nie ma bledow to mozna zapisac oferte
 {
-    require 'config_db.php';
+    require_once 'config_db.php';
     $zapytanie = "INSERT INTO `oferty` ( `nazwa` , `rodzaj_id` , `wojewodztwo_id` , `miejscowosc_id`, `ulica` ,`powierzchnia`,`cena`,`opis`,`oferta_id`) VALUES ( '$p[0]','$p[1]','$p[2]','$p[3]','$p[5]','$p[6]','$p[7]','$p[8]',DEFAULT)" ; 
     $result = mysqli_query($conn, $zapytanie);
     print("<b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");

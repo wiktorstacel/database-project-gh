@@ -14,7 +14,7 @@
     
     </br><label for="a3">Stanowisko: </label>
     <select id="a3" class="input1" name="akind" onchange="">'; 
-    require 'config_db.php';	//załadowanie rodzajów rodzajów stanowisk do listy rozwijanej formularza
+    require_once 'config_db.php';	//załadowanie rodzajów rodzajów stanowisk do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM stanowisko ORDER BY stanowisko_id DESC");
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
@@ -37,7 +37,7 @@
 
     <label for="w1">Pracownik: </label>
     <select name="agent" id="w1" class="input1" onchange="show_wyniki_agenci()">'; 
-    require 'config_db.php';	//załadowanie agentów do listy rozwijanej formularza
+    //załadowanie agentów do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM agenci WHERE status='1' ORDER BY agent_id ASC");
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))
@@ -51,7 +51,7 @@
 
     <label for="w2">Stanowisko: </label>
     <select id="w2" class="input1" name="akind" onchange="show_wyniki_agenci()">'; 
-    require 'config_db.php';	//załadowanie rodzajów stanowisk do listy rozwijanej formularza
+    //załadowanie rodzajów stanowisk do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM stanowisko ORDER BY stanowisko_id DESC");
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         while($row = mysqli_fetch_array($result, MYSQLI_NUM))

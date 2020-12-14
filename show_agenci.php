@@ -7,7 +7,7 @@ FROM agenci a, stanowisko s
 WHERE a.stanowisko_id = s.stanowisko_id AND a.status = ".$status."
 ORDER BY a.agent_id ASC";
 
-require 'config_db.php';
+require_once 'config_db.php';
 
 echo "<table class='lista_art'>";
 echo "<tr class='listwa'>";

@@ -5,7 +5,7 @@ $t[2] = htmlentities($_GET["t2"]);//agent_id
 $t[3] = htmlentities($_GET["t3"]);//klint - string
 $flaga = 0;
 
-require 'config_db.php';	
+require_once 'config_db.php';	
                                         
 //zapis transakci do bd
 echo'<div id="komunikat_field">';

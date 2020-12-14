@@ -3,7 +3,7 @@
 $a[1] = htmlentities($_GET["m"]);//id
 $a[2] = htmlentities($_GET["status"]);//status
 
-require 'config_db.php';				
+require_once 'config_db.php';				
 //zapis agenta do bd - zmiana statusu na przeciwny do tego, w jakim przyszedł
 
 if($a[2] == 0) //status

@@ -3,7 +3,7 @@
 $id = htmlentities($_GET["id"]);//oferta_id
 
 
-require 'config_db.php';
+require_once 'config_db.php';
 
 //sprawdzenie czy nie ma transakcji z taką ofertą - jeśli tak usunięcie nie jest możliwe
 $result = mysqli_query($conn, "SELECT tranzakcja_id FROM tranzakcje WHERE oferta_id='".$id."'");

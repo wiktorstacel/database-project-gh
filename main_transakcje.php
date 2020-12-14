@@ -1,6 +1,5 @@
 <?php
 $id = htmlentities($_GET["id"]);
-$temp = "";
 echo'
     <h3>Zawarcie transakcji: </h3></br>
 
@@ -9,7 +8,7 @@ echo'
     <tr>
     <td>Oferta:</td>';
 
-    require 'config_db.php';
+    require_once 'config_db.php';
     echo '<td><select id="t1" class="input2" name="t1" onchange="insert_price()">';
     //załadowanie ofert do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT o.oferta_id, o.nazwa, m.nazwa, o.ulica, o.stan, o.powierzchnia FROM oferty o, miejscowosc m WHERE o.miejscowosc_id=m.miejscowosc_id AND o.stan=1 ORDER BY o.oferta_id DESC");
@@ -47,7 +46,7 @@ echo'
         <td>Agent sprzedający:</td>
         <td> <select name="agent" id="t2" class="input2" onchange="insert_price()">'; 
         
-        require 'config_db.php';	//załadowanie agentów do listy rozwijanej formularza
+        //załadowanie agentów do listy rozwijanej formularza
         $result = mysqli_query($conn, "SELECT * FROM agenci WHERE status='1' ORDER BY agent_id ASC");
         if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
         
@@ -74,6 +73,7 @@ echo'
         <button id="searchsubmit" type="" onclick="action_save_trans()">Zrealizuj</button>
         </td>
         <td>';
+            
         print("<button id=\"searchsubmit\" onclick=\"getData('show_transakcje.php','ekran2')\">Pokaż zrealizowane</button>");
         echo'</td>
         </tr>

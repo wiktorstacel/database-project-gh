@@ -12,7 +12,7 @@ $w[8] = htmlentities($_GET["w7"]);//sortuj liczba
 
 
 //filtracja agent_id z przesłanego mixu: imie nazwisko id
-  require 'config_db.php';
+  require_once 'config_db.php';
   $zapytanie2 = "SELECT * FROM agenci a WHERE status='1'";
   $result = mysqli_query($conn, $zapytanie2);
   if($result != TRUE){echo 'Bład zapytania MySQL5, odpowiedź serwera: '.mysqli_error($conn);} 
@@ -86,9 +86,22 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
 				
         echo '</tr>';
 	}
+
 /*        
 //agenci, którzy jeszcze nic nie sprzedali i nie są w transakcjach
-$zapytanie2 = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa FROM agenci a, stanowisko s WHERE a.status='1' AND a.stanowisko_id=s.stanowisko_id AND a.agent_id NOT IN (SELECT t.agent_id FROM tranzakcje t)";	
+$zapytanie2 = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa FROM agenci a, stanowisko s WHERE a.status='1'";
+$tanie2 = " AND a.stanowisko_id=s.stanowisko_id AND a.agent_id NOT IN (SELECT t.agent_id FROM tranzakcje t)";
+$add[1] = " AND a.agent_id='".$w[1]."'";
+$add[2] = " AND a.stanowisko_id='".$w[2]."'";
+//$middle = " AND a.stanowisko_id='".$w[2]."'";
+for($i=1;$i<=2;$i++)
+{
+  if($w[$i] != 'x')
+  {
+  	$zapytanie2 = $zapytanie2.$add[$i];
+  }
+}
+$zapytanie2 = $zapytanie2.$tanie2;
 
 $result2 = mysqli_query($conn, $zapytanie2);
 if($result2 != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
@@ -110,11 +123,10 @@ if($result2 != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_e
 				
         echo '</tr>';
 	}
-
 */
-echo '</table>';
-print("<br /><br /><br /><b>MySQL: </b><div id=\"ekran3\">".$zapytanie."<br /></div>");
-//+<br /> ".$zapytanie2."
 
+echo '</table>';
+print("<br /><br /><br /><b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
+//<br />+<br /> ".$zapytanie2."
 
 ?>

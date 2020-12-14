@@ -48,7 +48,7 @@ echo '<td>zakup</td>';
 echo '<td>usuń</td>';
 echo '</tr>';
 
-require 'config_db.php';
+require_once 'config_db.php';
 $result = mysqli_query($conn, $zapytanie);
 if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}           		
 while($row = mysqli_fetch_array($result, MYSQLI_NUM))

@@ -3,7 +3,7 @@
 $id = htmlentities($_GET["id"]);//transakcja_id
 $flaga = 0;
 
-require 'config_db.php';
+require_once 'config_db.php';
 
 //select transakcji
 $result = mysqli_query($conn, "SELECT tranzakcja_id, oferta_id FROM tranzakcje WHERE tranzakcja_id='".$id."'");
