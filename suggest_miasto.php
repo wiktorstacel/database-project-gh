@@ -1,11 +1,11 @@
 <?php
-$tek = $_GET["tek"];
-$tek = htmlentities($tek, ENT_QUOTES, "UTF-8");
+$tek = htmlentities($_GET["tek"], ENT_QUOTES, "UTF-8");
+require_once 'config_db.php';
+$tek = mysqli_real_escape_string($conn, $tek);
 
 if($tek)
 {
     $i=0;
-    require_once 'config_db.php';
     $tek = mysqli_real_escape_string($conn, $tek);
     $q=mysqli_query($conn, "SELECT nazwa FROM miejscowosc WHERE nazwa like '$tek%'");
     if($q != TRUE){echo 'Bład zapytania MySQL4, odpowiedź serwera: '.mysqli_error($conn);}
@@ -25,7 +25,7 @@ if($tek)
         {
                 echo "<span> istnieją</span>";	
         }
-    }
-    mysqli_close($conn);   
+    }   
 }
+mysqli_close($conn);
 ?>

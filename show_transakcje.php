@@ -40,4 +40,6 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
 
 echo '</table>';
 print("<br /><br /><br /><b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
+
+mysqli_close($conn);
 ?>

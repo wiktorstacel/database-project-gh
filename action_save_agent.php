@@ -7,9 +7,7 @@ $a[3] = $_GET["a3"];//stanowisko id
 $a[1] = htmlentities($a[1], ENT_QUOTES, "UTF-8");
 $a[2] = htmlentities($a[2], ENT_QUOTES, "UTF-8");
 $a[3] = htmlentities($a[3], ENT_QUOTES, "UTF-8");
-        
 require_once 'config_db.php';
-
 $a[1] = mysqli_real_escape_string($conn, $a[1]);
 $a[2] = mysqli_real_escape_string($conn, $a[2]);
 $a[3] = mysqli_real_escape_string($conn, $a[3]);

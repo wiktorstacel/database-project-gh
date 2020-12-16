@@ -1,18 +1,25 @@
 <?php
 
-$w[1] = htmlentities($_GET["w1"]);//id jako atrybut value elementu option
-$w[2] = htmlentities($_GET["w2"]);//id stanowiska
-$w[3] = htmlentities($_GET["w3"]);//data od 
-$w[4] = htmlentities($_GET["w4"]);//data do
+$w[1] = htmlentities($_GET["w1"], ENT_QUOTES, "UTF-8");//id jako atrybut value elementu option
+$w[2] = htmlentities($_GET["w2"], ENT_QUOTES, "UTF-8");//id stanowiska
+$w[3] = htmlentities($_GET["w3"], ENT_QUOTES, "UTF-8");//data od 
+$w[4] = htmlentities($_GET["w4"], ENT_QUOTES, "UTF-8");//data do
 $w[5] = "z";//miejsce na group by
-$w[6] = htmlentities($_GET["w5"]);//sortuj sredia
-$w[7] = htmlentities($_GET["w6"]);//sortuj ogólem
-$w[8] = htmlentities($_GET["w7"]);//sortuj liczba
-
+$w[6] = htmlentities($_GET["w5"], ENT_QUOTES, "UTF-8");//sortuj sredia
+$w[7] = htmlentities($_GET["w6"], ENT_QUOTES, "UTF-8");//sortuj ogólem
+$w[8] = htmlentities($_GET["w7"], ENT_QUOTES, "UTF-8");//sortuj liczba
+require_once 'config_db.php';
+$w[1] = mysqli_real_escape_string($conn, $w[1]);
+$w[2] = mysqli_real_escape_string($conn, $w[2]);
+$w[3] = mysqli_real_escape_string($conn, $w[3]);
+$w[4] = mysqli_real_escape_string($conn, $w[4]);
+//$w[5] = mysqli_real_escape_string($conn, $w[5]);
+$w[6] = mysqli_real_escape_string($conn, $w[6]);
+$w[7] = mysqli_real_escape_string($conn, $w[7]);
+$w[8] = mysqli_real_escape_string($conn, $w[8]);
 
 
 //filtracja agent_id z przesłanego mixu: imie nazwisko id
-  require_once 'config_db.php';
   $zapytanie2 = "SELECT * FROM agenci a WHERE status='1'";
   $result = mysqli_query($conn, $zapytanie2);
   if($result != TRUE){echo 'Bład zapytania MySQL5, odpowiedź serwera: '.mysqli_error($conn);} 
@@ -129,4 +136,5 @@ echo '</table>';
 print("<br /><br /><br /><b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
 //<br />+<br /> ".$zapytanie2."
 
+mysqli_close($conn);
 ?>

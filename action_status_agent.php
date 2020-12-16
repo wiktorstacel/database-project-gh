@@ -1,9 +1,11 @@
 <?php
 
-$a[1] = htmlentities($_GET["m"]);//id
-$a[2] = htmlentities($_GET["status"]);//status
+$a[1] = htmlentities($_GET["m"], ENT_QUOTES, "UTF-8");
+$a[2] = htmlentities($_GET["status"], ENT_QUOTES, "UTF-8");
+require_once 'config_db.php';	
+$a[1] = mysqli_real_escape_string($conn, $a[1]);
+$a[2] = mysqli_real_escape_string($conn, $a[2]);
 
-require_once 'config_db.php';				
 //zapis agenta do bd - zmiana statusu na przeciwny do tego, w jakim przyszedł
 
 if($a[2] == 0) //status
@@ -21,4 +23,6 @@ if($result != TRUE){echo '<br /><h3>BŁĄD ZAPISU DANYCH!</h3><br />Bład zapyta
 else {echo'<br /><h3>DANE ZAPISANE POPRAWNIE</h3>';}
 echo'</div>'; //end of komunikat_field
 
+//mysqli_free_result($result);
+mysqli_close($conn);
 ?>

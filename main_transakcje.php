@@ -1,5 +1,6 @@
 <?php
-$id = htmlentities($_GET["id"]);
+$id = htmlentities($_GET["id"], ENT_QUOTES, "UTF-8");//nie jest używana w zapytaniu MySQL
+
 echo'
     <h3>Zawarcie transakcji: </h3></br>
 
@@ -79,5 +80,5 @@ echo'
         </tr>
         
         </table>';
-
+mysqli_close($conn);
 ?>

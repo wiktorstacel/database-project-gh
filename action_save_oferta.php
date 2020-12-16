@@ -1,22 +1,29 @@
 <?php
 
-$p[0] = htmlentities($_GET["p0"]);//nazwa
-$p[1] = htmlentities($_GET["p1"]);//rodzaj_id
-$p[2] = htmlentities($_GET["p2"]);//wojewodztwo_id
-$p[3] = htmlentities($_GET["p3"]);//miejscowosc_id 
-$p[4] = htmlentities($_GET["p4"]);//miejscowosc_new
-$p[5] = htmlentities($_GET["p5"]);//ulica
-$p[6] = htmlentities($_GET["p6"]);//powierzchnia
-$p[7] = htmlentities($_GET["p7"]);//cena
-$p[8] = htmlentities($_GET["p8"]);//opis
+$p[0] = htmlentities($_GET["p0"], ENT_QUOTES, "UTF-8");//nazwa
+$p[1] = htmlentities($_GET["p1"], ENT_QUOTES, "UTF-8");//rodzaj_id
+$p[2] = htmlentities($_GET["p2"], ENT_QUOTES, "UTF-8");//wojewodztwo_id
+$p[3] = htmlentities($_GET["p3"], ENT_QUOTES, "UTF-8");//miejscowosc_id 
+$p[4] = htmlentities($_GET["p4"], ENT_QUOTES, "UTF-8");//miejscowosc_new
+$p[5] = htmlentities($_GET["p5"], ENT_QUOTES, "UTF-8");//ulica
+$p[6] = htmlentities($_GET["p6"], ENT_QUOTES, "UTF-8");//powierzchnia
+$p[7] = htmlentities($_GET["p7"], ENT_QUOTES, "UTF-8");//cena
+$p[8] = htmlentities($_GET["p8"], ENT_QUOTES, "UTF-8");//opis
+require_once 'config_db.php';
+$p[1] = mysqli_real_escape_string($conn, $p[1]);
+$p[2] = mysqli_real_escape_string($conn, $p[2]);
+$p[3] = mysqli_real_escape_string($conn, $p[3]);
+$p[4] = mysqli_real_escape_string($conn, $p[4]);
+$p[5] = mysqli_real_escape_string($conn, $p[5]);
+$p[6] = mysqli_real_escape_string($conn, $p[6]);
+$p[7] = mysqli_real_escape_string($conn, $p[7]);
+$p[8] = mysqli_real_escape_string($conn, $p[8]);
 
 $licznik = 0;
 					
-
 if($p[4] != 'x')//wstawiwanie nowej miejscowosci a potem wyciaganie jej nowego id
 {
-    require_once 'config_db.php';
-    $zapytanie40="SELECT miejscowosc_id FROM miejscowosc WHERE nazwa='$p[4]'";
+        $zapytanie40="SELECT miejscowosc_id FROM miejscowosc WHERE nazwa='$p[4]'";
     $result = mysqli_query($conn, $zapytanie40);
     if($result != TRUE){echo 'Bład zapytania MySQL4.0, odpowiedź serwera: '.mysqli_error($conn);$licznik++;}
     $exist = mysqli_fetch_array($result);
@@ -52,7 +59,6 @@ if($licznik > 0) //sa bledy w zapisie miejscowosci
 }
 else //jak nie ma bledow to mozna zapisac oferte
 {
-    require_once 'config_db.php';
     $zapytanie = "INSERT INTO `oferty` ( `nazwa` , `rodzaj_id` , `wojewodztwo_id` , `miejscowosc_id`, `ulica` ,`powierzchnia`,`cena`,`opis`,`oferta_id`) VALUES ( '$p[0]','$p[1]','$p[2]','$p[3]','$p[5]','$p[6]','$p[7]','$p[8]',DEFAULT)" ; 
     $result = mysqli_query($conn, $zapytanie);
     print("<b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
@@ -62,5 +68,5 @@ else //jak nie ma bledow to mozna zapisac oferte
 echo'</div>'; //end of komunikat_field 
 	
 
-
+mysqli_close($conn);
 ?>

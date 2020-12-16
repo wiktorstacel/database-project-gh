@@ -1,6 +1,7 @@
 <?php
-
-$woj = htmlentities($_GET["woj"]);
+$woj = htmlentities($_GET["woj"], ENT_QUOTES, "UTF-8");
+require_once 'config_db.php';
+$woj = mysqli_real_escape_string($conn, $woj);
 
 if($woj == 'x' || $woj == '-wszystkie-' || $woj == '-wybierz-')
 {
@@ -15,7 +16,7 @@ $zapy = "SELECT * FROM miejscowosc m, wojewodztwo w WHERE m.wojewodztwo_id=w.woj
 $tanie = " ORDER BY m.nazwa ASC";
 $zapytanie = $zapy.$middle.$tanie;
 					
-require_once 'config_db.php';	//za�adowanie miejscowosci do listy rozwijanej formularza
+//za�adowanie miejscowosci do listy rozwijanej formularza
 $result = mysqli_query($conn, $zapytanie);
 if($result != TRUE){echo 'B�ad zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
 
@@ -25,6 +26,5 @@ while($row = mysqli_fetch_array($result, MYSQLI_NUM))
 }
 echo'<option selected="selected">-wszystkie-</option>';	
 			
-					
-					
+mysqli_close($conn);							
 ?>

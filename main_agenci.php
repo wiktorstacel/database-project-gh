@@ -69,8 +69,8 @@
     echo'<input name="date_low" id="w3" type="text" value="2010-01-01" onchange="show_wyniki_agenci()" class="data"  />'
     . ' <label for="w4">do: </label>'
     . '<input name="date_high" id="w4" type="text" value="'.$row[0].'" onchange="show_wyniki_wyniki()" class="data" />
-        <div id="alertw3" class="alert" style="float: left; margin-left: 56px;"></div>
-        <div id="alertw4" class="alert" style="float: right; margin-right: 56px;"></div>
+        <div id="alertw3" class="alert" style="float: left; margin-left: 54px;"></div>
+        <div id="alertw4" class="alert" style="float: right; margin-right: 54px;"></div>
         <div style="clear:both;"></div>
 
     <br />
@@ -92,4 +92,5 @@
     print("<div id=\"agenci_submit2\"><button onclick=\"getData('show_agenci.php?status=0','ekran2')\">Byli Pracownicy</button></div>");
     print("<div style=\"clear: both;\"></div>");
 
+mysqli_close($conn);
 ?>

@@ -1,13 +1,12 @@
 <?php
-
-$status = htmlentities($_GET['status']);// 0 - były pracownik; 1 - obecny pracownik
+$status = htmlentities($_GET['status'], ENT_QUOTES, "UTF-8");// 0 - były pracownik; 1 - obecny pracownik
+require_once 'config_db.php';
+$status = mysqli_real_escape_string($conn, $status);
 
 $zapytanie = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa 
 FROM agenci a, stanowisko s
 WHERE a.stanowisko_id = s.stanowisko_id AND a.status = '$status'
 ORDER BY a.agent_id ASC";
-
-require_once 'config_db.php';
 
 echo "<table class='lista_art'>";
 echo "<tr class='listwa'>";
@@ -52,4 +51,5 @@ while($row = mysqli_fetch_array($result, MYSQLI_NUM))
 echo '</table>';
 print("<br /><br /><br /><b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
 
+mysqli_close($conn);
 ?>

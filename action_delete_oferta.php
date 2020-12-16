@@ -1,9 +1,8 @@
 <?php
 
-$id = htmlentities($_GET["id"]);//oferta_id
-
-
+$id = htmlentities($_GET["id"], ENT_QUOTES, "UTF-8");//oferta_id
 require_once 'config_db.php';
+$id = mysqli_real_escape_string($conn, $id);
 
 //sprawdzenie czy nie ma transakcji z taką ofertą - jeśli tak usunięcie nie jest możliwe
 $result = mysqli_query($conn, "SELECT tranzakcja_id FROM tranzakcje WHERE oferta_id='$id'");
@@ -27,5 +26,6 @@ else //usunięcie oferty, ale tylko wtedy jeśli nie była przedmiotem transakcj
     else {echo'<br /><h3>DANE ZAPISANE POPRAWNIE</h3>';}
     echo'</div>'; //end of komunikat_field
 }
-                                        
+
+mysqli_close($conn);
 ?>
