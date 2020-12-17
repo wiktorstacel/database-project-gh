@@ -98,6 +98,7 @@ while($row = mysqli_fetch_array($result, MYSQLI_NUM))
 	
 
 echo '</table>';
+echo '<button id="button_more_ofert">Pokaż Więcej</button>';
 print("<br /><br /><br /><b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
 
 mysqli_close($conn);

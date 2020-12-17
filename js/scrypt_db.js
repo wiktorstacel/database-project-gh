@@ -448,3 +448,28 @@ function show_wyniki_agenci()
 //	getData('komunikat.php','field')
 	}
 }
+
+// JQUERY
+//
+//przycisk pokaż więcej przy ofertach
+$(document).ready(function(){
+    var ofertCount = 10;
+    $("#button_more_ofert").click(function(){
+        ofertCount = ofertCount = 10;
+        $("#ekran2").load("show_oferty.php", {
+            ofertSum: ofertCount
+        });
+    });
+});
+
+//przycisk pokaż więcej przy transkacjach
+$(document).ready(function(){
+    var transCount = 10;
+    $("#button_more_trans").click(function(){
+        transCount = transCount = 10;
+        $("#ekran2").load("show_transakcje.php", {
+            transSum: transCount
+        });
+    });
+});
+
