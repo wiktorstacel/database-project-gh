@@ -316,13 +316,20 @@ function sprawdz_save_agent()
     a=0;
     for(i=1;i<=3;i++)
     {
-
         var pole = document.getElementById("a"+i);
         document.getElementById("alert"+i).innerHTML = "";
         litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\"|\;|\:|\s$/;
         wynik = pole.value.match(litPatt);
-        litPatt = /^(ą|ę|ź|ć|ń|ó|ś|ż|Ą|Ę|Ź|Ć|Ń|Ó|Ś|Ż|[a-z]|[A-Z]|[0-9]){3,15}$/;//akceptowane 3-15 znaków wymienione w nawiasach
-        wynik2 = pole.value.match(litPatt);
+        if(i<3)
+        {
+            litPatt = /^(ą|ę|ź|ć|ń|ó|ś|ż|ł|Ą|Ę|Ź|Ć|Ń|Ó|Ś|Ż|[a-z]|[A-Z]|[0-9]){3,15}$/;//akceptowane 3-15 znaków wymienione w nawiasach
+            wynik2 = pole.value.match(litPatt);
+        }
+        else //filtrująć id_stanowisko jako mniejsze od 3 znaków nie pozwalało przepuścić wybranego selecta
+        {
+            litPatt = /^[0-9]{1,6}$/;//akceptowane 3-15 znaków wymienione w nawiasach
+            wynik2 = pole.value.match(litPatt);            
+        }
         if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-" || wynik!=null || wynik2==null))
         {	
             a++;
@@ -332,15 +339,13 @@ function sprawdz_save_agent()
             }
             else if(wynik2==null & pole.value != "" & i!=3)
             {
-                document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie! Od 3 do 15 znaków (cyfry lub duże/małe litery(w tym polskie). "+wynik2;
+                document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie! Od 3 do 15 znaków (cyfry lub duże/małe litery(w tym polskie).";
             }
             else
             {
                 document.getElementById("alert"+i).innerHTML = " Wprowadź poprawnie!";                           
             }
-
-        }			
-
+        }
     }
     if(a>0)
     {

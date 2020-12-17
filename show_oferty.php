@@ -25,7 +25,7 @@ $add[4] = " AND o.cena>='$p[4]'";
 $add[5] = " AND o.cena<='$p[5]'";
 $add[6] = " AND o.stan='$p[6]'";
 $add[7] = " AND o.stan='$p[7]'";
-$add[8] = " ORDER BY o.oferta_id DESC";
+$add[8] = " ORDER BY o.oferta_id DESC LIMIT 10";
 
 $zapytanie = "SELECT o.nazwa, r.nazwa, w.nazwa, m.nazwa, o.ulica, o.powierzchnia, o.cena, o.opis, o.oferta_id, o.stan FROM  oferty o, rodzaj r, wojewodztwo w, miejscowosc m 
 WHERE o.rodzaj_id=r.rodzaj_id

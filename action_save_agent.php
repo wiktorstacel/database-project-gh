@@ -23,7 +23,7 @@ if($result != TRUE){echo '<br /><h3>BŁĄD ZAPISU DANYCH!</h3><br />Bład zapyta
 else {echo'<br /><h3>DANE ZAPISANE POPRAWNIE</h3>';}
 echo'</div>'; //end of komunikat_field
 
-mysqli_free_result($result);
+
 mysqli_close($conn);
 
 ?>
