@@ -9,11 +9,10 @@ else
 {
     $transSum = $_POST['transSum'];
     $zapytanie = "SELECT t.tranzakcja_id, o.nazwa, a.nazwisko, a.imie, t.klient, t.data, o.cena, m.nazwa, o.ulica, a.status FROM  oferty o, agenci a, tranzakcje t, miejscowosc m
-    WHERE t.oferta_id=o.oferta_id AND t.agent_id=a.agent_id AND m.miejscowosc_id=o.miejscowosc_id ORDER BY t.tranzakcja_id DESC LIMIT '$transSum'";
+    WHERE t.oferta_id=o.oferta_id AND t.agent_id=a.agent_id AND m.miejscowosc_id=o.miejscowosc_id ORDER BY t.tranzakcja_id DESC LIMIT $transSum";
 }
 
 require_once 'config_db.php';
-echo $_POST['transSum'];
 echo "<table class='lista_art'>";
 echo "<tr class='listwa'>";
 print("<td class=\"\">numer</td>");

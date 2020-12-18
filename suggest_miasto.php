@@ -2,6 +2,7 @@
 $tek = htmlentities($_GET["tek"], ENT_QUOTES, "UTF-8");
 require_once 'config_db.php';
 $tek = mysqli_real_escape_string($conn, $tek);
+//$tek = $_POST["suggestion"];
 
 if($tek)
 {

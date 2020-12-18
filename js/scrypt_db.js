@@ -28,7 +28,7 @@ function getData(dataSource, divID)
 }
 
 //konstruuje odpowiedni adres php, który przez GET prześle dane i wygeneruje odpowiedź z MySQL
-function show_oferty()
+function show_oferty(sql_limit)
 {
     if(sprawdz_show_oferty() == true) //czy pola wejściowe wprowadzania oferty są wypełnione poprawnie
     {
@@ -44,6 +44,7 @@ function show_oferty()
 		  adres = adres + "p" + i + "=" + document.getElementById("p"+i).value + "&";
 		}
 	}
+        adres = adres + "p8=" + sql_limit; //
 //	document.getElementById("ekran").innerHTML = adres;
     Zapytanie(adres);//AJAX
     }
@@ -448,28 +449,3 @@ function show_wyniki_agenci()
 //	getData('komunikat.php','field')
 	}
 }
-
-// JQUERY
-//
-//przycisk pokaż więcej przy ofertach
-$(document).ready(function(){
-    var ofertCount = 10;
-    $("#button_more_ofert").click(function(){
-        ofertCount = ofertCount = 10;
-        $("#ekran2").load("show_oferty.php", {
-            ofertSum: ofertCount
-        });
-    });
-});
-
-//przycisk pokaż więcej przy transkacjach
-$(document).ready(function(){
-    var transCount = 10;
-    $("#button_more_trans").click(function(){
-        transCount = transCount = 10;
-        $("#ekran2").load("show_transakcje.php", {
-            transSum: transCount
-        });
-    });
-});
-
