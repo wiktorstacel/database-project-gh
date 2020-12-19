@@ -1,24 +1,43 @@
 // JQUERY
 //
-//przycisk pokaż więcej przy ofertach
+//lista rozwijana przy ofertach
 $(document).ready(function(){
     var ofertCount = 10;
     $(document).on("click", "#button_more_ofert", function(){
         ofertCount = ofertCount + 10;
-        show_oferty(ofertCount);
+        show_oferty(ofertCount); //podanie licznika metodą GET
+    });
+    $(document).on("click", "#button_show_ofert", function(){
+        ofertCount = 10;
+        show_oferty(ofertCount); //podanie licznika metodą GET
+    });
+    $(document).on("click", "#p1, #p2, #p3, #p6, #p7", function(){
+        show_oferty(ofertCount); //podanie licznika metodą GET
+    });
+    $(document).on("keyup", "#p4, #p5", function(){
+        show_oferty(ofertCount); //podanie licznika metodą GET
     });
 });
 
-//przycisk pokaż więcej przy transkacjach
+//lista rozwijana przy transkacjach
 $(document).ready(function(){
     var transCount = 10;
     $(document).on("click", "#button_more_trans", function(){
         transCount = transCount + 10;
         $("#ekran2").load("show_transakcje.php", {
-            transSum: transCount
+            transSum: transCount //podanie licznika metodą POST
+        });
+    });
+    $(document).on("click", "#button_show_trans", function(){
+        transCount = 10;
+        $("#ekran2").load("show_transakcje.php", {
+            transSum: transCount //podanie licznika metodą POST
         });
     });
 });
+
+
+
 //test
 //If your HTML is added dynamically after the event handlers are installed, 
 //then you need to use delegated event handling like this:

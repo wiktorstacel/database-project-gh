@@ -76,6 +76,7 @@ class Strona1
     {
         echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>';
         echo '<script language="JavaScript" type="text/javascript" src="js/scrypt_db.js"></script>'; 
+        echo '<script language="JavaScript" type="text/javascript" src="js/jquery_db.js"></script>'; 
     }
 
     public function WyswietlNaglowek()
@@ -115,8 +116,7 @@ class Strona1
         echo'<div id="ekran1"></div>';
         echo'<div id="ekran2"></div>';
         //echo'<div id="ekran3"></div>';
-        echo "<br /><br /><br /><div id=\"STOPKA\">$this->stopka</div>";
-        echo '<script language="JavaScript" type="text/javascript" src="js/jquery_db.js"></script>';           
+        echo "<br /><br /><br /><div id=\"STOPKA\">$this->stopka</div>";          
     }
 
 }

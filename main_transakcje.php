@@ -75,7 +75,7 @@ echo'
         </td>
         <td>';
         //echo '<button id="button_more_trans" type="button" name="button_more_trans">Pokaż Więcej</button>';
-        print("<button id=\"searchsubmit\" onclick=\"getData('show_transakcje.php','ekran2')\">Pokaż zrealizowane</button>");
+        print("<button id=\"button_show_trans\" onclick=\"getData('show_transakcje.php','ekran2')\">Pokaż zrealizowane</button>");
         echo'</td>
         </tr>
         
