@@ -72,7 +72,7 @@ function sprawdz_show_oferty()
 	}
 	if(a>0)
 	{
-		alert("Popraw zaznaczone pola");
+		//alert("Popraw zaznaczone pola");
 		return false;
 	}
 	else
@@ -100,8 +100,8 @@ function sprawdz_show_oferty()
 //Wstawia okreslone miasta dla wybranego wczesniej wojewodztwa
 function insert_miasto()
 {
-	var a = document.getElementById("p2").value;
-	getData("insert_miasto.php?woj="+a, "p3");
+	var a = document.getElementById("wp2").value;
+	getData("insert_miasto.php?woj="+a, "wp3");
 }
 
 var xmlHttp;
@@ -126,7 +126,7 @@ function sprawdz_save_oferta()
 	a=0;
 	for(i=0;i<=8;i++)
 	{	
-	    var pole = document.getElementById("p"+i);
+	    var pole = document.getElementById("wp"+i);
             document.getElementById("alert"+i).innerHTML = "";
             litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\"|\;|\:|\s$/;
             if(i==0 || i==5 || i==8){litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\+|\=|\[|\{|\]|\}|\||\'|\<|\>|\?|\""|\"|\;|\s$/;}
@@ -173,13 +173,13 @@ function action_save_oferta()
     adres = "action_save_oferta.php?";
     for(i=0;i<=8;i++)
 	{
-		if(document.getElementById("p"+i).value == "-wszystkie-" || document.getElementById("p"+i).value == "" || document.getElementById("p"+i).disabled)
+		if(document.getElementById("wp"+i).value == "-wszystkie-" || document.getElementById("wp"+i).value == "" || document.getElementById("wp"+i).disabled)
 		{
-		  adres = adres + "p" + i + "=x" +"&";	
+		  adres = adres + "wp" + i + "=x" +"&";	
 		}
 		else
 		{
-		  adres = adres + "p" + i + "=" + document.getElementById("p"+i).value + "&";
+		  adres = adres + "wp" + i + "=" + document.getElementById("wp"+i).value + "&";
 		}
 	}
 //	document.getElementById("ekran").innerHTML = adres;
@@ -193,11 +193,11 @@ function suggest_miasto(event)
 {  
     if(event.keyCode!=13)
     {
-        Zapytanie2("suggest_miasto.php?tek="+document.getElementById("p4").value);
+        Zapytanie2("suggest_miasto.php?tek="+document.getElementById("wp4").value);
     }
     else
     {
-        document.getElementById("p4").value = document.getElementById("p3").value;
+        document.getElementById("wp4").value = document.getElementById("wp3").value;
     }
     document.getElementById("alert3").innerHTML = "";
     document.getElementById("alert4").innerHTML = "";
