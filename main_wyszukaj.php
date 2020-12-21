@@ -26,7 +26,7 @@ echo'
     echo'
     <tr>
     <td>Województwo:</td>';
-    print("<td> <select name=\"state\" id=\"p2\" class=\"input1\" onchange=\"insert_miasto()\">"); 
+    print("<td> <select name=\"state\" id=\"p2\" class=\"input1\" onchange=\"insert_miasto(1)\">"); 
     //załadowanie województw do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM wojewodztwo ORDER BY wojewodztwo_id DESC");
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}

@@ -98,10 +98,22 @@ function sprawdz_show_oferty()
 }*/
 
 //Wstawia okreslone miasta dla wybranego wczesniej wojewodztwa
-function insert_miasto()
+function insert_miasto(strona_id)
 {
-	var a = document.getElementById("wp2").value;
-	getData("insert_miasto.php?woj="+a, "wp3");
+    if(strona_id == 1)
+    {
+        var a = document.getElementById("p2").value;
+	getData("insert_miasto.php?woj="+a, "p3");
+    }
+    else if(strona_id == 2)
+    {
+        var a = document.getElementById("wp2").value;
+	getData("insert_miasto.php?woj="+a, "wp3");        
+    }
+    else
+    {
+        console.log("Błąd przetwarzania id elementów DOM");
+    }
 }
 
 var xmlHttp;
@@ -127,10 +139,20 @@ function sprawdz_save_oferta()
 	for(i=0;i<=8;i++)
 	{	
 	    var pole = document.getElementById("wp"+i);
+            var wynik = 0;
             document.getElementById("alert"+i).innerHTML = "";
-            litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\"|\;|\:|\s$/;
-            if(i==0 || i==5 || i==8){litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\+|\=|\[|\{|\]|\}|\||\'|\<|\>|\?|\""|\"|\;|\s$/;}
-            wynik = pole.value.match(litPatt);
+            var litPatt = "";//^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\"|\;|\:|\s$/;
+            if(i==0 || i==5 || i==8)
+            {
+                litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\+|\=|\[|\{|\]|\}|\||\'|\<|\>|\?|\""|\"|\;|\s$/;
+                wynik = pole.value.match(litPatt);
+            }
+            else
+            {
+                litPatt = /^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\"|\;|\:|\s$/;
+                wynik = pole.value.match(litPatt);
+            }
+            //
             if (!pole.disabled && (pole.value == "-wszystkie-" || pole.value == "" || pole.value == "-wybierz-" || wynik!=null))
             {	
                 a++;

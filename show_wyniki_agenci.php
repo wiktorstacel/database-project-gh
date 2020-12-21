@@ -37,10 +37,10 @@ $add[1] = " AND a.agent_id='$w[1]'";
 $add[2] = " AND s.stanowisko_id='$w[2]'";
 $add[3] = " AND t.data>='$w[3]'";
 $add[4] = " AND t.data<='$w[4]'";
-$add[5] = " GROUP BY a.nazwisko";
-$add[6] = " ORDER BY AVG( o.cena ) DESC";
+$add[5] = " GROUP BY a.agent_id";
+$add[6] = " ORDER BY AVG( o.cena ) DESC, COUNT( * ) DESC";
 $add[7] = " ORDER BY SUM(o.cena) DESC";
-$add[8] = " ORDER BY COUNT( * ) DESC";
+$add[8] = " ORDER BY COUNT( * ) DESC, SUM(o.cena) DESC";
 
 for($i=1;$i<=5;$i++)
 {

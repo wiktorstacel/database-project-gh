@@ -23,7 +23,7 @@ echo'
 
     <tr>
     <td>Województwo:</td>
-    <td> <select name="state" id="wp2" class="input1" onchange="insert_miasto()">'; 
+    <td> <select name="state" id="wp2" class="input1" onchange="insert_miasto(2)">'; 
     
     //załadowanie województw do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM wojewodztwo ORDER BY wojewodztwo_id DESC");
