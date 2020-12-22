@@ -74,7 +74,6 @@ echo'
         <button id="searchsubmit" type="" onclick="action_save_trans()">Zrealizuj</button>
         </td>
         <td>';
-        //echo '<button id="button_more_trans" type="button" name="button_more_trans">Pokaż Więcej</button>';
         print("<button id=\"button_show_trans\" onclick=\"getData('show_transakcje.php','ekran2')\">Pokaż zrealizowane</button>");
         echo'</td>
         </tr>

@@ -63,6 +63,7 @@ body {
 	color: #FFFFFF;
 }
 
+/* Pole główne */
 #box {
 	margin: 0 0 20px 0;
 }
@@ -170,6 +171,9 @@ textarea{
         height: 36px;
         color: #c7c7c7;
 }
+
+/*Zakładka Wprowadź*/
+
 
 /*Zakładka Agenci*/
 #add_agent

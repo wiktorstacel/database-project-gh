@@ -1,7 +1,26 @@
 <?php
 
 echo'    
-    <h3>Wprowadź ofertę: </h3></br>
+    <div style="float: left;"><h3>Wprowadź ofertę: | </h3></div>
+            <div style="float: left;"><h3>Do edycji: </h3></div>
+            <div style="float: left;">';
+            require_once 'config_db.php'; //załadowanie ofert do selecta w celu wybrania do edycji
+            echo '<td><select id="edycja_oferty" class="input2" name="edycja_oferty">';
+            $result = mysqli_query($conn, "SELECT o.oferta_id, o.nazwa, m.nazwa, o.ulica, o.stan, o.powierzchnia FROM oferty o, miejscowosc m WHERE o.miejscowosc_id=m.miejscowosc_id AND o.stan=1 ORDER BY o.oferta_id DESC");
+            if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);} 
+                while($row = mysqli_fetch_array($result, MYSQLI_NUM))
+                {
+                    if($row[4] != 0)//stan oferty musi mieć stan 1
+                    {	
+                        print("<option value=".$row[0].">".$row[1]." - ".$row[5]."m<sup>2</sup> - ".$row[2]." - ".$row[3]."</option>");
+                    }
+                }
+                echo'<option value="0" selected="selected">-wybierz ofertę w celu edycji-</option></select>';
+
+            echo'</div>
+            <div style="clear: both;"></div>
+    
+    </br>
     <table>
     <tr>
     <td>Nazwa: </td><td><input type="text" name="nazwa" id="wp0" class="input1"/><span id="alert0" class="alert"></span></td>

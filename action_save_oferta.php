@@ -10,6 +10,7 @@ $p[6] = htmlentities($_GET["wp6"], ENT_QUOTES, "UTF-8");//powierzchnia
 $p[7] = htmlentities($_GET["wp7"], ENT_QUOTES, "UTF-8");//cena
 $p[8] = htmlentities($_GET["wp8"], ENT_QUOTES, "UTF-8");//opis
 require_once 'config_db.php';
+$p[0] = mysqli_real_escape_string($conn, $p[0]);
 $p[1] = mysqli_real_escape_string($conn, $p[1]);
 $p[2] = mysqli_real_escape_string($conn, $p[2]);
 $p[3] = mysqli_real_escape_string($conn, $p[3]);
@@ -23,12 +24,13 @@ $licznik = 0;
 					
 if($p[4] != 'x')//wstawiwanie nowej miejscowosci a potem wyciaganie jej nowego id
 {
-        $zapytanie40="SELECT miejscowosc_id FROM miejscowosc WHERE nazwa='$p[4]'";
+    $zapytanie40="SELECT miejscowosc_id FROM miejscowosc WHERE nazwa='$p[4]'";
     $result = mysqli_query($conn, $zapytanie40);
     if($result != TRUE){echo 'Bład zapytania MySQL4.0, odpowiedź serwera: '.mysqli_error($conn);$licznik++;}
-    $exist = mysqli_fetch_array($result);
+    $exist = mysqli_num_rows($result);
+    //$exist = mysqli_fetch_array($result);
 
-    if($exist == "")
+    if($exist == 0)
     {
         $zapytanie41="INSERT INTO `miejscowosc`(miejscowosc_id, nazwa, wojewodztwo_id) VALUES (DEFAULT,'$p[4]','$p[2]')";
         $result = mysqli_query($conn, $zapytanie41);//wstawienie nowej miejscowosci
@@ -43,7 +45,6 @@ if($p[4] != 'x')//wstawiwanie nowej miejscowosci a potem wyciaganie jej nowego i
         $p[3]=$row["miejscowosc_id"]; //id miejscowosci do wstawienia w 'ofetry' !zapisane w $p[3]
     //    print("<b>MySQL4.2: </b><div id=\"ekran1.4.2\">".$zapytanie42."</div><div>Odp:".$p[3]."</div>");
     }
-
     else
     {
       $p[3]=$exist["miejscowosc_id"]; //id miejscowosci do wstawienia w 'ofetry'
