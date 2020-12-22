@@ -197,25 +197,25 @@ function sprawdz_save_oferta()
 
 function action_save_oferta()
 {
-	if(sprawdz_save_oferta() == true) //czy pola wejściowe wprowadzania oferty są wypełnione poprawnie
-	{
-    adres = "action_save_oferta.php?";
-    for(i=0;i<=8;i++)
-	{
-		if(document.getElementById("wp"+i).value == "-wszystkie-" || document.getElementById("wp"+i).value == "" || document.getElementById("wp"+i).disabled)
-		{
-		  adres = adres + "wp" + i + "=x" +"&";	
-		}
-		else
-		{
-		  adres = adres + "wp" + i + "=" + document.getElementById("wp"+i).value + "&";
-		}
-	}
+    if(sprawdz_save_oferta() == true) //czy pola wejściowe wprowadzania oferty są wypełnione poprawnie
+    {
+        adres = "action_save_oferta.php?oferta_id=" + document.getElementById("edycja_oferty").value +"&";
+        for(i=0;i<=8;i++)
+        {
+            if(document.getElementById("wp"+i).value == "-wszystkie-" || document.getElementById("wp"+i).value == "" || document.getElementById("wp"+i).disabled)
+            {
+              adres = adres + "wp" + i + "=x" +"&";	
+            }
+            else
+            {
+              adres = adres + "wp" + i + "=" + document.getElementById("wp"+i).value + "&";
+            }
+        }
 //	document.getElementById("ekran").innerHTML = adres;
 //	Zapytanie(adres);
 //	getData('komunikat.php','field');
         getData(adres,'field')
-	}
+    }
 }
 
 function suggest_miasto(event)

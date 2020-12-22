@@ -1,5 +1,6 @@
 <?php
 
+$oferta_id = htmlentities($_GET["oferta_id"], ENT_QUOTES, "UTF-8");//nazwa
 $p[0] = htmlentities($_GET["wp0"], ENT_QUOTES, "UTF-8");//nazwa
 $p[1] = htmlentities($_GET["wp1"], ENT_QUOTES, "UTF-8");//rodzaj_id
 $p[2] = htmlentities($_GET["wp2"], ENT_QUOTES, "UTF-8");//wojewodztwo_id
@@ -10,6 +11,7 @@ $p[6] = htmlentities($_GET["wp6"], ENT_QUOTES, "UTF-8");//powierzchnia
 $p[7] = htmlentities($_GET["wp7"], ENT_QUOTES, "UTF-8");//cena
 $p[8] = htmlentities($_GET["wp8"], ENT_QUOTES, "UTF-8");//opis
 require_once 'config_db.php';
+$oferta_id = mysqli_real_escape_string($conn, $oferta_id);
 $p[0] = mysqli_real_escape_string($conn, $p[0]);
 $p[1] = mysqli_real_escape_string($conn, $p[1]);
 $p[2] = mysqli_real_escape_string($conn, $p[2]);
@@ -20,8 +22,8 @@ $p[6] = mysqli_real_escape_string($conn, $p[6]);
 $p[7] = mysqli_real_escape_string($conn, $p[7]);
 $p[8] = mysqli_real_escape_string($conn, $p[8]);
 
-$licznik = 0;
-					
+
+$licznik = 0;					
 if($p[4] != 'x')//wstawiwanie nowej miejscowosci a potem wyciaganie jej nowego id
 {
     $zapytanie40="SELECT miejscowosc_id FROM miejscowosc WHERE nazwa='$p[4]'";
@@ -51,7 +53,7 @@ if($p[4] != 'x')//wstawiwanie nowej miejscowosci a potem wyciaganie jej nowego i
 //      print("<b>MySQL40: </b><div id=\"ekran1.4.0\">".$zapytanie40."</div><div>Odp:".$p[3]."</div>");
     }
 }
-					
+
 
 echo'<div id="komunikat_field">';
 if($licznik > 0) //sa bledy w zapisie miejscowosci
@@ -60,14 +62,20 @@ if($licznik > 0) //sa bledy w zapisie miejscowosci
 }
 else //jak nie ma bledow to mozna zapisac oferte
 {
-    $zapytanie = "INSERT INTO `oferty` ( `nazwa` , `rodzaj_id` , `wojewodztwo_id` , `miejscowosc_id`, `ulica` ,`powierzchnia`,`cena`,`opis`,`oferta_id`) VALUES ( '$p[0]','$p[1]','$p[2]','$p[3]','$p[5]','$p[6]','$p[7]','$p[8]',DEFAULT)" ; 
+    if($oferta_id > 0) //aktualizacja po edycji
+    {
+        $zapytanie = "UPDATE `oferty` SET `nazwa`='$p[0]', `rodzaj_id`='$p[1]', `wojewodztwo_id`='$p[2]', `miejscowosc_id`='$p[3]', `ulica`='$p[5]',`powierzchnia`='$p[6]',`cena`='$p[7]',`opis`='$p[8]' WHERE `oferta_id`=$oferta_id" ; 
+    }
+    else //id == 0, czyli zapisywanie jako nowej
+    {
+        $zapytanie = "INSERT INTO `oferty` ( `nazwa` , `rodzaj_id` , `wojewodztwo_id` , `miejscowosc_id`, `ulica` ,`powierzchnia`,`cena`,`opis`,`oferta_id`) VALUES ( '$p[0]','$p[1]','$p[2]','$p[3]','$p[5]','$p[6]','$p[7]','$p[8]',DEFAULT)" ; 
+    }
     $result = mysqli_query($conn, $zapytanie);
     print("<b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
     if($result != TRUE){echo '<br /><h3>BŁĄD ZAPISU DANYCH!</h3><br />Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
     else {echo'<br /><h3>DANE ZAPISANE POPRAWNIE</h3>';} 
 }
-echo'</div>'; //end of komunikat_field 
-	
+echo'</div>'; //end of komunikat_field 	
 
 mysqli_close($conn);
 ?>
