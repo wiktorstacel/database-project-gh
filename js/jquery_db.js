@@ -41,8 +41,6 @@ $(document).ready(function(){
     
     $(document).on("change", "#edycja_oferty", function(){
         var id = $("#edycja_oferty").val();
-        //var id = $("#wp0").val();
-        //var id = document.getElementById("edycja_oferty").value;
         alert(id);
         if(id != 0)
         {
@@ -51,18 +49,17 @@ $(document).ready(function(){
                 method: "POST",
                 data: {id:id},
                 dataType: "JSON",
-                success: function(data){                 
-                    //document.getElementById("wp0").value = data.nazwa;                 
+                success: function(data){                                  
                     console.log(data);
-                    $('#wp0').val(data.nazwa);
-                    //$('#wp1').text(data.nazwa);
-                    //$('#wp2').text(data.nazwa);
-                    //$('#wp3').text(data.nazwa);
-                    //$('#wp4').text(data.nazwa);
-                    $("#ekran1").text(data.ulica);
-                    $("#ekran2").text(data.powierzchnia);
-                    //$('#wp7').text(data.nazwa);
-                    //$('#wp8').text(data.nazwa);
+                    $("#wp0").val(data.nazwa);
+                    $("#wp1").val(data.rodzaj_id);
+                    $("#wp2").val(data.wojewodztwo_id);
+                    $('#wp3').val(data.miejscowosc_id);
+                    //$('#wp4').text(data.nazwa);//nowa miejscowość - nigdy nie będzie używane
+                    $("#wp5").val(data.ulica);
+                    $("#wp6").val(data.powierzchnia);
+                    $("#wp7").val(data.cena);
+                    $("#wp8").val(data.opis);
                 }
             })
         }
