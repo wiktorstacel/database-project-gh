@@ -112,7 +112,7 @@ class Strona1
 
     public function WyswietlStopke()
     {
-        echo'<div id="ekran">5</div>';
+        echo'<div id="ekran"></div>';
         echo'<div id="ekran1"></div>';
         echo'<div id="ekran2"></div>';
         //echo'<div id="ekran3"></div>';

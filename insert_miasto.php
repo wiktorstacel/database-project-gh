@@ -1,7 +1,9 @@
 <?php
 $woj = htmlentities($_GET["woj"], ENT_QUOTES, "UTF-8");
+$m = htmlentities($_GET["m"], ENT_QUOTES, "UTF-8");//miejscowosc_id
 require_once 'config_db.php';
 $woj = mysqli_real_escape_string($conn, $woj);
+$m = mysqli_real_escape_string($conn, $m);
 
 if($woj == 'x' || $woj == '-wszystkie-' || $woj == '-wybierz-')
 {
@@ -22,9 +24,23 @@ if($result != TRUE){echo 'B�ad zapytania MySQL, odpowiedź serwera: '.mysqli_e
 
 while($row = mysqli_fetch_array($result, MYSQLI_NUM))
 { 
-    print("<option value=".$row[0].">".$row[1]."</option>");
+    if($m != $row[0])
+    {
+        print("<option value=".$row[0].">".$row[1]."</option>");
+    }
+    else
+    {
+        print("<option selected=\"selected\" value=".$row[0].">".$row[1]."</option>");
+    }
 }
-echo'<option selected="selected">-wszystkie-</option>';	
+if($m == 0)
+{
+    echo'<option selected="selected">-wszystkie-</option>';
+}
+else
+{
+    echo'<option>-wszystkie-</option>';
+}	
 			
 mysqli_close($conn);							
 ?>

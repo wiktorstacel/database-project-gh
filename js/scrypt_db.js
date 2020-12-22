@@ -98,17 +98,24 @@ function sprawdz_show_oferty()
 }*/
 
 //Wstawia okreslone miasta dla wybranego wczesniej wojewodztwa
-function insert_miasto(strona_id)
+function insert_miasto(strona_id, woj_id, miasto_id)
 {
     if(strona_id == 1)
     {
         var a = document.getElementById("p2").value;
-	getData("insert_miasto.php?woj="+a, "p3");
+	getData("insert_miasto.php?woj="+a+"&m="+miasto_id, "p3");
     }
     else if(strona_id == 2)
     {
-        var a = document.getElementById("wp2").value;
-	getData("insert_miasto.php?woj="+a, "wp3");        
+        if(woj_id == 0)
+        {
+            var a = document.getElementById("wp2").value;//zczytuje woj_id z DOM
+            getData("insert_miasto.php?woj="+a+"&m="+miasto_id, "wp3");           
+        }
+        else
+        {
+            getData("insert_miasto.php?woj="+woj_id+"&m="+miasto_id, "wp3");
+        }        
     }
     else
     {

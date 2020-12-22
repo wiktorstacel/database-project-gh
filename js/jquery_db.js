@@ -41,7 +41,6 @@ $(document).ready(function(){
     
     $(document).on("change", "#edycja_oferty", function(){
         var id = $("#edycja_oferty").val();
-        alert(id);
         if(id != 0)
         {
             $.ajax({
@@ -54,18 +53,19 @@ $(document).ready(function(){
                     $("#wp0").val(data.nazwa);
                     $("#wp1").val(data.rodzaj_id);
                     $("#wp2").val(data.wojewodztwo_id);
-                    $('#wp3').val(data.miejscowosc_id);
+                    //$('#wp3').val(data.miejscowosc_id); //wstawiane poniżej w insert_miasto
                     //$('#wp4').text(data.nazwa);//nowa miejscowość - nigdy nie będzie używane
                     $("#wp5").val(data.ulica);
                     $("#wp6").val(data.powierzchnia);
                     $("#wp7").val(data.cena);
                     $("#wp8").val(data.opis);
+                    insert_miasto(2, data.wojewodztwo_id, data.miejscowosc_id);
                 }
             })
         }
         else
         {
-            alert("wybierz ofertę do edycji");
+            console.log("wybierz ofertę do edycji");
         }
     });
     

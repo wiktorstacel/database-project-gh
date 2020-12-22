@@ -1,7 +1,7 @@
 <?php
 
 echo'    
-    <div style="float: left;"><h3>Wprowadź ofertę: | </h3></div>
+    <div style="float: left;"><h3>Wprowadź ofertę: | | | </h3></div>
             <div style="float: left;"><h3>Do edycji: </h3></div>
             <div style="float: left;">';
             require_once 'config_db.php'; //załadowanie ofert do selecta w celu wybrania do edycji
@@ -15,7 +15,7 @@ echo'
                         print("<option value=".$row[0].">".$row[1]." - ".$row[5]."m<sup>2</sup> - ".$row[2]." - ".$row[3]."</option>");
                     }
                 }
-                echo'<option value="0" selected="selected">-wybierz ofertę w celu edycji-</option></select>';
+                echo'<option value="0" selected="selected">-wybierz- (nowa oferta do zapisu tylko z tą wybraną opcją)</option></select>';
 
             echo'</div>
             <div style="clear: both;"></div>
@@ -42,7 +42,7 @@ echo'
 
     <tr>
     <td>Województwo:</td>
-    <td> <select name="state" id="wp2" class="input1" onchange="insert_miasto(2)">'; 
+    <td> <select name="state" id="wp2" class="input1" onchange="insert_miasto(2,0,0)">'; 
     
     //załadowanie województw do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM wojewodztwo ORDER BY wojewodztwo_id DESC");
