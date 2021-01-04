@@ -172,8 +172,28 @@ textarea{
         color: #c7c7c7;
 }
 
-/*Zakładka Wprowadź*/
+/*Zakładka Wprowadź - test nowego szkieletu*/
 
+.wprowadz_label{
+        float: left;
+        width: 90px;
+        min-height:30px;
+        position:relative;
+}
+
+.wprowadz_label_cell{
+        position:absolute; top:50%;
+}
+
+.wprowadz_input{
+        float: left;
+        min-height:30px;
+        position:relative;
+}
+
+.wprowadz_input_cell{
+        position:absolute; top:50%;
+}
 
 /*Zakładka Agenci*/
 #add_agent

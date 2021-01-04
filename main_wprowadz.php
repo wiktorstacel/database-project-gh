@@ -19,9 +19,22 @@ echo'
             echo'<option value="0" selected="selected">-wybierz- (nowa oferta do zapisu tylko z tą wybraną opcją)</option></select>';
 
         echo'</div>
-        <div style="clear: both;"></div>
+        <div style="clear: both; margin-bottom: 4px;"></div>';
     
-    </br>
+        /*echo'<div class="wprowadz_label">
+            <div class="wprowadz_label_cell">
+                Nazwa: 
+            </div>
+        </div>
+        <div class="wprowadz_input">
+            <div class="wprowadz_input_cell">
+                <input type="text" name="nazwa" id="wp0" class="input1"/>
+                <span id="alert0" class="alert"></span>
+            </div>
+        </div>
+        <div style="clear: both; margin-bottom: 8px;"></div>';*/
+
+    echo'
     <table>
     <tr>
     <td>Nazwa: </td><td><input type="text" name="nazwa" id="wp0" class="input1"/><span id="alert0" class="alert"></span></td>
@@ -100,11 +113,11 @@ echo'
     </tr>
 
     <tr>
-    <td></td><td></td><td></td><td></td><td><button id="searchsubmit" type="" onclick="action_save_oferta()">Zapisz</button></td>
+    <td></td><td style="width: 521px;"></td><td><button id="searchsubmit" type="" onclick="action_save_oferta()">Zapisz</button></td>
     </tr>
-
-
-    </table>
-';
-mysqli_close($conn);
+    
+    </table>';
+    
+ 
+    mysqli_close($conn);
 ?>
