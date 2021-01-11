@@ -172,27 +172,44 @@ textarea{
         color: #c7c7c7;
 }
 
-/*Zakładka Wprowadź - test nowego szkieletu*/
+/*Zakładka Wyszukaj*/
 
-.wprowadz_label{
-        float: left;
-        width: 90px;
-        min-height:30px;
-        position:relative;
+.label_form_wyszukaj{
+        width: 84px;
+        display: inline-block;
+        margin-left: 4px;
+        margin-bottom:20px;
 }
 
-.wprowadz_label_cell{
-        position:absolute; top:50%;
+/*Zakładka Wprowadź*/
+
+.label_form_wprowadz{
+        width: 86px;
+        display: inline-block;
+        margin-left: 4px;
+        margin-bottom:20px;
 }
 
-.wprowadz_input{
-        float: left;
-        min-height:30px;
-        position:relative;
+#field form{
+    	margin: 0;
+	padding: 0;
+        display: inline-block;
 }
 
-.wprowadz_input_cell{
-        position:absolute; top:50%;
+#field fieldset{
+    	margin: 0;
+	padding: 0;
+        display: inline-block;
+        border: none;/*1px groove;*/
+}
+
+/*Zakładka Transkacje*/
+
+.label_form_transakcje{
+        width: 110px;
+        display: inline-block;
+        margin-left: 4px;
+        margin-bottom:20px;
 }
 
 /*Zakładka Agenci*/
@@ -216,6 +233,12 @@ textarea{
 #add_agent input, select
 {
     margin: 5px;
+}
+
+.label_form_agenci{
+        width: 70px;
+        display: inline-block;
+        /*margin-left: 4px;*/
 }
 
 #agenci_submit1 {

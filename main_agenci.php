@@ -4,15 +4,15 @@
     echo'<div id="add_agent">';
     
     echo'<h3>Dodaj pracownika: </h3></br>
-    <label for="a1">Imię: </label>
+    <label class="label_form_agenci" for="a1">Imię: </label>
     <input name="aname" id="a1" type="text" value="" onchange="" class="input1" />
     <div id="alert1" class="alert"></div>
 
-    <label for="a2">Nazwisko: </label>
+    <label class="label_form_agenci" for="a2">Nazwisko: </label>
     <input name="asurname" id="a2" type="text" value="" onchange="" class="input1" />
     <div id="alert2" class="alert"></div>
     
-    </br><label for="a3">Stanowisko: </label>
+    </br><label class="label_form_agenci" for="a3">Stanowisko: </label>
     <select id="a3" class="input1" name="akind" onchange="">'; 
     require_once 'config_db.php';	//załadowanie rodzajów rodzajów stanowisk do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM stanowisko ORDER BY stanowisko_id DESC");
@@ -23,7 +23,7 @@
         }
     echo'<option selected="selected">-wybierz-</option></select>
          <div id="alert3" class="alert"></div>';
-    print("<button id=\"searchsubmit\" onclick=\"action_save_agent()\">Dodaj</button>");
+    print("<br><button id=\"searchsubmit\" onclick=\"action_save_agent()\">Dodaj</button>");
     
     echo'</div>'; //end of add_agent
 
@@ -35,7 +35,7 @@
  
     <span>Sortuj wg </span><br />
 
-    <label for="w1">Pracownik: </label>
+    <label class="label_form_agenci" for="w1">Pracownik: </label>
     <select name="agent" id="w1" class="input1" onchange="show_wyniki_agenci()">'; 
     //załadowanie agentów do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM agenci WHERE status='1' ORDER BY agent_id ASC");
@@ -49,7 +49,7 @@
 
     <span>lub</span><br />
 
-    <label for="w2">Stanowisko: </label>
+    <label class="label_form_agenci" for="w2">Stanowisko: </label>
     <select id="w2" class="input1" name="akind" onchange="show_wyniki_agenci()">'; 
     //załadowanie rodzajów stanowisk do listy rozwijanej formularza
     $result = mysqli_query($conn, "SELECT * FROM stanowisko ORDER BY stanowisko_id DESC");

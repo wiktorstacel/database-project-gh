@@ -8,5 +8,9 @@ $stronaglowna -> tresc = '';
 
 $stronaglowna -> title = 'Bazy Danych - Projekt';
 
+$stronaglowna -> keywords = 'Relacyjne, Bazy, Danych, SQL';
+
+$stronaglowna -> description = 'Relacyjne bazy danych - edukacja, przykłady, materiały szkolenie';
+
 $stronaglowna -> Wyswietl();
 ?>

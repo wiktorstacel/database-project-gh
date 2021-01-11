@@ -7,9 +7,9 @@ echo 'Projekt agencji nieruchomości powstał w ramach przedmiotu <b>Bazy Danych
 
 echo 'Wszystkie wprowadzone dane (oferty, transakcje, agenci) są fikcyjne. Dozwolone jest wykonywanie operacji w celach edukacyjnych.<br/><br/><br/>';
 
-echo '<u>Wykorzystane technologie</u>: <br/>PHP - generowanie stron internetowych<br/>';
+echo '<u>Wykorzystane technologie</u>: <br/>PHP - generowanie stron przez serwer<br/>';
 echo 'MySQL - relacyjne bazy danych<br/>AJAX - asynchroniczna komunikacja z serwerem<br/>';
-echo 'JavaScript - interakcje zdarzeń w aplikacji<br/>CSS - arkusz stylów<br/>';
+echo 'JavaScript - wstępna walidacja formularzy<br/>CSS - arkusz stylów<br/>';
 
 echo '<br/><u>GitHub:</u>';
 echo '<br/><a href=https://github.com/wiktorstacel/database-project-gh>https://github.com/wiktorstacel/database-project-gh</a>';

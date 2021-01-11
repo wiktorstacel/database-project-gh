@@ -186,7 +186,7 @@ function sprawdz_save_oferta()
 	}
 	if(a>0)
 	{
-		alert("Popraw zaznaczone pola");
+		//alert("Popraw zaznaczone pola");
 		return false;
 	}
 	else
@@ -308,7 +308,7 @@ function sprawdz_save_tranzakcja()
     }
     if(a>0)
     {
-            alert("Popraw zaznaczone pola");
+            //alert("Popraw zaznaczone pola");
             return false;
     }
     else
@@ -379,7 +379,7 @@ function sprawdz_save_agent()
     }
     if(a>0)
     {
-            alert("Popraw zaznaczone pola");
+            //alert("Popraw zaznaczone pola");
             return false;
     }
     else
@@ -448,7 +448,7 @@ function sprawdz_wyniki_agenci()
 	}
 	if(a>0)
 	{
-		alert("Popraw zaznaczone pola");
+		//alert("Popraw zaznaczone pola");
 		return false;
 	}
 	else
