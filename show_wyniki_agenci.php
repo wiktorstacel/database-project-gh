@@ -18,14 +18,13 @@ $w[6] = mysqli_real_escape_string($conn, $w[6]);
 $w[7] = mysqli_real_escape_string($conn, $w[7]);
 $w[8] = mysqli_real_escape_string($conn, $w[8]);
 
-
 //filtracja agent_id z przesłanego mixu: imie nazwisko id
   $zapytanie2 = "SELECT * FROM agenci a WHERE status='1'";
   $result = mysqli_query($conn, $zapytanie2);
   if($result != TRUE){echo 'Bład zapytania MySQL5, odpowiedź serwera: '.mysqli_error($conn);} 
 
 
-$zapytanie = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa, AVG( o.cena ) , COUNT( * ), SUM(o.cena) 
+$zapytanieA = "SELECT * FROM (SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa, AVG( o.cena ) avg_cena, COUNT( * ) count_rows, SUM(o.cena) suma_cena, 1 sortby 
 FROM oferty o, agenci a, tranzakcje t, stanowisko s
 WHERE a.stanowisko_id = s.stanowisko_id
 AND a.status = '1'
@@ -37,16 +36,52 @@ $add[1] = " AND a.agent_id='$w[1]'";
 $add[2] = " AND s.stanowisko_id='$w[2]'";
 $add[3] = " AND t.data>='$w[3]'";
 $add[4] = " AND t.data<='$w[4]'";
-$add[5] = " GROUP BY a.agent_id";
-$add[6] = " ORDER BY AVG( o.cena ) DESC, COUNT( * ) DESC";
+$add[5] = " GROUP BY a.agent_id UNION ALL ";
+/*$add[6] = " ORDER BY AVG( o.cena ) DESC, COUNT( * ) DESC";
 $add[7] = " ORDER BY SUM(o.cena) DESC";
 $add[8] = " ORDER BY COUNT( * ) DESC, SUM(o.cena) DESC";
+*/
 
 for($i=1;$i<=5;$i++)
 {
   if($w[$i] != 'x')
   {
-  	$zapytanie = $zapytanie.$add[$i];
+  	$zapytanieA = $zapytanieA.$add[$i];
+  }
+}
+
+/*for($i=6;$i<=8;$i++)
+{
+  if($w[$i] == 'x')
+  {
+  	$zapytanieA = $zapytanieA.$add[$i];
+  }
+}*/
+
+
+$zapytanieB = "SELECT a.agent_id, a.imie, a.nazwisko, s.nazwa, 0 avg_cena, 0 count_rows, 0 suma_cena, 2 sortby
+FROM oferty o, agenci a, tranzakcje t, stanowisko s
+WHERE a.stanowisko_id = s.stanowisko_id
+AND a.status = '1'
+AND o.oferta_id = t.oferta_id
+AND a.agent_id NOT IN (SELECT t.agent_id FROM tranzakcje t)
+";
+
+$add[1] = " AND a.agent_id='$w[1]'";
+$add[2] = " AND s.stanowisko_id='$w[2]'";
+$add[3] = " AND t.data>='$w[3]'";
+$add[4] = " AND t.data<='$w[4]'";
+$add[5] = " GROUP BY a.agent_id) AS i ORDER BY sortby,";
+$add[6] = " i.avg_cena DESC, i.count_rows DESC";
+$add[7] = " i.suma_cena DESC";
+$add[8] = " i.count_rows DESC, i.suma_cena DESC";
+
+
+for($i=1;$i<=5;$i++)
+{
+  if($w[$i] != 'x')
+  {
+  	$zapytanieB = $zapytanieB.$add[$i];
   }
 }
 
@@ -54,9 +89,12 @@ for($i=6;$i<=8;$i++)
 {
   if($w[$i] == 'x')
   {
-  	$zapytanie = $zapytanie.$add[$i];
+  	$zapytanieB = $zapytanieB.$add[$i];
   }
-}					
+}
+
+//CONNECTION of A & B
+$zapytanie = $zapytanieA.$zapytanieB;
 
 
 echo "<table class='lista_art'>";

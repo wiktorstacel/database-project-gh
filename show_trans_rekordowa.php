@@ -3,14 +3,14 @@
 if(!isset($_POST['transSum']))
 {
     $zapytanie = "SELECT t.tranzakcja_id, o.nazwa, a.nazwisko, a.imie, t.klient, t.data, o.cena, m.nazwa, o.ulica, a.status FROM  oferty o, agenci a, tranzakcje t, miejscowosc m
-    WHERE t.oferta_id=o.oferta_id AND t.agent_id=a.agent_id AND m.miejscowosc_id=o.miejscowosc_id ORDER BY t.tranzakcja_id DESC LIMIT 10";
+    WHERE t.oferta_id=o.oferta_id AND t.agent_id=a.agent_id AND m.miejscowosc_id=o.miejscowosc_id AND o.cena = (SELECT MAX(o.cena) FROM oferty o, tranzakcje t WHERE t.oferta_id=o.oferta_id)";
 }
-else
+/*else
 {
     $transSum = $_POST['transSum'];
     $zapytanie = "SELECT t.tranzakcja_id, o.nazwa, a.nazwisko, a.imie, t.klient, t.data, o.cena, m.nazwa, o.ulica, a.status FROM  oferty o, agenci a, tranzakcje t, miejscowosc m
     WHERE t.oferta_id=o.oferta_id AND t.agent_id=a.agent_id AND m.miejscowosc_id=o.miejscowosc_id ORDER BY t.tranzakcja_id DESC LIMIT $transSum";
-}
+}*/
 
 require_once 'config_db.php';
 echo "<table class='lista_art'>";
@@ -47,7 +47,6 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
 	
 
 echo '</table>';
-echo '<button id="button_more_trans">Pokaż Więcej</button>';
 print("<br /><br /><br /><b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
 
 mysqli_close($conn);

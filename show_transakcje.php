@@ -26,6 +26,7 @@ echo '<td>anuluj</td>';
 echo '</tr>';
 
 $result = mysqli_query($conn, $zapytanie);
+$row_number = mysqli_num_rows($result);
 if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
             		
 	while($row = mysqli_fetch_array($result, MYSQLI_NUM))
@@ -47,7 +48,27 @@ if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_er
 	
 
 echo '</table>';
-echo '<button id="button_more_trans">Pokaż Więcej</button>';
+
+$zapytanie_pom = "SELECT t.tranzakcja_id, o.nazwa, a.nazwisko, a.imie, t.klient, t.data, o.cena, m.nazwa, o.ulica, a.status FROM  oferty o, agenci a, tranzakcje t, miejscowosc m
+    WHERE t.oferta_id=o.oferta_id AND t.agent_id=a.agent_id AND m.miejscowosc_id=o.miejscowosc_id ORDER BY t.tranzakcja_id DESC";
+$result_pom = mysqli_query($conn, $zapytanie_pom);
+$row_number = mysqli_num_rows($result_pom);
+
+if(!isset($_POST['transSum']))
+{
+    if($row_number > 10)
+    {
+        echo '<button id="button_more_trans">Pokaż Więcej</button>';
+    }
+}
+else
+{
+    if($row_number > $transSum)
+    {
+        echo '<button id="button_more_trans">Pokaż Więcej</button>';
+    }
+}
+
 print("<br /><br /><br /><b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
 
 mysqli_close($conn);

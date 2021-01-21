@@ -31,7 +31,7 @@ $zapytanie = "SELECT o.nazwa, r.nazwa, w.nazwa, m.nazwa, o.ulica, o.powierzchnia
 WHERE o.rodzaj_id=r.rodzaj_id
 AND o.wojewodztwo_id=w.wojewodztwo_id
 AND o.miejscowosc_id=m.miejscowosc_id";
-
+$zapytanie_pom = $zapytanie;
 
 for($i=1;$i<=8;$i++)
 {
@@ -41,6 +41,14 @@ for($i=1;$i<=8;$i++)
   }
 }
 
+$add[8] = " ORDER BY o.oferta_id DESC";
+for($i=1;$i<=8;$i++)
+{
+  if($p[$i] != 'x')
+  {
+  	$zapytanie_pom = $zapytanie_pom.$add[$i];
+  }
+}
 
 echo "<table class='lista_art'>";
 echo "<tr class='listwa'>";
@@ -95,10 +103,15 @@ while($row = mysqli_fetch_array($result, MYSQLI_NUM))
 
     echo '</tr>';
 }
-	
-
 echo '</table>';
-echo '<button id="button_more_ofert">Pokaż Więcej</button>';
+
+$result_pom = mysqli_query($conn, $zapytanie_pom);
+$row_number = mysqli_num_rows($result_pom);
+if($row_number > $p[8])
+{
+   echo '<button id="button_more_ofert">Pokaż Więcej</button>';
+}
+
 print("<br /><br /><br /><b>MySQL: </b><div id=\"ekran3\">".$zapytanie."</div>");
 
 mysqli_close($conn);
