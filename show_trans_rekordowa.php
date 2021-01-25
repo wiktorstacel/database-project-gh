@@ -5,6 +5,9 @@ if(!isset($_POST['transSum']))
     $zapytanie = "SELECT t.tranzakcja_id, o.nazwa, a.nazwisko, a.imie, t.klient, t.data, o.cena, m.nazwa, o.ulica, a.status FROM  oferty o, agenci a, tranzakcje t, miejscowosc m
     WHERE t.oferta_id=o.oferta_id AND t.agent_id=a.agent_id AND m.miejscowosc_id=o.miejscowosc_id AND o.cena = (SELECT MAX(o.cena) FROM oferty o, tranzakcje t WHERE t.oferta_id=o.oferta_id)";
 }
+
+//OTHER EXAMPLE OF SUBQUERY: 
+//SELECT o.cena, o.oferta_id FROM oferty o WHERE o.cena > (SELECT AVG(o.cena) FROM oferty o)
 /*else
 {
     $transSum = $_POST['transSum'];

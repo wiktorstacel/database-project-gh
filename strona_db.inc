@@ -39,6 +39,7 @@ class Strona1
         $this -> WyswietlNaglowek();
         $this -> WyswietlTresc();
         $this -> WyswietlStopke();
+        echo '<script language="JavaScript" type="text/javascript" src="js/listeners_db.js"></script>'; 
         echo '</div>';
         echo "</body>\n</html>\n";
     }
@@ -116,9 +117,17 @@ class Strona1
         echo'<div id="ekran1"></div>';
         echo'<div id="ekran2"></div>';
         //echo'<div id="ekran3"></div>';
-        echo "<br /><br /><br /><div id=\"STOPKA\">$this->stopka</div>";          
+        echo "<br /><br /><br /><div id=\"STOPKA\">$this->stopka</div>";
+        
+        echo'<div class="cookie_container">';
+            echo'Ta strona korzysta z ciasteczek aby świadczyć usługi na najwyższym poziomie. 
+                Dalsze korzystanie ze strony oznacza, że zgadzasz się na ich użycie.&nbsp';
+            echo'<button class="cookie_button">Zgoda</button>';
+        echo'</div>';
     }
 
 }
 
 ?>
+
+

@@ -58,7 +58,7 @@ echo'
         <input id="t3" class="input1" /><span id="alert3" class="alert"></span>
         
         
-        <br><button style="margin-left:376px;" type="" onclick="action_save_trans()">Zrealizuj</button>';
+        <br><button style="margin-left:370px;" type="" onclick="action_save_trans()">Zrealizuj</button>';
         print("<button style=\"margin-left:6px;\" id=\"button_show_trans\" onclick=\"getData('show_transakcje.php','ekran2')\">Pokaż zrealizowane</button>");
         print("<button style=\"margin:0 0 0 6px;\" id=\"button_show_trans_rekordowa\" onclick=\"getData('show_trans_rekordowa.php','ekran2')\">Rekordowa</button>");
         
