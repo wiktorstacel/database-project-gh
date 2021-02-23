@@ -1,4 +1,4 @@
-<?php
+<?php //header('Access-Control-Allow-Origin: *');
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
@@ -35,4 +35,8 @@ if(isset($_POST['id']))
         }
     }
     
+}
+else
+{
+    echo 'Błąd przetwarzania danych';
 }

@@ -11,7 +11,7 @@ echo '<u>Wykorzystane technologie</u>: <br/>PHP - generowanie stron przez serwer
 echo 'MySQL - relacyjne bazy danych<br/>AJAX - asynchroniczna komunikacja z serwerem<br/>';
 echo 'JavaScript - wstępna walidacja formularzy<br/>CSS - arkusz stylów<br/>';
 
-echo '<br/><u>GitHub:</u>';
+echo '<br/>*12.2020: aktualizacja projektu, założenie repozytorium <br><u>GitHub:</u>';
 echo '<br/><a href=https://github.com/wiktorstacel/database-project-gh>https://github.com/wiktorstacel/database-project-gh</a>';
 
 echo '<br/><br/><br/>Autorzy: Jakub Lubas, Wiktor Stącel.<br/><br/><br/><br/>';
