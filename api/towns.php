@@ -1,7 +1,7 @@
 <?php
 require_once '../config_db.php';
 
-$zapytanie = "SELECT * FROM miejscowosc";
+$zapytanie = "SELECT * FROM miejscowosc ORDER BY nazwa ASC";
 $result = mysqli_query($conn, $zapytanie);
 if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);}
 

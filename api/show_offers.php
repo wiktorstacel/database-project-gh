@@ -18,11 +18,11 @@ if(!isset($data->p3) || !$data->p3 || $data->p3 === 0)
 {
     $data->p3 = "x";
 }  
-if(!isset($data->p4) || !$data->p4 || $data->p4 === 0)
+if(!isset($data->p4)) //null means is not set - overwrite "x"
 {
     $data->p4 = "x";
 }  
-if(!isset($data->p5) || !$data->p5 || $data->p5 === 0)
+if(!isset($data->p5)) //null means is not set - overwrite "x"
 {
     $data->p5 = "x";
 }
@@ -49,7 +49,8 @@ if($data)
     $p[5] = htmlentities($data->p5, ENT_QUOTES, "UTF-8");//cena max
     $p[6] = htmlentities($data->p6, ENT_QUOTES, "UTF-8");//aktualne
     $p[7] = htmlentities($data->p7, ENT_QUOTES, "UTF-8");//nieaktualne
-    $p[8] = htmlentities($data->p8, ENT_QUOTES, "UTF-8");//LIMIT
+    //$p[8] = htmlentities($data->p8, ENT_QUOTES, "UTF-8");//LIMIT
+    $p[8] = 'y';
     require_once '../config_db.php';
     $p[1] = mysqli_real_escape_string($conn, $p[1]);
     $p[2] = mysqli_real_escape_string($conn, $p[2]);
@@ -67,7 +68,7 @@ if($data)
     $add[5] = " AND o.cena<='$p[5]'";
     $add[6] = " AND o.stan=0";//'$p[6]' //p6 przychodzi true, daje x i nie dokleja tego warunku
     $add[7] = " AND o.stan=1";//'$p[7]'
-    $add[8] = " ORDER BY o.oferta_id DESC LIMIT $p[8]";
+    $add[8] = " ORDER BY o.oferta_id DESC";// LIMIT $p[8]
 
     $zapytanie = "SELECT o.nazwa, r.nazwa, w.nazwa, m.nazwa, o.ulica, o.powierzchnia, o.cena, o.opis, o.oferta_id, o.stan FROM  oferty o, rodzaj r, wojewodztwo w, miejscowosc m 
     WHERE o.rodzaj_id=r.rodzaj_id
