@@ -96,9 +96,21 @@ if($data)
     $result = mysqli_query($conn, $zapytanie);
     if($result != TRUE){echo 'Bład zapytania MySQL, odpowiedź serwera: '.mysqli_error($conn);} 
     $table = array();
-    while($row = mysqli_fetch_assoc($result))
-    {
-        $table[] = $row;
+    while($row = mysqli_fetch_array($result, MYSQLI_NUM))
+    {//o.nazwa, r.nazwa, w.nazwa, m.nazwa, o.ulica, o.powierzchnia, o.cena, o.opis, o.oferta_id, o.stan FROM  
+        $row_send = array();
+        $row_send['nazwa'] = $row[0];
+        $row_send['rodzajNazwa'] = $row[1];
+        $row_send['wojewodztwoNazwa'] = $row[2];
+        $row_send['miejscowoscNazwa'] = $row[3];
+        $row_send['ulica'] = $row[4];
+        $row_send['powierzchnia'] = (int) $row[5];
+        $row_send['cena'] = (int) $row[6];
+        $row_send['opis'] = $row[7];
+        $row_send['oferta_id'] = (int) $row[8];
+        $row_send['stan'] = (int) $row[9];
+        $table[] = $row_send;
+        //
     }
     print json_encode($table);
     
