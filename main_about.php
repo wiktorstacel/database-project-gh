@@ -13,6 +13,8 @@ echo 'JavaScript - wstępna walidacja formularzy<br/>CSS - arkusz stylów<br/>';
 
 echo '<br/>*12.2020: aktualizacja projektu, założenie repozytorium <br><u>GitHub:</u>';
 echo '<br/><a href=https://github.com/wiktorstacel/database-project-gh>https://github.com/wiktorstacel/database-project-gh</a>';
+echo '<br/>*02.2021: aktualizacja projektu, wykonanie wersji <u>Angular:</u>';
+echo '<br/><a href=/api/>https://bazy-danych-projekt.pl/api/</a>';
 
 echo '<br/><br/><br/>Autorzy: Jakub Lubas, Wiktor Stącel.<br/><br/><br/><br/>';
 
